@@ -1,0 +1,10 @@
+{
+  "appName": "App Name",
+  "next": "Next",
+  "skip": "Skip",
+  "finish": "Finish",
+  "getStarted": "Get Started",
+  "noConnection": "No Internet Connection",
+  "boorConnection": "Poor Internet",
+  "serverError": "Server Error try again later"
+}
