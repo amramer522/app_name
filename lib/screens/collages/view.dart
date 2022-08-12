@@ -7,13 +7,13 @@ import '../../shared/items/item_brand_collage.dart';
 import '../../shared/second_app_bar.dart';
 
 class CollagesScreen extends StatelessWidget {
-  final bool isBrand;
-  const CollagesScreen({Key? key, this.isBrand = false}) : super(key: key);
+  final String title;
+  const CollagesScreen({Key? key,required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: isBrand?"Brand Collages":"Collages"),
+      appBar: SecondAppBar(title: title),
       body: SizedBox(
         width: double.infinity,
         child: ListView.builder(

@@ -16,12 +16,14 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool haveAction;
   final bool isFilter;
+  final List<Widget>? actions;
 
   const SecondAppBar({
     Key? key,
-    required this.title,
+    this.title = "",
     this.haveAction = false,
     this.isFilter = true,
+    this.actions,
   }) : super(key: key);
 
   @override
@@ -60,6 +62,14 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                       height: 21.h,
                       width: 21.h,
                     ))
+                : const SizedBox.shrink(),
+            actions != null
+                ? SizedBox(
+              height: 35.h,
+                  child: Row(
+                      children: List.generate(actions!.length, (index) => actions![index]),
+                    ),
+                )
                 : const SizedBox.shrink()
           ],
         ),

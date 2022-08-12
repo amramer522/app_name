@@ -1,3 +1,4 @@
+import 'package:app_name/screens/home/view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'core/styles/colors.dart';
 import 'core/styles/themes.dart';
 import 'core/un_focus.dart';
 import 'generated/codegen_loader.g.dart';
+import 'screens/editor/view.dart';
 import 'screens/splash/view.dart';
 
 final GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
@@ -97,7 +99,7 @@ class _MyAppState extends State<MyApp> {
             ),
           ),
       themeMode: ThemeMode.light,
-      home: SplashScreen(),
+      home: EditorScreen(),
     );
   }
 }

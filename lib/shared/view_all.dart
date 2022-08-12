@@ -8,8 +8,9 @@ import '../gen/fonts.gen.dart';
 class ViewAll extends StatelessWidget {
   final String label;
   final Widget? page;
+  final bool isBold;
 
-  const ViewAll({Key? key, required this.label, this.page}) : super(key: key);
+  const ViewAll({Key? key, required this.label, this.page, this.isBold=false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,14 +20,14 @@ class ViewAll extends StatelessWidget {
         children: [
           Text(label,
               style:
-                  TextStyle(fontSize: 20.sp, fontFamily: FontFamily.regular)),
+                  TextStyle(fontSize:isBold?25.sp: 20.sp, fontFamily:isBold?FontFamily.bold: FontFamily.regular)),
           const Spacer(),
           GestureDetector(
             onTap: () {
               navigateTo(context, page: page);
             },
             child: Text("View All",
-                style: TextStyle(fontSize: 15.sp, fontFamily: FontFamily.bold)),
+                style: TextStyle(fontSize: isBold?20.sp:15.sp, fontFamily: FontFamily.bold)),
           )
         ],
       ),
