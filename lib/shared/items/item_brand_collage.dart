@@ -63,7 +63,7 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
                     style: TextStyle(
                         fontSize: 20.sp, fontFamily: FontFamily.bold)),
                 const Spacer(),
-                IconButton(onPressed: () {}, icon: Icon(Icons.share)),
+                IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
                 SizedBox(
                   width: 6.w,
                 ),

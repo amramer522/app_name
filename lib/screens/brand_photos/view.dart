@@ -11,8 +11,8 @@ class BrandPhotosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "Brand Photos",haveAction: true),
-      body: Container(
+      appBar: const SecondAppBar(title: "Brand Photos",haveAction: true),
+      body: SizedBox(
         width: double.infinity,
         child: ListView.builder(
             itemBuilder: (context, index) => ItemBrandPhoto(index: index),

@@ -28,7 +28,7 @@ class TopCollagesItemsCard extends StatelessWidget {
                 ],
               ),
             ),
-            IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios,color: Colors.grey,))
+            IconButton(onPressed: (){}, icon: const Icon(Icons.arrow_forward_ios,color: Colors.grey,))
           ],
         ),
       ),

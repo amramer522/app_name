@@ -15,7 +15,7 @@ class ItemEditorActions extends StatelessWidget {
           children: [
             SvgPicture.asset("assets/icons/$imageName.svg"),
             SizedBox(height: 5.h,),
-            Text(title,style: TextStyle(color: Colors.white),),
+            Text(title,style: const TextStyle(color: Colors.white),),
             SizedBox(height: 8.h,),
           ],
         ),

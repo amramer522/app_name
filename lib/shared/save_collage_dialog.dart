@@ -6,12 +6,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../core/styles/colors.dart';
 import '../gen/fonts.gen.dart';
 
-saveCollageDialog(context) {
+saveCollageDialog(context,{TextEditingController? controller,VoidCallback? onSavePress}) {
   showDialog(
       builder: (context) => AlertDialog(content: Container(
         height: 301.h,
         width: 350.w,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             color: Colors.white
         ),
         child: Column(
@@ -28,12 +28,13 @@ saveCollageDialog(context) {
                     color: Colors.black)),
             SizedBox(height: 17.h,),
             TextFormField(
-              decoration: InputDecoration(
+              controller: controller,
+              decoration: const InputDecoration(
                 hintText: "Enter collage name"
               ),
             ),
             SizedBox(height: 25.h,),
-            ElevatedButton(onPressed: (){}, child: Text("Save Collage"))
+            ElevatedButton(onPressed: onSavePress, child: const Text("Save Collage"))
           ],
         ),
       ),),

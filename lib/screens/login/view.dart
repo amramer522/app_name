@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios,
                       color: Colors.black,
                     )),
@@ -42,12 +42,12 @@ class LoginScreen extends StatelessWidget {
                 Text("LOGIN TO\nMY ACCOUNT",
                     style: TextStyle(
                         fontSize: 28.sp, fontFamily: FontFamily.extraBold)),
-                AppInput(
+                const AppInput(
                   label: "Email address",
                   isRequired: true,
                   hint: "name@example.com",
                 ),
-                AppInput(
+                const AppInput(
                   label: "Password",
                   isRequired: true,
                   isPassword: true,
@@ -57,7 +57,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 GestureDetector(
                     onTap: () {
-                      navigateTo(context, page: ForgetPasswordScreen());
+                      navigateTo(page: const ForgetPasswordScreen());
                     },
                     child: Text("Forgot Password",
                         style: TextStyle(
@@ -68,9 +68,9 @@ class LoginScreen extends StatelessWidget {
                 Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          navigateTo(context, page: HomeScreen());
+                          navigateTo(page: HomeScreen());
                         },
-                        child: Text("NEXT"))),
+                        child: const Text("NEXT"))),
                 SizedBox(
                   height: 5.h,
                 ),
@@ -84,7 +84,7 @@ class LoginScreen extends StatelessWidget {
                               fontSize: 17.sp, fontFamily: FontFamily.regular)),
                       TextButton(
                           onPressed: () {
-                            navigateTo(context, page: RegisterScreen());
+                            navigateTo(page: const RegisterScreen());
                           },
                           child: Text("Sign up",
                               style: TextStyle(

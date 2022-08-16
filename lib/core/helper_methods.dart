@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
-Future<dynamic> navigateTo(context, {page, bool leaveHistory = true}) {
+final navigator = GlobalKey<NavigatorState>();
+
+Future<dynamic> navigateTo({page, bool leaveHistory = true}) {
   return Navigator.pushAndRemoveUntil(
-      context,
+      navigator.currentContext!,
       PageRouteBuilder(
         pageBuilder: (context, animation, secondaryAnimation) => page,
         transitionsBuilder: (context, animation, secondaryAnimation, child) {

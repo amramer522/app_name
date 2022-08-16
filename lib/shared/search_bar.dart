@@ -14,7 +14,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigateTo(context, page: SearchScreen());
+        navigateTo( page: const SearchScreen());
       },
       child: Row(
         children: [
@@ -23,7 +23,7 @@ class SearchBar extends StatelessWidget {
             height: 45.h,
             child: TextFormField(
               enabled: isEnabled,
-              decoration: InputDecoration(hintText: "Search Categoties"),
+              decoration: const InputDecoration(hintText: "Search Categoties"),
             ),
           )),
           SizedBox(

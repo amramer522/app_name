@@ -9,11 +9,11 @@ class CartPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "My Cart"),
+      appBar: const SecondAppBar(title: "My Cart",haveBack: false),
       body: Container(
         width: double.infinity,
         padding: mainPagePadding,
-        child: Center(child: Text("My Cart"),),
+        child: const Center(child: Text("My Cart"),),
       ),
     );
   }

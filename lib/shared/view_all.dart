@@ -24,7 +24,7 @@ class ViewAll extends StatelessWidget {
           const Spacer(),
           GestureDetector(
             onTap: () {
-              navigateTo(context, page: page);
+              navigateTo( page: page);
             },
             child: Text("View All",
                 style: TextStyle(fontSize: isBold?20.sp:15.sp, fontFamily: FontFamily.bold)),

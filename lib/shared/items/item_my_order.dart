@@ -16,8 +16,18 @@ class ItemMyOrder extends StatelessWidget {
       onTap: (){
 
       },
-      child: Card(
+      child: Container(
         margin: EdgeInsets.only(top: 20.h),
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+                color: Colors.grey.withOpacity(.2),
+                blurStyle: BlurStyle.outer,
+                blurRadius: 5,
+                spreadRadius: 1)
+          ],
+          borderRadius: BorderRadiusDirectional.circular(6.r),
+        ),
         child: Padding(
           padding: EdgeInsets.all(12.r),
           child: Column(

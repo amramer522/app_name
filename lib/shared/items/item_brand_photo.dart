@@ -44,7 +44,7 @@ class _ItemBrandPhotoState extends State<ItemBrandPhoto> {
                               Icons.favorite,
                               color: Colors.red,
                             )
-                          : Icon(Icons.favorite_border)),
+                          : const Icon(Icons.favorite_border)),
               Text("liked by ",
                   style: TextStyle(
                       fontSize: 17.sp, fontFamily: FontFamily.regular)),
@@ -59,7 +59,7 @@ class _ItemBrandPhotoState extends State<ItemBrandPhoto> {
               const Spacer(),
               IconButton(onPressed: () {
 
-              }, icon: Icon(Icons.share)),
+              }, icon: const Icon(Icons.share)),
             ],
           ),
           Padding(

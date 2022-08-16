@@ -26,11 +26,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 2), () {
-      navigateTo(context,
+      navigateTo(
           page: CacheHelper.getIfFirstTime()
-              ? OnBoardingScreen()
+              ? const OnBoardingScreen()
               : CacheHelper.getUserToken().trim().isEmpty
-                  ? LoginScreen()
+                  ? const LoginScreen()
                   : HomeScreen(),
           leaveHistory: false);
     });

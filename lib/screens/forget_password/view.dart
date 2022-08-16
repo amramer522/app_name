@@ -27,7 +27,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.arrow_back_ios,
                       color: Colors.black,
                     )),
@@ -43,7 +43,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 SizedBox(
                   height: 60.h,
                 ),
-                AppInput(
+                const AppInput(
                   label: "Email",
                 ),
                 SizedBox(
@@ -54,7 +54,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
                 Center(
                     child:
-                        ElevatedButton(onPressed: () {}, child: Text("SEND"))),
+                        ElevatedButton(onPressed: () {}, child: const Text("SEND"))),
               ],
             ),
           ),

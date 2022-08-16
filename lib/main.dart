@@ -1,4 +1,5 @@
 import 'package:app_name/screens/home/view.dart';
+import 'package:app_name/screens/my_likes_dislikes/view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -9,28 +10,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/Kiwi.dart';
 import 'core/bloc_observer.dart';
 import 'core/cache_helper.dart';
+import 'core/helper_methods.dart';
 import 'core/styles/colors.dart';
 import 'core/styles/themes.dart';
 import 'core/un_focus.dart';
 import 'generated/codegen_loader.g.dart';
 import 'screens/editor/view.dart';
+import 'screens/home/pages/profile/view.dart';
+import 'screens/my_addresses/view.dart';
 import 'screens/splash/view.dart';
 
-final GlobalKey<NavigatorState> navigator = GlobalKey<NavigatorState>();
-
-void printMyDetails({required name,required age, height, weight}) {
-  print(
-      "hello $name your age is $age year and your height is $height  s ${(weight ==
-          null) || (weight == 0) ? "" : " and your weight is $weight kg"}");
-}
-
 void main() async {
-  printMyDetails(age: 25,name: "amr");
-
-
-
-
-
   WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
   await CacheHelper.init();
@@ -42,7 +32,7 @@ void main() async {
     DeviceOrientation.portraitUp,
   ]).then((_) {
     BlocOverrides.runZoned(
-          () {
+      () {
         runApp(
           EasyLocalization(
             path: 'assets/translations',
@@ -91,17 +81,14 @@ class _MyAppState extends State<MyApp> {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       theme: AppThemes.light(),
-      builder: (context, child) =>
-          UnFocus(
-            child: MediaQuery(
-              data: MediaQuery.of(context).copyWith(textScaleFactor: .85),
-              child: child!,
-            ),
-          ),
+      builder: (context, child) => UnFocus(
+        child: MediaQuery(
+          data: MediaQuery.of(context).copyWith(textScaleFactor: .85),
+          child: child!,
+        ),
+      ),
       themeMode: ThemeMode.light,
-      home: EditorScreen(),
+      home: const HomeScreen(),
     );
   }
 }
-
-

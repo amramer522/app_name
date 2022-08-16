@@ -245,9 +245,9 @@ printResponse(Response response) {
     log.fine("\x1B[15m( Data )\x1B");
     FormData data = response.requestOptions.data;
     if (data.fields.isNotEmpty) {
-      data.fields.forEach((element) {
+      for (var element in data.fields) {
         log.fine("\x1B[15m${element.key} : ${element.value}\x1B[0m");
-      });
+      }
     } else {
       log.fine("\x1B[15mNo Data\x1B[0m");
     }

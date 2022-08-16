@@ -16,7 +16,7 @@ MaterialColor buildMaterialColor(Color color) {
   List strengths = [.05, .1, .2, .3, .4, .5, .6, .7, .8, .9];
   final int r = color.red, g = color.green, b = color.blue;
   Map<int, Color> swatch = {};
-  strengths.forEach((strength) {
+  for (var strength in strengths) {
     final double ds = 0.5 - strength;
     swatch[(strength * 1000).round()] = Color.fromRGBO(
       r + ((ds < 0 ? r : (255 - r)) * ds).round(),
@@ -24,7 +24,7 @@ MaterialColor buildMaterialColor(Color color) {
       b + ((ds < 0 ? b : (255 - b)) * ds).round(),
       1,
     );
-  });
+  }
   // print("swatch: $swatch");
   return MaterialColor(color.value, swatch);
 }

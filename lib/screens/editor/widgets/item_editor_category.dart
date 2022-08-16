@@ -19,12 +19,12 @@ class ItemEditorCategory extends StatelessWidget {
         width: 103.w,
         decoration: BoxDecoration(
             border: Border.all(
-              color: Color(0xff707070),
+              color: const Color(0xff707070),
               width: 1.sp
             ),
             boxShadow: [
               BoxShadow(
-                color: Color(0xff707070).withOpacity(.8),
+                color: const Color(0xff707070).withOpacity(.8),
                 blurRadius: 1,
                 blurStyle: BlurStyle.outer
               ),
@@ -47,7 +47,7 @@ class ItemEditorCategory extends StatelessWidget {
                   child: Icon(
                     Icons.close,
                     size: 20.sp,
-                    color: Color(0xff2F1F2B),
+                    color: const Color(0xff2F1F2B),
                   ),
                 ),
               ),
@@ -67,7 +67,7 @@ class ItemEditorCategory extends StatelessWidget {
                 style: TextStyle(
                     fontSize: 17.sp,
                     fontFamily: FontFamily.bold,
-                    color: Color(0xff353636))),
+                    color: const Color(0xff353636))),
             SizedBox(
               height: 10.h,
             )

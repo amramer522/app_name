@@ -11,8 +11,8 @@ class MyOrdersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "My Orders"),
-      body: Container(
+      appBar: const SecondAppBar(title: "My Orders"),
+      body: SizedBox(
         width: double.infinity,
         child: ListView.builder(
           padding: mainPagePadding,

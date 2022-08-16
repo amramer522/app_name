@@ -33,7 +33,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             ),
             GestureDetector(
                 onTap: () {
-                  navigateTo(context, page: LoginScreen(), leaveHistory: false);
+                  navigateTo( page: const LoginScreen(), leaveHistory: false);
                 },
                 child: Text(
                   LocaleKeys.skip.tr(),
@@ -104,8 +104,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     controller.currentIndex++;
                     setState(() {});
                   } else {
-                    navigateTo(context,
-                        page: LoginScreen(), leaveHistory: false);
+                    navigateTo(
+                        page: const LoginScreen(), leaveHistory: false);
                   }
                 },
                 child: Text(controller.currentIndex == 2

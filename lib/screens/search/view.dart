@@ -11,12 +11,12 @@ class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: 'Search',),
+      appBar: const SecondAppBar(title: 'Search',),
       body: Container(
         width: double.infinity,
         padding: mainPagePadding,
         child: Column(
-          children: [
+          children: const [
             SearchBar(
               isEnabled: true,
             )

@@ -19,7 +19,7 @@ class ItemSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        navigateTo(context,page: page);
+        navigateTo(page: page);
       },
       child: Container(
         width: 100.w,

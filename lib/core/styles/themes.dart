@@ -26,21 +26,21 @@ class AppThemes {
       inputDecorationTheme: InputDecorationTheme(
         border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6.r,),
-            borderSide: BorderSide(width: 0,color: Colors.transparent)
+            borderSide: const BorderSide(width: 0,color: Colors.transparent)
         ),
         enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6.r,),
-            borderSide: BorderSide(width: 0,color: Colors.transparent)
+            borderSide: const BorderSide(width: 0,color: Colors.transparent)
         ),
         focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6.r,),
-            borderSide: BorderSide(width: 0,color: Colors.transparent)
+            borderSide: const BorderSide(width: 0,color: Colors.transparent)
         ),
         disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(6.r,),
-            borderSide: BorderSide(width: 0,color: Colors.transparent)
+            borderSide: const BorderSide(width: 0,color: Colors.transparent)
         ),
-        fillColor: Color(0xffE6E6E6),
+        fillColor: const Color(0xffE6E6E6),
         filled: true,
         
       ),

@@ -11,10 +11,12 @@ import '/../gen/assets.gen.dart';
 import '/../gen/fonts.gen.dart';
 import '/../generated/locale_keys.g.dart';
 import '../core/helper_methods.dart';
+import 'fileter_dialog.dart';
 
 class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool haveAction;
+  final bool haveBack;
   final bool isFilter;
   final List<Widget>? actions;
 
@@ -23,7 +25,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.title = "",
     this.haveAction = false,
     this.isFilter = true,
-    this.actions,
+    this.actions, this.haveBack=true,
   }) : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
         margin: EdgeInsets.only(bottom: 20.h),
         child: Row(
           children: [
-            GestureDetector(
+            haveBack?GestureDetector(
               onTap: () {
                 Navigator.pop(context);
               },
@@ -46,7 +48,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 18.h,
                 width: 27.41.w,
               ),
-            ),
+            ):SizedBox(),
             const Spacer(),
             Text(title,
                 style: TextStyle(
@@ -56,7 +58,9 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
             const Spacer(),
             haveAction
                 ? GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      showFilterDialog(context);
+                    },
                     child: SvgPicture.asset(
                       Assets.icons.filter,
                       height: 21.h,

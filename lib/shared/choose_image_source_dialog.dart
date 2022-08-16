@@ -23,9 +23,9 @@ class ChooseImageSourceDialog extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
+              const Text(
                 "Choose Image From",
-                style: const TextStyle(
+                style: TextStyle(
                     color: Colors.black, fontFamily: FontFamily.bold),
               ),
               GestureDetector(
@@ -40,7 +40,7 @@ class ChooseImageSourceDialog extends StatelessWidget {
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
+            children: const [
               MyImageButton(
                 icon: Icons.insert_photo,
                 text: "Gallery",

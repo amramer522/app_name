@@ -18,13 +18,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(),
+      appBar: const MainAppBar(),
       body: Container(
         width: double.infinity,
         padding: mainPagePadding,
         child: SingleChildScrollView(
           child: Column(
-            children: [
+            children: const [
               HomeHeader(),
               SectionsList(),
               SearchBar(),
