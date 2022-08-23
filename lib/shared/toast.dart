@@ -18,13 +18,15 @@ class Toast {
   // ignore: non_constant_identifier_names
   static const int TOP = 2;
 
-  static void show(String msg, BuildContext context,
-      {int duration = 2,
-      int gravity = 0,
-      Color backgroundColor = colorPrimary,
-      Color textColor = Colors.white,
-      double backgroundRadius = 20,
-      }) {
+  static void show(
+    String msg,
+    BuildContext context, {
+    int duration = 2,
+    int gravity = 0,
+    Color backgroundColor = colorSecondary,
+    Color textColor = Colors.white,
+    double backgroundRadius = 10,
+  }) {
     ToastView.dismiss();
     ToastView.createView(msg, context, duration, gravity, backgroundColor,
         textColor, backgroundRadius, Border.all(color: Colors.transparent));
@@ -72,12 +74,21 @@ class ToastView {
                     borderRadius: BorderRadius.circular(backgroundRadius),
                     border: border,
                   ),
-                  margin: EdgeInsets.symmetric(horizontal: 20.w),
-                  padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
-                  child: Text(msg,
-                      textAlign: TextAlign.center,
-                      softWrap: true,
-                      style: TextStyle(fontSize: 15.sp, color: textColor)),
+                  margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 40.h),
+                  padding: const EdgeInsets.fromLTRB(16, 13, 16, 13),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      ClipRRect(
+                          borderRadius: BorderRadius.circular(6.r),
+                          child: Image.asset("assets/images/app_logo.png",height: 15.h,width: 15.h,)),
+                      SizedBox(width: 10.w,),
+                      Text(msg,
+                          textAlign: TextAlign.center,
+                          softWrap: true,
+                          style: TextStyle(fontSize: 15.sp, color: textColor)),
+                    ],
+                  ),
                 )),
           ),
           gravity: gravity),

@@ -87,7 +87,7 @@ class _EditorScreenState extends State<EditorScreen> {
         selectedImages.clear();
 
         print(value);
-        Toast.show("تم الحفظ بنجاح", context);
+        Toast.show("Collage Saved Successfully", context);
         setState(() {});
       });
       Navigator.pop(context);

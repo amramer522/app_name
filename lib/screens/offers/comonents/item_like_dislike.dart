@@ -3,37 +3,42 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../gen/fonts.gen.dart';
 
-class ItemLikeDisLike extends StatefulWidget {
+class ItemOffer extends StatefulWidget {
   final bool isBig;
   final int index;
-  const ItemLikeDisLike({Key? key, this.isBig = false,required this.index}) : super(key: key);
+  const ItemOffer({Key? key, this.isBig = false,required this.index}) : super(key: key);
 
   @override
-  State<ItemLikeDisLike> createState() => _ItemLikeDisLikeState();
+  State<ItemOffer> createState() => _ItemOfferState();
 }
 
-class _ItemLikeDisLikeState extends State<ItemLikeDisLike> {
-  bool isLiked = false;
+class _ItemOfferState extends State<ItemOffer> {
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Container(
-          alignment: AlignmentDirectional.topEnd,
+          alignment: AlignmentDirectional.topStart,
           height: widget.isBig ? 170.h : 150.h,
           width: double.infinity,
           decoration: BoxDecoration(
               color:  Color(0xffC1C6C8*(widget.index+1)).withOpacity(.5), borderRadius: BorderRadius.circular(8.r)),
-          child: IconButton(
-            onPressed: () {
-              isLiked = !isLiked;
-              setState(() {});
-            },
-            icon: Icon(
-              isLiked ? Icons.favorite : Icons.favorite_border,
-              color: isLiked ? const Color(0xffF44336) : Colors.white,
-            ),
+          child:   Container(
+            height: 28.h,
+            width: 52.w,
+            child: Center(
+                child: Text("-25%",
+                    style: TextStyle(
+                        fontSize: 15.sp,
+                        color: Colors.white,
+                        fontFamily: FontFamily.regular))),
+            decoration: BoxDecoration(
+                color: Color(0xffE14B34),
+                borderRadius: BorderRadiusDirectional.only(
+                  topStart: Radius.circular(10.r),
+                  bottomEnd: Radius.circular(10.r),
+                )),
           ),
         ),
         SizedBox(height: 10.h,),

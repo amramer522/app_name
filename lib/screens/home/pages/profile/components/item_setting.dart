@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../gen/fonts.gen.dart';
+import '../../../../../shared/logout_dialog.dart';
 
 class ItemSetting extends StatelessWidget {
   final String image;
@@ -24,6 +25,7 @@ class ItemSetting extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (isLogout) {
+          showLogoutDialog(navigator.currentContext);
         } else {
           navigateTo(page: page);
         }

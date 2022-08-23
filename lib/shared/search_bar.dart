@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../gen/fonts.gen.dart';
+
 class SearchBar extends StatelessWidget {
   final bool isEnabled;
 
@@ -14,7 +16,7 @@ class SearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigateTo( page: const SearchScreen());
+        navigateTo(page: const SearchScreen());
       },
       child: Row(
         children: [
@@ -23,7 +25,11 @@ class SearchBar extends StatelessWidget {
             height: 45.h,
             child: TextFormField(
               enabled: isEnabled,
-              decoration: const InputDecoration(hintText: "Search Categoties"),
+              decoration: InputDecoration(
+                  hintText: "Search Categories",
+                  filled: true,
+                  hintStyle: TextStyle(fontSize: 13.sp,fontFamily: FontFamily.medium,color: Color(0xff7B7B7B)),
+                  fillColor: Color(0xffE6E6E6).withOpacity(.5)),
             ),
           )),
           SizedBox(

@@ -1,3 +1,5 @@
+import 'package:app_name/screens/my_likes_dislikes/view.dart';
+import 'package:app_name/screens/offers/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +13,7 @@ class SectionsList extends StatelessWidget {
 
   final List<String> images = const ["editor", "collages", "offers"];
   final List<String> titles = const ["Editor", "Collages", "Offers"];
-  final List<Widget> pages = const [EditorScreen(),CollagesScreen(title: 'Collages',), CollagesScreen(title: 'dasd',)];
+  final List<Widget> pages = const [EditorScreen(),CollagesScreen(title: 'Collages',withFilter: false), OffersScreen()];
 
   @override
   Widget build(BuildContext context) {

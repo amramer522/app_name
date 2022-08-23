@@ -1,4 +1,6 @@
+import 'package:app_name/screens/confirm_code/view.dart';
 import 'package:app_name/screens/home/view.dart';
+import 'package:app_name/screens/login/view.dart';
 import 'package:app_name/screens/my_likes_dislikes/view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,10 +17,17 @@ import 'core/styles/colors.dart';
 import 'core/styles/themes.dart';
 import 'core/un_focus.dart';
 import 'generated/codegen_loader.g.dart';
+import 'screens/add_new_address/view.dart';
+import 'screens/checkout/view.dart';
 import 'screens/editor/view.dart';
+import 'screens/home/pages/cart/view.dart';
 import 'screens/home/pages/profile/view.dart';
 import 'screens/my_addresses/view.dart';
+import 'screens/my_order_details/view.dart';
+import 'screens/notifications/view.dart';
+import 'screens/payment_methods/view.dart';
 import 'screens/splash/view.dart';
+import 'screens/test_filter.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -88,7 +97,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: ThemeMode.light,
-      home: const HomeScreen(),
+      home:  EditorScreen(),
     );
   }
 }

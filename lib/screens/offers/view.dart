@@ -3,31 +3,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'components/item_like_dislike.dart';
-import 'components/item_selected_filter.dart';
+import '../my_likes_dislikes/components/item_like_dislike.dart';
+import '../my_likes_dislikes/components/item_selected_filter.dart';
+import 'comonents/item_like_dislike.dart';
 
-class MyLikesAndDisLikesScreen extends StatefulWidget {
-  final String title;
+class OffersScreen extends StatefulWidget {
 
 
-  const MyLikesAndDisLikesScreen({Key? key,required this.title})
+  const OffersScreen({Key? key})
       : super(key: key);
 
   @override
-  State<MyLikesAndDisLikesScreen> createState() =>
-      _MyLikesAndDisLikesScreenState();
+  State<OffersScreen> createState() =>
+      _OffersScreenState();
 }
 
-class _MyLikesAndDisLikesScreenState extends State<MyLikesAndDisLikesScreen> {
+class _OffersScreenState extends State<OffersScreen> {
   int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: SecondAppBar(
-        title: widget.title,
-        isFilter: true,
-        haveAction: true,
+        title: "Offers",
       ),
       body: Column(
         children: [
@@ -58,7 +56,7 @@ class _MyLikesAndDisLikesScreenState extends State<MyLikesAndDisLikesScreen> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 20.h,
                   childAspectRatio: .7),
-              itemBuilder: (_, index) => ItemLikeDisLike(isBig: index.isOdd,index: index),
+              itemBuilder: (_, index) => ItemOffer(isBig: index.isOdd,index: index),
               itemCount: 20,
             ),
           ),

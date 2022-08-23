@@ -1,9 +1,11 @@
+import 'package:app_name/core/helper_methods.dart';
 import 'package:app_name/shared/logout_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../fake_data/fake_data.dart';
 import '../../gen/fonts.gen.dart';
+import '../../screens/my_order_details/view.dart';
 
 class ItemMyOrder extends StatelessWidget {
   final int index;
@@ -14,7 +16,7 @@ class ItemMyOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-
+        navigateTo(page: MyOrderDetails(title: "Order${index+1}",));
       },
       child: Container(
         margin: EdgeInsets.only(top: 20.h),

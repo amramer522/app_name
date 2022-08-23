@@ -40,7 +40,7 @@ class AppThemes {
             borderRadius: BorderRadius.circular(6.r,),
             borderSide: const BorderSide(width: 0,color: Colors.transparent)
         ),
-        fillColor: const Color(0xffE6E6E6),
+        fillColor: const Color(0xffE6E6E6).withOpacity(.4),
         filled: true,
         
       ),

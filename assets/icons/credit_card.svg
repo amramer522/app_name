@@ -1,0 +1,10 @@
+<svg id="XMLID_1041_" xmlns="http://www.w3.org/2000/svg" width="35" height="20.781" viewBox="0 0 35 20.781">
+  <path id="XMLID_1042_" d="M3.281,143.753v-3.281H17.5V135H0v13.125H17.5v-4.375Z" transform="translate(0 -127.346)" fill="#78b9eb"/>
+  <rect id="XMLID_1043_" width="17.054" height="3.528" transform="translate(0.225)" fill="#78b9eb"/>
+  <rect id="XMLID_1044_" width="17.642" height="3.528" transform="translate(17.279)" fill="#5a8bb0"/>
+  <path id="XMLID_1045_" d="M160,140.471v7.656h17.5V135H160Zm6.563-1.094a2.73,2.73,0,0,1,2.188,1.094,2.734,2.734,0,1,1,0,3.281,2.734,2.734,0,1,1-2.187-4.375Z" transform="translate(-142.5 -127.346)" fill="#5a8bb0"/>
+  <path id="XMLID_1048_" d="M0,95v4.375H35V95H0Z" transform="translate(0 -91.721)" fill="#3c5d76"/>
+  <rect id="XMLID_1049_" width="14.113" height="3.528" transform="translate(3.165 12.937)" fill="#fff"/>
+  <path id="XMLID_1050_" d="M197.734,180.469a2.73,2.73,0,0,0,2.188-1.094,2.735,2.735,0,0,1,0-3.281,2.734,2.734,0,1,0-2.187,4.375Z" transform="translate(-173.672 -162.969)" fill="#ffda44"/>
+  <path id="XMLID_1051_" d="M235.547,179.375a2.735,2.735,0,1,0-.547-1.641A2.73,2.73,0,0,0,235.547,179.375Z" transform="translate(-209.297 -162.969)" fill="#ff5023"/>
+</svg>

@@ -9,6 +9,7 @@ class AppInput extends StatefulWidget {
   final String hint;
   final bool isPassword;
   final bool isRequired;
+  final TextStyle? labelStyle;
   final TextEditingController? controller;
   final TextInputType keyBoardType;
 
@@ -19,7 +20,8 @@ class AppInput extends StatefulWidget {
       this.isPassword = false,
       this.isRequired = false,
       this.keyBoardType = TextInputType.text,
-      this.controller})
+      this.controller,
+      this.labelStyle})
       : super(key: key);
 
   @override
@@ -37,7 +39,7 @@ class _AppInputState extends State<AppInput> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(widget.label + (widget.isRequired ? " *" : ''),
-              style:
+              style: widget.labelStyle ??
                   TextStyle(fontSize: 15.sp, fontFamily: FontFamily.regular)),
           TextFormField(
             controller: widget.controller,

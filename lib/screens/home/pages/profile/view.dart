@@ -89,16 +89,17 @@ class ProfilePage extends StatelessWidget {
                 numberOfItems: 10,
                 page: CollagesScreen(
                   title: "My Collages",
+                  withFilter: true,
                 )),
             ItemProfile(
                 title: "My Likes",
                 numberOfItems: 5,
-                page: MyLikesAndDisLikesScreen()),
+                page: MyLikesAndDisLikesScreen(title: "My Likes",)),
             ItemProfile(
                 title: "My Dislikes",
                 numberOfItems: 100,
                 page: MyLikesAndDisLikesScreen(
-                  isLikes: false,
+                  title: "My Dislikes",
                 )),
             SizedBox(
               height: 10.h,

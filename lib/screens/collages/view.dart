@@ -8,12 +8,13 @@ import '../../shared/second_app_bar.dart';
 
 class CollagesScreen extends StatelessWidget {
   final String title;
-  const CollagesScreen({Key? key,required this.title}) : super(key: key);
+  final bool withFilter;
+  const CollagesScreen({Key? key,required this.title,required this.withFilter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: title),
+      appBar: SecondAppBar(title: title,isFilter: withFilter,haveAction: withFilter),
       body: SizedBox(
         width: double.infinity,
         child: ListView.builder(

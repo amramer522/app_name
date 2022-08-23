@@ -6,14 +6,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../core/styles/colors.dart';
 import '../gen/fonts.gen.dart';
 
-saveCollageDialog(context,
-    {TextEditingController? controller, VoidCallback? onSavePress}) {
+finishOrderDialog(context) {
   showDialog(
       builder: (context) => AlertDialog(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(16.r)),
             content: Container(
-              height: 320.h,
+              height: 200.h,
               width: 350.w,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -22,44 +21,34 @@ saveCollageDialog(context,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Align(
-                        alignment: AlignmentDirectional.topEnd,
-                        child: GestureDetector(
-                            onTap: () {
-                              Navigator.pop(context);
-                            },
-                            child: Icon(Icons.close))),
                     SvgPicture.asset(
-                      "assets/icons/save_collage_image.svg",
-                      height: 81.h,
-                      width: 81.h,
+                      "assets/icons/finish_order.svg",
+                      height: 111.h,
+                      width: 111.h,
                     ),
                     SizedBox(
-                      height: 13.h,
+                      height: 16.h,
                     ),
-                    Text("Save your collage",
+                    Text("Congrats!",
                         style: TextStyle(
-                            fontSize: 28.sp,
+                            fontSize: 20.sp,
                             height: 1.1.h,
                             decoration: TextDecoration.none,
                             fontFamily: FontFamily.extraBold,
                             color: Colors.black)),
                     SizedBox(
+                      height: 5.h,
+                    ),
+                    Text("Your order was placed\nsuccessfully",textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 17.sp,
+                            height: 1.1.h,
+                            decoration: TextDecoration.none,
+                            fontFamily: FontFamily.regular,
+                            color: Colors.black)),
+                    SizedBox(
                       height: 17.h,
                     ),
-                    TextFormField(
-                      controller: controller,
-                      decoration: InputDecoration(
-                          hintText: "Enter collage name",
-                          filled: true,
-                          fillColor: Color(0xffEBEBEB).withOpacity(.5)),
-                    ),
-                    SizedBox(
-                      height: 25.h,
-                    ),
-                    ElevatedButton(
-                        onPressed: onSavePress,
-                        child: const Text("Save Collage"))
                   ],
                 ),
               ),

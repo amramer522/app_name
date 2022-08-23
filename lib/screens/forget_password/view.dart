@@ -1,3 +1,4 @@
+import 'package:app_name/core/helper_methods.dart';
 import 'package:app_name/core/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/app_input.dart';
+import '../confirm_code/view.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({Key? key}) : super(key: key);
@@ -36,10 +38,16 @@ class ForgetPasswordScreen extends StatelessWidget {
                 ),
                 Text("FORGET PASSWORD",
                     style: TextStyle(
-                        fontSize: 28.sp, height: 2.5.h,fontFamily: FontFamily.extraBold)),
-                Text("Please enter your email address, you will\nreceive a link to create a new password via",
+                        fontSize: 28.sp,
+                        height: 2.5.h,
+                        fontFamily: FontFamily.extraBold)),
+                Text(
+                    "Please enter your email address, you will\nreceive a link to create a new password via",
                     style: TextStyle(
-                        fontSize: 15.sp, height: 1.3.h,fontFamily: FontFamily.regular,color: const Color(0xff353636))),
+                        fontSize: 15.sp,
+                        height: 1.3.h,
+                        fontFamily: FontFamily.regular,
+                        color: const Color(0xff353636))),
                 SizedBox(
                   height: 60.h,
                 ),
@@ -53,8 +61,11 @@ class ForgetPasswordScreen extends StatelessWidget {
                   height: 60.h,
                 ),
                 Center(
-                    child:
-                        ElevatedButton(onPressed: () {}, child: const Text("SEND"))),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          navigateTo(page: ConfirmCodeScreen());
+                        },
+                        child: const Text("SEND"))),
               ],
             ),
           ),

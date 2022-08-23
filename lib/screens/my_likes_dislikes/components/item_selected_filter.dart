@@ -19,7 +19,7 @@ class ItemSelectedFilter extends StatelessWidget {
       child: Container(
         width: 77.w,
         decoration: BoxDecoration(
-            color: isSelected ? colorPrimary : const Color(0xffC1C6C8),
+            color: isSelected ? colorPrimary : const Color(0xffC1C6C8).withOpacity(.3),
             borderRadius: BorderRadius.circular(8.r)),
         child: Center(
           child: Text(title,

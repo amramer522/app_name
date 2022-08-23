@@ -1,46 +1,40 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/add_new_address/view.dart';
+import 'package:app_name/screens/notifications/components/item_notification.dart';
 import 'package:app_name/shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../gen/fonts.gen.dart';
-import 'components/item_my_address.dart';
+import '../home/pages/all_categories/components/item_category.dart';
+class NotificationsScreen extends StatelessWidget {
+   NotificationsScreen({Key? key}) : super(key: key);
 
-class MyAddressesScreen extends StatelessWidget {
-   MyAddressesScreen({Key? key}) : super(key: key);
-  List<String> titles = ["Default address","Other Address"];
+  var titles = ["Today","This Week","This Month"];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "My address"),
+      appBar: SecondAppBar(title: "Notifications"),
       body: ListView.builder( // outer ListView
-        itemCount: 2,
+        itemCount: titles.length,
         itemBuilder: (_, index) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.only(start: 20.w,top: 20.h),
+                padding: EdgeInsetsDirectional.only(start: 18.w,),
                 child: Text('${titles[index]}',style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
               ),
               ListView.builder(
                 shrinkWrap: true,
                 padding: EdgeInsets.only(bottom: 20.h),
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: 2,
-                itemBuilder: (_, index) => const ItemMyAddress(),
+                itemCount: 3,
+                itemBuilder: (_, index) => const ItemNotification(),
               )
             ],
           );
 
         },
-      ),
-      bottomNavigationBar: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 32.w,vertical: 10.h),
-        child: ElevatedButton(onPressed: (){
-          navigateTo(page: AddNewAddress());
-        },child: Text("Add New Address"),),
       ),
     );
   }

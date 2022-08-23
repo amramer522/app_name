@@ -1,3 +1,4 @@
+import 'package:app_name/screens/notifications/view.dart';
 import 'package:app_name/screens/on_boarding/view.dart';
 import 'package:badges/badges.dart';
 import 'package:easy_localization/src/public_ext.dart';
@@ -57,7 +58,7 @@ class _MainAppBarState extends State<MainAppBar> {
             const Spacer(),
             GestureDetector(
               onTap: () {
-                // navigateTo(context, page: OnBoardingScreen());
+                navigateTo( page: NotificationsScreen());
               },
               child: Badge(
                 badgeColor: colorPrimary,
