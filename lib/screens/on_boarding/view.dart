@@ -5,7 +5,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../generated/locale_keys.g.dart';
 import 'controller.dart';
@@ -104,8 +103,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     controller.currentIndex++;
                     setState(() {});
                   } else {
-                    navigateTo(
-                        page: const LoginScreen(), leaveHistory: false);
+                    navigateTo(page: const HomeScreen(), leaveHistory: false);
                   }
                 },
                 child: Text(controller.currentIndex == 2

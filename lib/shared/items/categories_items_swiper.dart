@@ -5,11 +5,14 @@ import 'package:flutter_svg/svg.dart';
 import 'package:swipe_cards/draggable_card.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 
+import '../../core/helper_methods.dart';
 import '../../core/styles/colors.dart';
 import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
+import '../../screens/editor/view.dart';
 import '../fileter_dialog.dart';
 import '../toast.dart';
+
 class CategoriesItemsSwiper extends StatefulWidget {
   const CategoriesItemsSwiper({Key? key}) : super(key: key);
 
@@ -18,12 +21,10 @@ class CategoriesItemsSwiper extends StatefulWidget {
 }
 
 class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
-
-
-  List<SwipeItem> _swipeItems = [];
+  final List<SwipeItem> _swipeItems = [];
   MatchEngine? _matchEngine;
-  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  List<String> _names = [
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+  final List<String> _names = [
     "Red",
     "Blue",
     "Green",
@@ -33,7 +34,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
     "Purple",
     "Pink"
   ];
-  List<Color> _colors = [
+  final List<Color> _colors = [
     Colors.red,
     Colors.blue,
     Colors.green,
@@ -44,7 +45,6 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
     Colors.pink
   ];
 
-
   @override
   void initState() {
     super.initState();
@@ -52,13 +52,16 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
       _swipeItems.add(SwipeItem(
           content: {"text": _names[i], "color": _colors[i]},
           likeAction: () {
-            Toast.show("Like", context);
+            showToast(context,msg: "Like",);
+
           },
           nopeAction: () {
-            Toast.show("Dislike", context);
+            showToast(context,msg: "Dislike",);
+
           },
           superlikeAction: () {
-            Toast.show("No Action on Item", context);
+            showToast(context,msg: "No Action on Item",);
+
           },
           onSlideUpdate: (SlideRegion? region) async {
             print("Region $region");
@@ -81,15 +84,19 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  IconButton(onPressed: (){
-                    Navigator.pop(context);
-                  }, icon: const Icon(Icons.close,color: Colors.white,)),
+                  IconButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      icon: const Icon(
+                        Icons.close,
+                        color: Colors.white,
+                      )),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 11.h),
                     decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(7.r)
-                    ),
+                        borderRadius: BorderRadius.circular(7.r)),
                     child: Column(
                       children: [
                         Row(
@@ -98,7 +105,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                               width: 16.w,
                             ),
                             GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 showFilterDialog(context);
                               },
                               child: SvgPicture.asset(
@@ -110,7 +117,11 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                             SizedBox(
                               width: 7.w,
                             ),
-                            Text("678 Found Results",style: TextStyle(fontSize: 12.sp,fontFamily: FontFamily.regular,color: colorPrimary))
+                            Text("678 Found Results",
+                                style: TextStyle(
+                                    fontSize: 12.sp,
+                                    fontFamily: FontFamily.regular,
+                                    color: colorPrimary))
                           ],
                         ),
                         const Divider(),
@@ -124,28 +135,40 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                 children: [
                                   CachedNetworkImage(
                                     imageUrl:
-                                    "https://www.cips.org/supply-management-jobs/getasset/63f90cc8-0778-4023-80b9-85246ce586b0/",
+                                        "https://www.cips.org/supply-management-jobs/getasset/63f90cc8-0778-4023-80b9-85246ce586b0/",
                                     height: 350.h,
                                     fit: BoxFit.contain,
                                   ),
                                   Padding(
-                                    padding:  EdgeInsets.only(bottom: 20.h),
+                                    padding: EdgeInsets.only(bottom: 20.h),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
-                                      children: List.generate(3, (index) => Container(
-                                        width: 34.w,
-                                        height: 3.h,
-                                        margin: EdgeInsetsDirectional.only(start: 5.w),
-                                        decoration: BoxDecoration(
-                                            color: index==0?Colors.black:Colors.grey,
-                                            borderRadius: BorderRadius.circular(25.r)
-                                        ),
-                                      )),
+                                      children: List.generate(
+                                          3,
+                                          (index) => Container(
+                                                width: 34.w,
+                                                height: 3.h,
+                                                margin:
+                                                    EdgeInsetsDirectional.only(
+                                                        start: 5.w),
+                                                decoration: BoxDecoration(
+                                                    color: index == 0
+                                                        ? Colors.black
+                                                        : Colors.grey,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25.r)),
+                                              )),
                                     ),
                                   )
                                 ],
                               ),
-                              Text("Product Name",style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.regular),),
+                              Text(
+                                "Product Name",
+                                style: TextStyle(
+                                    fontSize: 20.sp,
+                                    fontFamily: FontFamily.regular),
+                              ),
                               SizedBox(
                                 height: 10.h,
                               ),
@@ -154,13 +177,17 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                   Text("LE 0.00",
                                       style: TextStyle(
                                         color: const Color(0xffC9C9C9),
-                                        fontSize: 17.sp,fontFamily: FontFamily.regular,
+                                        fontSize: 17.sp,
+                                        fontFamily: FontFamily.regular,
                                         decoration: TextDecoration.lineThrough,
                                       )),
                                   SizedBox(
                                     width: 10.w,
                                   ),
-                                  Text("LE 0.00",style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+                                  Text("LE 0.00",
+                                      style: TextStyle(
+                                          fontSize: 20.sp,
+                                          fontFamily: FontFamily.bold)),
                                   const Spacer(),
                                   GestureDetector(
                                       onTap: () {},
@@ -170,7 +197,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                           padding: EdgeInsets.all(8.r),
                                           decoration: BoxDecoration(
                                               borderRadius:
-                                              BorderRadius.circular(7.r),
+                                                  BorderRadius.circular(7.r),
                                               color: colorSecondary),
                                           child: SvgPicture.asset(
                                             Assets.icons.addToCart,
@@ -179,7 +206,8 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                               ),
                               Text("Size",
                                   style: TextStyle(
-                                      fontSize: 17.sp, fontFamily: FontFamily.bold)),
+                                      fontSize: 17.sp,
+                                      fontFamily: FontFamily.bold)),
                               SizedBox(
                                 height: 10.h,
                               ),
@@ -190,10 +218,12 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                     width: 66.w,
                                     decoration: BoxDecoration(
                                         color: const Color(0xffE6E6E6),
-                                        borderRadius: BorderRadius.circular(3.r)),
+                                        borderRadius:
+                                            BorderRadius.circular(3.r)),
                                     child: const Center(child: Text("UK 10")),
                                   ),
-                                  separatorBuilder: (context, index) => SizedBox(
+                                  separatorBuilder: (context, index) =>
+                                      SizedBox(
                                     width: 10.w,
                                   ),
                                   itemCount: 3,
@@ -204,19 +234,27 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                 height: 30.h,
                               ),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  navigateTo(page: EditorScreen());
+                                },
                                 child: const Text("Add to Editor"),
                               ),
-                              SizedBox(height: 8.h,),
+                              SizedBox(
+                                height: 8.h,
+                              ),
                               Container(
                                 decoration: BoxDecoration(
                                     color: Colors.grey.withOpacity(.08),
-                                    borderRadius: BorderRadius.circular(7.r)
-                                ),
+                                    borderRadius: BorderRadius.circular(7.r)),
                                 child: TextButton.icon(
                                   onPressed: () {},
-                                  label: Text("Previous",style: TextStyle(color:Colors.black,fontSize: 16.sp,fontFamily: FontFamily.regular)),
-                                  icon: SvgPicture.asset("assets/icons/reload.svg"),
+                                  label: Text("Previous",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 16.sp,
+                                          fontFamily: FontFamily.regular)),
+                                  icon: SvgPicture.asset(
+                                      "assets/icons/reload.svg"),
                                 ),
                               ),
                               // Container(
@@ -249,7 +287,8 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
           },
           onStackFinished: () {
             Navigator.pop(context);
-            Toast.show("No More Items", context);
+            showToast(context,msg: "No More Items",);
+
           },
           itemChanged: (SwipeItem item, int index) {
             print("item: ${item.content["text"]}, index: $index");

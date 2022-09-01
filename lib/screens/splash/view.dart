@@ -29,9 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
       navigateTo(
           page: CacheHelper.getIfFirstTime()
               ? const OnBoardingScreen()
-              : CacheHelper.getUserToken().trim().isEmpty
-                  ? const LoginScreen()
-                  : HomeScreen(),
+              :  const HomeScreen(),
           leaveHistory: false);
     });
   }

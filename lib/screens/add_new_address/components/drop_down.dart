@@ -19,7 +19,7 @@ class _DropDownState extends State<DropDown> {
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 8.w),
       decoration: BoxDecoration(
-          color: Color(0xffEBEBEB),
+          color: const Color(0xffEBEBEB),
           borderRadius: BorderRadius.circular(7.r)
       ),
       child: DropdownButton<String>(

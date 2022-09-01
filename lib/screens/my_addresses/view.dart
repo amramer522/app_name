@@ -13,7 +13,7 @@ class MyAddressesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "My address"),
+      appBar: const SecondAppBar(title: "My address"),
       body: ListView.builder( // outer ListView
         itemCount: 2,
         itemBuilder: (_, index) {
@@ -22,7 +22,7 @@ class MyAddressesScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 20.w,top: 20.h),
-                child: Text('${titles[index]}',style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+                child: Text(titles[index],style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
               ),
               ListView.builder(
                 shrinkWrap: true,
@@ -39,8 +39,8 @@ class MyAddressesScreen extends StatelessWidget {
       bottomNavigationBar: Padding(
         padding:  EdgeInsets.symmetric(horizontal: 32.w,vertical: 10.h),
         child: ElevatedButton(onPressed: (){
-          navigateTo(page: AddNewAddress());
-        },child: Text("Add New Address"),),
+          navigateTo(page: const AddNewAddress());
+        },child: const Text("Add New Address"),),
       ),
     );
   }

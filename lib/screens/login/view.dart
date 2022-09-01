@@ -3,11 +3,9 @@ import 'package:app_name/core/styles/styles.dart';
 import 'package:app_name/screens/forget_password/view.dart';
 import 'package:app_name/screens/home/view.dart';
 import 'package:app_name/screens/register/view.dart';
-import 'package:app_name/shared/done_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/app_input.dart';
 
@@ -30,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 IconButton(
                     onPressed: () {
-                      Navigator.pop(context);
+                      navigateTo(page: HomeScreen());
                     },
                     icon: const Icon(
                       Icons.arrow_back_ios,
@@ -68,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                 Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          navigateTo(page: HomeScreen());
+                          navigateTo(page: const HomeScreen());
                         },
                         child: const Text("NEXT"))),
                 SizedBox(

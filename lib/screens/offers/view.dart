@@ -3,7 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../my_likes_dislikes/components/item_like_dislike.dart';
 import '../my_likes_dislikes/components/item_selected_filter.dart';
 import 'comonents/item_like_dislike.dart';
 
@@ -24,7 +23,7 @@ class _OffersScreenState extends State<OffersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(
+      appBar: const SecondAppBar(
         title: "Offers",
       ),
       body: Column(

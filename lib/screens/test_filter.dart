@@ -1,11 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../core/styles/colors.dart';
-import '../gen/assets.gen.dart';
 import '../gen/fonts.gen.dart';
 
 class TestFilterScreen extends StatefulWidget {

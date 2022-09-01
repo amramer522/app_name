@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/helper_methods.dart';
-import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/app_input.dart';
 

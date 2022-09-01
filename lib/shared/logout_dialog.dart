@@ -4,7 +4,6 @@ import 'package:app_name/screens/login/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../core/styles/colors.dart';
 import '../gen/fonts.gen.dart';
 
 showLogoutDialog(context) {
@@ -57,12 +56,9 @@ showLogoutDialog(context) {
                         Expanded(
                             child: ElevatedButton(
                                 onPressed: () {
-                                  navigateTo(page: LoginScreen(),leaveHistory: false);
+                                  navigateTo(page: const LoginScreen(),leaveHistory: false);
                                 },
-                                child: Text("Logout",
-                                    style: TextStyle(
-                                        fontSize: 17.sp,
-                                        fontFamily: FontFamily.bold)))),
+                                child: Text("Logout",))),
                       ],
                     ),
                   )

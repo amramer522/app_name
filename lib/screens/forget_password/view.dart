@@ -3,7 +3,6 @@ import 'package:app_name/core/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/app_input.dart';
 import '../confirm_code/view.dart';
@@ -63,7 +62,7 @@ class ForgetPasswordScreen extends StatelessWidget {
                 Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          navigateTo(page: ConfirmCodeScreen());
+                          navigateTo(page: const ConfirmCodeScreen());
                         },
                         child: const Text("SEND"))),
               ],

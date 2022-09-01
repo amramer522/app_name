@@ -1,6 +1,4 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '/../generated/locale_keys.g.dart';
 
 class CacheHelper {
   static late SharedPreferences _preferences;

@@ -28,8 +28,8 @@ class SearchBar extends StatelessWidget {
               decoration: InputDecoration(
                   hintText: "Search Categories",
                   filled: true,
-                  hintStyle: TextStyle(fontSize: 13.sp,fontFamily: FontFamily.medium,color: Color(0xff7B7B7B)),
-                  fillColor: Color(0xffE6E6E6).withOpacity(.5)),
+                  hintStyle: TextStyle(fontSize: 13.sp,fontFamily: FontFamily.medium,color: const Color(0xff7B7B7B)),
+                  fillColor: const Color(0xffE6E6E6).withOpacity(.5)),
             ),
           )),
           SizedBox(

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../gen/fonts.gen.dart';
-import '../home/pages/all_categories/components/item_category.dart';
 class NotificationsScreen extends StatelessWidget {
    NotificationsScreen({Key? key}) : super(key: key);
 
@@ -13,7 +12,7 @@ class NotificationsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "Notifications"),
+      appBar: const SecondAppBar(title: "Notifications"),
       body: ListView.builder( // outer ListView
         itemCount: titles.length,
         itemBuilder: (_, index) {
@@ -22,7 +21,7 @@ class NotificationsScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 18.w,),
-                child: Text('${titles[index]}',style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+                child: Text(titles[index],style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
               ),
               ListView.builder(
                 shrinkWrap: true,

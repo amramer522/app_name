@@ -1,9 +1,7 @@
-import 'package:app_name/core/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../core/styles/colors.dart';
 import '../gen/fonts.gen.dart';
 
 saveCollageDialog(context,
@@ -15,7 +13,7 @@ saveCollageDialog(context,
             content: Container(
               height: 320.h,
               width: 350.w,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.white,
               ),
               child: SingleChildScrollView(
@@ -28,7 +26,7 @@ saveCollageDialog(context,
                             onTap: () {
                               Navigator.pop(context);
                             },
-                            child: Icon(Icons.close))),
+                            child: const Icon(Icons.close))),
                     SvgPicture.asset(
                       "assets/icons/save_collage_image.svg",
                       height: 81.h,
@@ -52,7 +50,7 @@ saveCollageDialog(context,
                       decoration: InputDecoration(
                           hintText: "Enter collage name",
                           filled: true,
-                          fillColor: Color(0xffEBEBEB).withOpacity(.5)),
+                          fillColor: const Color(0xffEBEBEB).withOpacity(.5)),
                     ),
                     SizedBox(
                       height: 25.h,

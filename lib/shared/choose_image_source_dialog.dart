@@ -1,14 +1,13 @@
 import 'dart:io';
 
-import 'package:easy_localization/src/public_ext.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_exif_rotation/flutter_exif_rotation.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
+
 import '/../core/styles/colors.dart';
 import '/../gen/fonts.gen.dart';
-import '/../generated/locale_keys.g.dart';
 class ChooseImageSourceDialog extends StatelessWidget {
   const ChooseImageSourceDialog({Key? key}) : super(key: key);
 

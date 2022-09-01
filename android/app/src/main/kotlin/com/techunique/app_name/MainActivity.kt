@@ -1,4 +1,4 @@
-package com.techunique.app_name
+package com.amoor.app_name
 
 import io.flutter.embedding.android.FlutterActivity
 

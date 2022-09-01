@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/styles.dart';
-import '../../../../shared/items/item_home_top_collages.dart';
-import '../../../../shared/items/item_section.dart';
 import '../../../../shared/main_app_bar.dart';
 import '../../../../shared/search_bar.dart';
 import '../../../../shared/view_all.dart';
@@ -24,13 +22,13 @@ class HomePage extends StatelessWidget {
         padding: mainPagePadding,
         child: SingleChildScrollView(
           child: Column(
-            children: const [
+            children:  [
               HomeHeader(),
               SectionsList(),
               SearchBar(),
               ViewAll(label: "Top Collages",page: CollagesScreen(title: "Top Collages",withFilter: false,)),
               HomeTopCollagesList(),
-              TopCollagesItemsCard(),
+              TopCollagesItemsCard(title: "Top Collages",numberOfItems: 10),
               ViewAll(label: "Best selling",page: CollagesScreen(title: "Best Selling",withFilter: false,)),
               HomeTopCollagesList(),
             ],

@@ -9,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/finish_order_dialog.dart';
-import '../home/pages/cart/components/item_cart.dart';
 
 class CheckOutScreen extends StatelessWidget {
   const CheckOutScreen({Key? key}) : super(key: key);
@@ -17,7 +16,7 @@ class CheckOutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "Chechout"),
+      appBar: const SecondAppBar(title: "Chechout"),
       body: SingleChildScrollView(
         padding: mainPagePadding,
         child: Column(
@@ -42,7 +41,7 @@ class CheckOutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            ItemMyOrder(index: 0),
+            const ItemMyOrder(index: 0),
             Padding(
               padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
               child: Text(
@@ -84,7 +83,7 @@ class CheckOutScreen extends StatelessWidget {
               children: [
                 Expanded(flex: 4,child: SizedBox(height: 45.h,child: TextFormField())),
                 SizedBox(width: 16.w,),
-                Expanded(child: ElevatedButton(onPressed: () {}, child: Text("Apply")))
+                Expanded(child: ElevatedButton(onPressed: () {}, child: const Text("Apply")))
               ],
             ),
             Padding(

@@ -20,7 +20,7 @@ class SearchScreen extends StatelessWidget {
         padding: mainPagePadding,
         child: Column(
           children: [
-            SearchBar(
+            const SearchBar(
               isEnabled: true,
             ),
             SizedBox(height: 20.h,),
@@ -35,10 +35,10 @@ class SearchScreen extends StatelessWidget {
                           width: 70.w+(index*20),
                           margin: EdgeInsetsDirectional.only(top: 10.h,end: 10.w),
                           decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffE6E6E6)),
+                            border: Border.all(color: const Color(0xffE6E6E6)),
                             borderRadius: BorderRadius.circular(10.r)
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text("hello"),
                           ),
                         )),

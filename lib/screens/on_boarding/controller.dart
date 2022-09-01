@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 import '../../gen/assets.gen.dart';
 
 class OnBoardingController {

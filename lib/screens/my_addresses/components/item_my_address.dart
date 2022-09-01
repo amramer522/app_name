@@ -57,7 +57,7 @@ class _ItemMyAddressState extends State<ItemMyAddress> {
                         height: 25.h,
                         width: 22.h,
                         decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffC9C9C9)),
+                            border: Border.all(color: const Color(0xffC9C9C9)),
                             borderRadius: BorderRadius.circular(4.r)),
                         child: Center(
                             child: isChecked

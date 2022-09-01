@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.techunique.app_name"
+        applicationId "com.amoor.app_name"
         minSdkVersion 21
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()

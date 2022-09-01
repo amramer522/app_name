@@ -6,21 +6,20 @@ import 'package:app_name/gen/assets.gen.dart';
 import 'package:app_name/screens/editor/widgets/item_editor_category.dart';
 import 'package:app_name/shared/second_app_bar.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 
+import '../../core/helper_methods.dart';
 import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/choose_image_source_dialog.dart';
 import '../../shared/save_collage_dialog.dart';
 import '../../shared/toast.dart';
 import '../../shared/view_all.dart';
-import '../collages/view.dart';
 import '../home/pages/all_categories/view.dart';
 import 'widgets/item_editor_actions.dart';
 
@@ -40,6 +39,34 @@ class _EditorScreenState extends State<EditorScreen> {
   // double initialScale = 1.0;
   // double scaleFactor = 1.0;
 
+  Future<File> crop(file) async {
+    ImageCropper cropper = ImageCropper();
+    CroppedFile? croppedFile = await cropper.cropImage(
+      sourcePath: file.path,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+        CropAspectRatioPreset.ratio3x2,
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio16x9
+      ],
+      uiSettings: [
+        AndroidUiSettings(
+            toolbarTitle: 'Edit Your Image',
+            toolbarColor: colorPrimary,
+            toolbarWidgetColor: colorSecondary,
+            initAspectRatio: CropAspectRatioPreset.original,
+            showCropGrid: true,
+            lockAspectRatio: false),
+        IOSUiSettings(
+          title: 'Cropper',
+        ),
+      ],
+    );
+
+    return File(croppedFile!.path);
+  }
+
   void chooseImage(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -48,10 +75,11 @@ class _EditorScreenState extends State<EditorScreen> {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadiusDirectional.only(
               topStart: Radius.circular(25.w), topEnd: Radius.circular(25.w)),
-        )).then((value) {
+        )).then((value) async {
       if (value != null) {
+        File file = await crop(value as File);
         selectedImages.add({
-          "image": value as File,
+          "image": file,
           "isFlipped": false,
           "height": 120.h,
           "initialScale": 1.0,
@@ -87,7 +115,11 @@ class _EditorScreenState extends State<EditorScreen> {
         selectedImages.clear();
 
         print(value);
-        Toast.show("Collage Saved Successfully", context);
+        showToast(
+          context,
+          msg: "Collage Saved Successfully",
+        );
+
         setState(() {});
       });
       Navigator.pop(context);
@@ -96,11 +128,20 @@ class _EditorScreenState extends State<EditorScreen> {
 
   void send({forward = true}) {
     if (selectedImages.isEmpty) {
-      Toast.show("import images first", context);
+      showToast(
+        context,
+        msg: "import images first",
+      );
     } else if (forward && currentImage == selectedImages.length - 1) {
-      Toast.show("Already in Top", context);
+      showToast(
+        context,
+        msg: "Already in Top",
+      );
     } else if (!forward && currentImage == 0) {
-      Toast.show("Already in Bottom", context);
+      showToast(
+        context,
+        msg: "Already in Bottom",
+      );
     } else {
       final temp = selectedImages[currentImage];
       selectedImages.removeAt(currentImage);
@@ -121,19 +162,17 @@ class _EditorScreenState extends State<EditorScreen> {
             },
             icon: Icon(
               Icons.camera_alt,
+              color: Colors.black,
               size: 27.h,
             ),
           ),
-          SizedBox(
-            width: 5.w,
+          IconButton(
+            onPressed: () {
+              saveCollageDialog(context,
+                  controller: collageNameController, onSavePress: onSave);
+            },
+            icon: SvgPicture.asset(Assets.icons.download, height: 27.h,width: 27.h,),
           ),
-          GestureDetector(
-              onTap: () {
-                // chooseImage(context);
-                saveCollageDialog(context,
-                    controller: collageNameController, onSavePress: onSave);
-              },
-              child: SvgPicture.asset(Assets.icons.download))
         ],
       ),
       // body: GestureDetector(
@@ -219,122 +258,124 @@ class _EditorScreenState extends State<EditorScreen> {
                   child: Container(
                     height: 380.h,
                     decoration: const BoxDecoration(color: Colors.black),
-                    child: Stack(
-                      children: selectedImages.isNotEmpty
-                          ? List.generate(
-                              selectedImages.length,
-                              (index) => Positioned(
-                                    top: double.parse(selectedImages[index]
-                                            ["top"]
-                                        .toString()),
-                                    left: double.parse(selectedImages[index]
-                                            ["left"]
-                                        .toString()),
-                                    child: GestureDetector(
-                                      // onScaleStart: ((details) {
-                                      //   selectedImages[currentImage].update("initialScale", (value) => selectedImages[currentImage]["currentScale"]);
-                                      // }),
-                                      // onScaleUpdate: (details){
-                                      //   double scaleFactor = selectedImages[currentImage]["initialScale"] * details.scale;
-                                      //   selectedImages[currentImage].update("height", (value) =>selectedImages[currentImage]["height"]* scaleFactor);
-                                      //   selectedImages[currentImage].update("width", (value) => selectedImages[currentImage]["width"]*scaleFactor);
-                                      //   setState(() {
-                                      //
-                                      //   });
-                                      // },
-                                      onTap: () {
-                                        currentImage = index;
-                                        setState(() {});
-                                      },
-                                      onLongPress: () {
-                                        showDialog(
-                                            context: context,
-                                            barrierDismissible: true,
-                                            builder: (context) => Dialog(
-                                                  child: InteractiveViewer(
-                                                    child: Transform(
-                                                      transform:
-                                                          Matrix4.rotationY(
-                                                              selectedImages[
-                                                                          index]
-                                                                      [
-                                                                      "isFlipped"]
-                                                                  ? pi
-                                                                  : 2 * pi),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      child: Image.file(
-                                                        selectedImages[index]
-                                                            ["image"],
+                    child: InteractiveViewer(
+                      scaleEnabled: selectedImages.isNotEmpty,
+                      child: Stack(
+                        children: selectedImages.isNotEmpty
+                            ? List.generate(
+                                selectedImages.length,
+                                (index) => Positioned(
+                                      top: double.parse(selectedImages[index]
+                                              ["top"]
+                                          .toString()),
+                                      left: double.parse(selectedImages[index]
+                                              ["left"]
+                                          .toString()),
+                                      child: GestureDetector(
+                                        // onScaleStart: ((details) {
+                                        //   selectedImages[currentImage].update("initialScale", (value) => selectedImages[currentImage]["currentScale"]);
+                                        // }),
+                                        // onScaleUpdate: (details){
+                                        //   double scaleFactor = selectedImages[currentImage]["initialScale"] * details.scale;
+                                        //   selectedImages[currentImage].update("height", (value) =>selectedImages[currentImage]["height"]* scaleFactor);
+                                        //   selectedImages[currentImage].update("width", (value) => selectedImages[currentImage]["width"]*scaleFactor);
+                                        //   setState(() {
+                                        //
+                                        //   });
+                                        // },
+                                        onTap: () {
+                                          currentImage = index;
+                                          setState(() {});
+                                        },
+                                        onLongPress: () {
+                                          showDialog(
+                                              context: context,
+                                              barrierDismissible: true,
+                                              builder: (context) => Dialog(
+                                                    child: InteractiveViewer(
+                                                      child: Transform(
+                                                        transform: Matrix4.rotationY(
+                                                            selectedImages[
+                                                                        index][
+                                                                    "isFlipped"]
+                                                                ? pi
+                                                                : 2 * pi),
+                                                        alignment:
+                                                            Alignment.center,
+                                                        child: Image.file(
+                                                          selectedImages[index]
+                                                              ["image"],
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ));
-                                      },
-                                      onPanUpdate: (details) {
-                                        print(context.size!.width);
-                                        print(selectedImages[currentImage]
-                                                ["left"]
-                                            .toString());
+                                                  ));
+                                        },
+                                        onPanUpdate: (details) {
+                                          print(context.size!.width);
+                                          print(selectedImages[currentImage]
+                                                  ["left"]
+                                              .toString());
 
-                                        selectedImages[currentImage].update(
-                                            "top",
-                                            (value) => max(
-                                                0,
-                                                double.parse(selectedImages[
-                                                            currentImage]["top"]
-                                                        .toString()) +
-                                                    details.delta.dy));
-                                        selectedImages[currentImage].update(
-                                            "left",
-                                            (value) => max(
-                                                0,
-                                                double.parse(selectedImages[
-                                                                currentImage]
-                                                            ["left"]
-                                                        .toString()) +
-                                                    details.delta.dx));
-                                        setState(() {});
-                                      },
-                                      child: Transform(
-                                        transform: Matrix4.rotationY(
-                                            selectedImages[index]["isFlipped"]
-                                                ? pi
-                                                : 2 * pi),
-                                        alignment: Alignment.center,
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                              border: index == currentImage
-                                                  ? Border.all(
-                                                      color: Colors.red)
-                                                  : null),
-                                          child: Image.file(
-                                            selectedImages[index]["image"],
-                                            // scale: double.parse(
-                                            //     selectedImages[currentImage]
-                                            //             ["scaleFactor"]
-                                            //         .toString()),
-                                            fit: BoxFit.contain,
-                                            height: selectedImages[index]
-                                                ["height"],
-                                            width: selectedImages[index]
-                                                ["width"],
+                                          selectedImages[currentImage].update(
+                                              "top",
+                                              (value) => max(
+                                                  0,
+                                                  double.parse(selectedImages[
+                                                                  currentImage]
+                                                              ["top"]
+                                                          .toString()) +
+                                                      details.delta.dy));
+                                          selectedImages[currentImage].update(
+                                              "left",
+                                              (value) => max(
+                                                  0,
+                                                  double.parse(selectedImages[
+                                                                  currentImage]
+                                                              ["left"]
+                                                          .toString()) +
+                                                      details.delta.dx));
+                                          setState(() {});
+                                        },
+                                        child: Transform(
+                                          transform: Matrix4.rotationY(
+                                              selectedImages[index]["isFlipped"]
+                                                  ? pi
+                                                  : 2 * pi),
+                                          alignment: Alignment.center,
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                                border: index == currentImage
+                                                    ? Border.all(
+                                                        color: Colors.red)
+                                                    : null),
+                                            child: Image.file(
+                                              selectedImages[index]["image"],
+                                              // scale: double.parse(
+                                              //     selectedImages[currentImage]
+                                              //             ["scaleFactor"]
+                                              //         .toString()),
+                                              fit: BoxFit.contain,
+                                              height: selectedImages[index]
+                                                  ["height"],
+                                              width: selectedImages[index]
+                                                  ["width"],
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                  ))
-                          : [
-                              Center(
-                                child: Text(
-                                    "Add products to\ncreate your first collage",
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                        fontSize: 16.sp,
-                                        fontFamily: FontFamily.extraBold,
-                                        color: Colors.white)),
-                              )
-                            ],
+                                    ))
+                            : [
+                                Center(
+                                  child: Text(
+                                      "Add products to\ncreate your first collage",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                          fontSize: 16.sp,
+                                          fontFamily: FontFamily.extraBold,
+                                          color: Colors.white)),
+                                )
+                              ],
+                      ),
                     ),
                   ),
                 ),
@@ -348,7 +389,10 @@ class _EditorScreenState extends State<EditorScreen> {
                                 imageName: "delete",
                                 onPress: () {
                                   if (selectedImages.isEmpty) {
-                                    Toast.show("Nothing to remove", context);
+                                    showToast(
+                                      context,
+                                      msg: "Nothing to remove",
+                                    );
                                   } else {
                                     selectedImages.removeAt(currentImage);
                                     currentImage--;
@@ -401,7 +445,8 @@ class _EditorScreenState extends State<EditorScreen> {
                           bottom: 2.h, start: 20.w, end: 10.w),
                       child: ListView.separated(
                         scrollDirection: Axis.horizontal,
-                        itemBuilder: (context, index) => const ItemEditorCategory(),
+                        itemBuilder: (context, index) =>
+                            const ItemEditorCategory(),
                         separatorBuilder: (context, index) => SizedBox(
                           width: 10.w,
                         ),

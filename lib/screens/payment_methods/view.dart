@@ -23,7 +23,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "Payment methods"),
+      appBar: const SecondAppBar(title: "Payment methods"),
       body: SingleChildScrollView(
         padding: mainPagePadding,
         child: Column(
@@ -36,7 +36,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                 style: TextStyle(
                     fontSize: 28.sp,
                     fontFamily: FontFamily.bold,
-                    color: Color(0xff2F1F2B))),
+                    color: const Color(0xff2F1F2B))),
             SizedBox(
               height: 20.h,
             ),
@@ -58,7 +58,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                               color: isCash ? Colors.white : Colors.black)),
                     ),
                     decoration: BoxDecoration(
-                        color: !isCash ? Color(0xffEBEBEB) : Colors.black,
+                        color: !isCash ? const Color(0xffEBEBEB) : Colors.black,
                         borderRadius: BorderRadius.circular(6.r)),
                   ),
                 ),
@@ -81,7 +81,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                               color: !isCash ? Colors.white : Colors.black)),
                     ),
                     decoration: BoxDecoration(
-                        color: isCash ? Color(0xffEBEBEB) : Colors.black,
+                        color: isCash ? const Color(0xffEBEBEB) : Colors.black,
                         borderRadius: BorderRadius.circular(6.r)),
                   ),
                 ),
@@ -163,7 +163,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
                     height: 25.h,
                     width: 22.h,
                     decoration: BoxDecoration(
-                        border: Border.all(color: Color(0xffC9C9C9)),
+                        border: Border.all(color: const Color(0xffC9C9C9)),
                         borderRadius: BorderRadius.circular(4.r)),
                     child: Center(
                         child: isSaveSelected
@@ -190,7 +190,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
         padding:  EdgeInsets.symmetric(horizontal: 32.w,vertical: 16.h),
         child: ElevatedButton(
             onPressed: () {
-              navigateTo(page: CheckOutScreen());
+              navigateTo(page: const CheckOutScreen());
             },
             style: ElevatedButton.styleFrom(
                 primary: colorPrimary, fixedSize: Size(350.w, 50.h)),

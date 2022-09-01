@@ -1,60 +1,32 @@
-import 'package:app_name/core/styles/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class Toast {
-  // ignore: non_constant_identifier_names
-  static const int LENGTH_SHORT = 1;
-
-  // ignore: non_constant_identifier_names
-  static const int LENGTH_LONG = 2;
-
-  // ignore: non_constant_identifier_names
-  static const int BOTTOM = 0;
-
-  // ignore: non_constant_identifier_names
-  static const int CENTER = 1;
-
-  // ignore: non_constant_identifier_names
-  static const int TOP = 2;
-
-  static void show(
-    String msg,
-    BuildContext context, {
-    int duration = 2,
-    int gravity = 0,
-    Color backgroundColor = colorSecondary,
-    Color textColor = Colors.white,
-    double backgroundRadius = 10,
-  }) {
-    ToastView.dismiss();
-    ToastView.createView(msg, context, duration, gravity, backgroundColor,
-        textColor, backgroundRadius, Border.all(color: Colors.transparent));
-  }
-}
-
 class ToastView {
-  static final ToastView _singleton = ToastView._internal();
+  OverlayState? overlayState;
+  OverlayEntry? _overlayEntry;
+  bool _isVisible = false;
 
-  factory ToastView() {
-    return _singleton;
+  ToastView._();
+
+  static ToastView? _toastView;
+
+  static ToastView getInstance() {
+    if (_toastView == null) {
+      return ToastView._();
+    }
+    return _toastView!;
   }
 
-  ToastView._internal();
-
-  static OverlayState? overlayState;
-  static OverlayEntry? _overlayEntry;
-  static bool? _isVisible = false;
-
-  static void createView(
+  void createView(
+      context,
       String msg,
-      BuildContext context,
       int duration,
       int gravity,
       Color background,
       Color textColor,
       double backgroundRadius,
       Border border) async {
+    dismiss();
     overlayState = Overlay.of(context);
 
     Paint paint = Paint();
@@ -62,9 +34,11 @@ class ToastView {
     paint.color = background;
 
     _overlayEntry = OverlayEntry(
-      builder: (BuildContext context) => ToastWidget(
-          widget: SizedBox(
-            width: MediaQuery.of(context).size.width,
+      builder: (BuildContext context) => Positioned(
+          top: gravity == 2 ? 50 : null,
+          bottom: gravity == 0 ? 100 : null,
+          child: Material(
+            color: Colors.transparent,
             child: Container(
                 alignment: Alignment.center,
                 width: MediaQuery.of(context).size.width,
@@ -74,24 +48,24 @@ class ToastView {
                     borderRadius: BorderRadius.circular(backgroundRadius),
                     border: border,
                   ),
-                  margin: EdgeInsets.symmetric(horizontal: 20.w,vertical: 40.h),
-                  padding: const EdgeInsets.fromLTRB(16, 13, 16, 13),
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.fromLTRB(16, 10, 16, 10),
                   child: Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      ClipRRect(
-                          borderRadius: BorderRadius.circular(6.r),
-                          child: Image.asset("assets/images/app_logo.png",height: 15.h,width: 15.h,)),
-                      SizedBox(width: 10.w,),
+                      Image.asset("assets/images/app_logo.png",height: 25.h,width: 25.h,),
+                      // const FlutterLogo(),
+                      const SizedBox(
+                        width: 10,
+                      ),
                       Text(msg,
                           textAlign: TextAlign.center,
                           softWrap: true,
-                          style: TextStyle(fontSize: 15.sp, color: textColor)),
+                          style: TextStyle(fontSize: 15, color: textColor)),
                     ],
                   ),
                 )),
-          ),
-          gravity: gravity),
+          )),
     );
     _isVisible = true;
     overlayState!.insert(_overlayEntry!);
@@ -99,33 +73,10 @@ class ToastView {
     dismiss();
   }
 
-  static dismiss() async {
-    if (!_isVisible!) {
-      return;
+  void dismiss() {
+    if (_isVisible) {
+      _isVisible = false;
+      _overlayEntry?.remove();
     }
-    _isVisible = false;
-    _overlayEntry?.remove();
-  }
-}
-
-class ToastWidget extends StatelessWidget {
-  const ToastWidget({
-    Key? key,
-    @required this.widget,
-    @required this.gravity,
-  }) : super(key: key);
-
-  final Widget? widget;
-  final int? gravity;
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-        top: gravity == 2 ? 50 : null,
-        bottom: gravity == 0 ? 100 : null,
-        child: Material(
-          color: Colors.transparent,
-          child: widget,
-        ));
   }
 }

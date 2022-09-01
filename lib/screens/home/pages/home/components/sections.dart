@@ -1,4 +1,3 @@
-import 'package:app_name/screens/my_likes_dislikes/view.dart';
 import 'package:app_name/screens/offers/view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

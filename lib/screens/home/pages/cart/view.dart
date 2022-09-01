@@ -39,7 +39,7 @@ class CartPage extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 20.sp,
                     fontFamily: FontFamily.bold,
-                    color: Color(0xff516E00),
+                    color: const Color(0xff516E00),
                   ),
                 ),
               ),
@@ -85,8 +85,8 @@ class CartPage extends StatelessWidget {
               ),
               SizedBox(height: 20.h,),
               ElevatedButton(onPressed: (){
-                navigateTo(page: PaymentMethods());
-              },child: Text("Continue")),
+                navigateTo(page: const PaymentMethods());
+              },child: const Text("Continue")),
               SizedBox(height: 20.h,),
             ],
           ),

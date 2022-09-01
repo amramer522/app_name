@@ -1,14 +1,18 @@
+import 'package:app_name/screens/login/view.dart';
 import 'package:app_name/screens/my_orders/view.dart';
+import 'package:app_name/screens/notifications/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../../core/styles/colors.dart';
+import '../../../../core/cache_helper.dart';
+import '../../../../core/helper_methods.dart';
 import '../../../../core/styles/styles.dart';
-import '../../../../fake_data/fake_data.dart';
 import '../../../../gen/fonts.gen.dart';
+import '../../../../shared/icon_notifications.dart';
 import '../../../../shared/second_app_bar.dart';
 import '../../../collages/view.dart';
+import '../../../edit_profile/view.dart';
 import '../../../my_addresses/view.dart';
 import '../../../my_likes_dislikes/view.dart';
 import 'components/item_profile.dart';
@@ -21,14 +25,8 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: SecondAppBar(title: "My Profile",haveBack: false, actions: [
-        GestureDetector(
-            onTap: () {},
-            child: Container(
-                height: 33.h,
-                width: 33.w,
-                padding: EdgeInsets.all(6.r),
-                child: SvgPicture.asset("assets/icons/notifications.svg")))
+      appBar: SecondAppBar(title: "My Profile", haveBack: false, actions: [
+        ItemNotifications(),
       ]),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(bottom: 30.h),
@@ -56,46 +54,51 @@ class ProfilePage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Stack(
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      CircleAvatar(
-                        radius: 35.r,
-                        backgroundImage: const NetworkImage(
-                            "https://www.incimages.com/uploaded_files/image/1920x1080/getty_481292845_77896.jpg"),
-                      ),
-                      Container(
-                        height: 27.h,
-                        width: 27.h,
-                        decoration: const BoxDecoration(
-                            color: Color(0xffE14B34), shape: BoxShape.circle),
-                        child: Center(
-                          child: GestureDetector(
-                              child: SvgPicture.asset(
-                                "assets/icons/edit_pin.svg",
-                                height: 13.h,
-                                width: 13.h,
-                              ),
-                              onTap: () {}),
+                  GestureDetector(
+                    onTap: () {
+                      navigateTo(page: const EditProfileScreen());
+                    },
+                    child: Stack(
+                      alignment: AlignmentDirectional.bottomEnd,
+                      children: [
+                        CircleAvatar(
+                          radius: 35.r,
+                          backgroundImage: const NetworkImage(
+                              "https://www.incimages.com/uploaded_files/image/1920x1080/getty_481292845_77896.jpg"),
                         ),
-                      )
-                    ],
+                        Container(
+                          height: 27.h,
+                          width: 27.h,
+                          decoration: const BoxDecoration(
+                              color: Color(0xffE14B34), shape: BoxShape.circle),
+                          child: Center(
+                            child: SvgPicture.asset(
+                              "assets/icons/edit_pin.svg",
+                              height: 13.h,
+                              width: 13.h,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
-            ItemProfile(
+            const ItemProfile(
                 title: "My Collages",
                 numberOfItems: 10,
                 page: CollagesScreen(
                   title: "My Collages",
                   withFilter: true,
                 )),
-            ItemProfile(
+            const ItemProfile(
                 title: "My Likes",
                 numberOfItems: 5,
-                page: MyLikesAndDisLikesScreen(title: "My Likes",)),
-            ItemProfile(
+                page: MyLikesAndDisLikesScreen(
+                  title: "My Likes",
+                )),
+            const ItemProfile(
                 title: "My Dislikes",
                 numberOfItems: 100,
                 page: MyLikesAndDisLikesScreen(
@@ -117,7 +120,7 @@ class ProfilePage extends StatelessWidget {
                   style:
                       TextStyle(fontSize: 17.sp, fontFamily: FontFamily.bold)),
             ),
-            ItemSetting(
+            const ItemSetting(
               title: "My orders",
               image: "assets/icons/my_orders.svg",
               page: MyOrdersScreen(),
@@ -128,9 +131,14 @@ class ProfilePage extends StatelessWidget {
               page: MyAddressesScreen(),
             ),
             ItemSetting(
-              title: "Logout",
+              title: CacheHelper.getUserToken().trim().isEmpty
+                  ? "Login"
+                  : "Logout",
               image: "assets/icons/logout.svg",
-              isLogout: true,
+              isLogout: CacheHelper.getUserToken().trim().isNotEmpty,
+              page: CacheHelper.getUserToken().trim().isEmpty
+                  ? LoginScreen()
+                  : null,
             ),
           ],
         ),

@@ -5,8 +5,8 @@ import 'package:dio/dio.dart';
 import 'package:easy_localization/easy_localization.dart' as lang;
 import 'package:flutter/foundation.dart';
 import 'package:quick_log/quick_log.dart';
-import '/../core/cache_helper.dart';
 
+import '/../core/cache_helper.dart';
 import '../generated/locale_keys.g.dart';
 
 Logger log = const Logger("");

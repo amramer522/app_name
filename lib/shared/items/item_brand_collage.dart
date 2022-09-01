@@ -1,6 +1,9 @@
+import 'package:app_name/core/helper_methods.dart';
 import 'package:app_name/core/styles/colors.dart';
 import 'package:app_name/core/styles/styles.dart';
 import 'package:app_name/gen/assets.gen.dart';
+import 'package:app_name/screens/brand_profile/view.dart';
+import 'package:app_name/screens/editor/view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +14,11 @@ import '../../gen/fonts.gen.dart';
 
 class ItemBrandCollage extends StatefulWidget {
   final int index;
+  final bool withEditCollage;
 
-  const ItemBrandCollage({Key? key, required this.index}) : super(key: key);
+  const ItemBrandCollage(
+      {Key? key, required this.index, this.withEditCollage = true})
+      : super(key: key);
 
   @override
   State<ItemBrandCollage> createState() => _ItemBrandCollageState();
@@ -27,28 +33,35 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ListTile(
-            leading: CircleAvatar(
-              backgroundImage: CachedNetworkImageProvider(
-                (fakeBrandCollagesDetails[widget.index]["provider"]
-                    as Map)["image"],
+            leading: GestureDetector(
+              onTap: () {
+                navigateTo(page: BrandProfileScreen());
+              },
+              child: CircleAvatar(
+                backgroundImage: CachedNetworkImageProvider(
+                  (fakeBrandCollagesDetails[widget.index]["provider"]
+                  as Map)["image"],
+                ),
               ),
             ),
             title: Text((fakeBrandCollagesDetails[widget.index]["provider"]
-                as Map)["name"]),
+            as Map)["name"]),
             subtitle: Text(
                 fakeBrandCollagesDetails[widget.index]["from_time"].toString()),
-            trailing: GestureDetector(
+            trailing: widget.withEditCollage
+                ? GestureDetector(
               onTap: () {},
               child: SvgPicture.asset(
                 Assets.icons.download,
                 height: 29.h,
                 width: 29.h,
               ),
-            ),
+            )
+                : const SizedBox.shrink(),
           ),
           CachedNetworkImage(
             imageUrl:
-                fakeBrandCollagesDetails[widget.index]["image"].toString(),
+            fakeBrandCollagesDetails[widget.index]["image"].toString(),
             height: 390.h,
             width: double.infinity,
             fit: BoxFit.fill,
@@ -57,9 +70,8 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
             padding: mainPagePadding,
             child: Row(
               children: [
-                Text(
-                    fakeBrandCollagesDetails[widget.index]["collage_name"]
-                        .toString(),
+                Text(fakeBrandCollagesDetails[widget.index]["collage_name"]
+                    .toString(),
                     style: TextStyle(
                         fontSize: 20.sp, fontFamily: FontFamily.bold)),
                 const Spacer(),
@@ -82,10 +94,18 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
               ],
             ),
           ),
-          Padding(
+          widget.withEditCollage
+              ? Padding(
             padding: mainPagePadding,
-            child: SizedBox(width: double.infinity,child: ElevatedButton(onPressed: () {}, child: Text("Edit Collage",style: TextStyle(fontSize: 18.sp,fontFamily: FontFamily.regular,)))),
+            child: SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                    onPressed: () {
+                      navigateTo(page: EditorScreen());
+                    },
+                    child: Text("Edit Collage",))),
           )
+              : SizedBox.shrink()
         ],
       ),
     );

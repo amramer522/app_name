@@ -16,7 +16,7 @@ class ItemNotification extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundColor: Colors.grey,
             radius: 30,
           ),

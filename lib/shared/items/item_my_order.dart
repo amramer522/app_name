@@ -1,5 +1,4 @@
 import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/shared/logout_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -55,11 +54,16 @@ class ItemMyOrder extends StatelessWidget {
               SizedBox(
                 height: 20.h,
               ),
-              Align(
-                  alignment: AlignmentDirectional.bottomEnd,
-                  child: Text("${fakeMyOrders[index]["status"]}",
+              Row(
+                children: [
+                  Text("Order status  ",
                       style: TextStyle(
-                          fontSize: 16.sp, fontFamily: FontFamily.bold))),
+                          fontSize: 16.sp, fontFamily: FontFamily.bold)),
+                  Text("${fakeMyOrders[index]["status"]}",
+                      style: TextStyle(
+                          fontSize: 16.sp,color: getStatusTextColor(fakeMyOrders[index]["status"].toString()), fontFamily: FontFamily.bold)),
+                ],
+              ),
             ],
           ),
         ),

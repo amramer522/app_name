@@ -1,6 +1,3 @@
-import 'dart:math';
-
-import 'package:app_name/core/helper_methods.dart';
 import 'package:app_name/core/styles/styles.dart';
 import 'package:app_name/screens/add_new_address/components/drop_down.dart';
 import 'package:app_name/shared/second_app_bar.dart';
@@ -9,10 +6,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
-import '../../shared/app_input.dart';
 
 class AddNewAddress extends StatefulWidget {
-  AddNewAddress({Key? key}) : super(key: key);
+  const AddNewAddress({Key? key}) : super(key: key);
 
   @override
   State<AddNewAddress> createState() => _AddNewAddressState();
@@ -22,7 +18,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "Add an address"),
+      appBar: const SecondAppBar(title: "Add an address"),
       body: SingleChildScrollView(
         padding: mainPagePadding,
         child: Column(
@@ -53,7 +49,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
                 decoration: InputDecoration(
                     hintText: "Phone number",
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
+                    EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
               ),
             ),
             SizedBox(
@@ -64,16 +60,16 @@ class _AddNewAddressState extends State<AddNewAddress> {
             SizedBox(
               height: 5.h,
             ),
-            DropDown(
+            const DropDown(
               hint: "City",
               list: ['Mansoura', 'Cairo', 'Saudi', 'Met Ghamr'],
             ),
             SizedBox(
               height: 15.h,
             ),
-            DropDown(
+            const DropDown(
               hint: "Area",
-              list:  ['A1', 'A2', 'A3', 'A4'],
+              list: ['A1', 'A2', 'A3', 'A4'],
             ),
             SizedBox(
               height: 25.h,
@@ -116,7 +112,8 @@ class _AddNewAddressState extends State<AddNewAddress> {
                       decoration: InputDecoration(
                           hintText: "Floor number",
                           contentPadding:
-                          EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
+                          EdgeInsets.symmetric(
+                              vertical: 10.h, horizontal: 10.w)),
                     ),
                   ),
                 ),
@@ -128,7 +125,8 @@ class _AddNewAddressState extends State<AddNewAddress> {
                       decoration: InputDecoration(
                           hintText: "Flat number",
                           contentPadding:
-                          EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
+                          EdgeInsets.symmetric(
+                              vertical: 10.h, horizontal: 10.w)),
                     ),
                   ),
                 ),
@@ -138,7 +136,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 32.w,vertical: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
         child: ElevatedButton(
             onPressed: () {
               Navigator.pop(context);

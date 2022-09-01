@@ -1,16 +1,13 @@
 import 'package:app_name/core/helper_methods.dart';
 import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/forget_password/view.dart';
+import 'package:app_name/screens/create_new_password/view.dart';
 import 'package:app_name/screens/home/view.dart';
-import 'package:app_name/screens/register/view.dart';
-import 'package:app_name/shared/done_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
-import '../../shared/app_input.dart';
 
 class ConfirmCodeScreen extends StatefulWidget {
   const ConfirmCodeScreen({Key? key}) : super(key: key);
@@ -76,7 +73,7 @@ class _ConfirmCodeScreenState extends State<ConfirmCodeScreen> {
                     fieldWidth: 49.w,
                     activeFillColor: const Color(0xffEEEEEE),
                   ),
-                  animationDuration: Duration(milliseconds: 300),
+                  animationDuration: const Duration(milliseconds: 300),
                   backgroundColor: Colors.transparent,
                   enableActiveFill: true,
                   // errorAnimationController: errorController,
@@ -104,7 +101,7 @@ class _ConfirmCodeScreenState extends State<ConfirmCodeScreen> {
                 Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          navigateTo(page: HomeScreen());
+                          navigateTo(page: const CreateNewPasswordScreen());
                         },
                         child: const Text("Confirm"))),
                 Center(
