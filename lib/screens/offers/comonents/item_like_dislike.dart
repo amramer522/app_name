@@ -9,29 +9,33 @@ class ItemOffer extends StatefulWidget {
   final bool isBig;
   final int index;
   final double? width;
-  const ItemOffer({Key? key, this.isBig = false,required this.index,  this.width}) : super(key: key);
+
+  const ItemOffer(
+      {Key? key, this.isBig = false, required this.index, this.width})
+      : super(key: key);
 
   @override
   State<ItemOffer> createState() => _ItemOfferState();
 }
 
 class _ItemOfferState extends State<ItemOffer> {
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         navigateTo(page: ProductDetailsScreen());
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: AlignmentDirectional.topStart,
             height: widget.isBig ? 170.h : 150.h,
-            width: widget.width??double.infinity,
+            width: widget.width ?? double.infinity,
             decoration: BoxDecoration(
-                color:  Color(0xffC1C6C8*(widget.index+1)).withOpacity(.5), borderRadius: BorderRadius.circular(8.r)),
-            child:   Container(
+                color: Color(0xffC1C6C8 * (widget.index + 1)).withOpacity(.5),
+                borderRadius: BorderRadius.circular(8.r)),
+            child: Container(
               height: 28.h,
               width: 52.w,
               child: Center(
@@ -48,17 +52,29 @@ class _ItemOfferState extends State<ItemOffer> {
                   )),
             ),
           ),
-          SizedBox(height: 10.h,),
+          SizedBox(
+            height: 10.h,
+          ),
           Text("This product full",
-              style: TextStyle(fontSize: 13.sp, fontFamily: FontFamily.bold)),
-          SizedBox(height: 10.h,),
-          Text(" name",
-              style: TextStyle(fontSize: 13.sp, fontFamily: FontFamily.bold)),
-          SizedBox(height: 10.h,),
+              style: TextStyle(fontSize: 16.sp, fontFamily: FontFamily.bold)),
+          SizedBox(
+            height: 2.h,
+          ),
+          Text("name",
+              style: TextStyle(fontSize: 16.sp, fontFamily: FontFamily.bold)),
+          SizedBox(
+            height: 2.h,
+          ),
           Text.rich(
             TextSpan(children: [
-              TextSpan(text: "EGP",style: TextStyle(fontSize: 13.sp,fontFamily: FontFamily.bold)),
-              TextSpan(text: "29.00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.bold)),
+              TextSpan(
+                  text: "EGP",
+                  style:
+                      TextStyle(fontSize: 13.sp, fontFamily: FontFamily.bold)),
+              TextSpan(
+                  text: "29.00",
+                  style:
+                      TextStyle(fontSize: 20.sp, fontFamily: FontFamily.extraBold)),
             ]),
           ),
         ],

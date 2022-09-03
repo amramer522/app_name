@@ -14,6 +14,7 @@ class AppThemes {
       platform: TargetPlatform.iOS,
       textTheme: TextTheme(
         button: styleButtonsText(),
+        bodyText1: styleMainTitlesText()
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(

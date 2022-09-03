@@ -140,7 +140,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                 fontFamily: FontFamily.regular,
                                 color: Color(0xff7B7B7B))),
                         GestureDetector(
-                          onTap: (){
+                          onTap: () {
                             navigateTo(page: BrandProfileScreen());
                           },
                           child: Text('"Brand Name"',

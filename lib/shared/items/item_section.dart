@@ -1,4 +1,5 @@
 import 'package:app_name/core/helper_methods.dart';
+import 'package:app_name/core/styles/styles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

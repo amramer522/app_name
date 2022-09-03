@@ -21,7 +21,7 @@ class NotificationsScreen extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsetsDirectional.only(start: 18.w,),
-                child: Text(titles[index],style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+                child: Text(titles[index],style: Theme.of(context).textTheme.bodyText1),
               ),
               ListView.builder(
                 shrinkWrap: true,

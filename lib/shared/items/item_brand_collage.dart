@@ -6,8 +6,10 @@ import 'package:app_name/screens/brand_profile/view.dart';
 import 'package:app_name/screens/editor/view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:share_plus/share_plus.dart';
 
 import '../../fake_data/fake_data.dart';
 import '../../gen/fonts.gen.dart';
@@ -40,28 +42,32 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
               child: CircleAvatar(
                 backgroundImage: CachedNetworkImageProvider(
                   (fakeBrandCollagesDetails[widget.index]["provider"]
-                  as Map)["image"],
+                      as Map)["image"],
                 ),
               ),
             ),
-            title: Text((fakeBrandCollagesDetails[widget.index]["provider"]
-            as Map)["name"]),
+            title: Text(
+              (fakeBrandCollagesDetails[widget.index]["provider"]
+                  as Map)["name"],
+              style: TextStyle(fontSize: 20.sp, fontFamily: FontFamily.bold),
+            ),
             subtitle: Text(
-                fakeBrandCollagesDetails[widget.index]["from_time"].toString()),
+                fakeBrandCollagesDetails[widget.index]["from_time"].toString(),
+                style: TextStyle(fontSize: 18.sp, fontFamily: FontFamily.bold)),
             trailing: widget.withEditCollage
                 ? GestureDetector(
-              onTap: () {},
-              child: SvgPicture.asset(
-                Assets.icons.download,
-                height: 29.h,
-                width: 29.h,
-              ),
-            )
+                    onTap: () {},
+                    child: SvgPicture.asset(
+                      Assets.icons.download,
+                      height: 29.h,
+                      width: 29.h,
+                    ),
+                  )
                 : const SizedBox.shrink(),
           ),
           CachedNetworkImage(
             imageUrl:
-            fakeBrandCollagesDetails[widget.index]["image"].toString(),
+                fakeBrandCollagesDetails[widget.index]["image"].toString(),
             height: 390.h,
             width: double.infinity,
             fit: BoxFit.fill,
@@ -70,20 +76,25 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
             padding: mainPagePadding,
             child: Row(
               children: [
-                Text(fakeBrandCollagesDetails[widget.index]["collage_name"]
-                    .toString(),
+                Text(
+                    fakeBrandCollagesDetails[widget.index]["collage_name"]
+                        .toString(),
                     style: TextStyle(
                         fontSize: 20.sp, fontFamily: FontFamily.bold)),
                 const Spacer(),
-                IconButton(onPressed: () {}, icon: const Icon(Icons.share)),
+                IconButton(
+                    onPressed: () {
+                      Share.share('check out my website https://example.com');
+                    },
+                    icon: const Icon(Icons.share)),
                 SizedBox(
-                  width: 6.w,
+                  width: 10.w,
                 ),
                 GestureDetector(
                     onTap: () {},
                     child: Container(
-                        height: 35.h,
-                        width: 35.h,
+                        height: 40.h,
+                        width: 40.h,
                         padding: EdgeInsets.all(8.r),
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(7.r),
@@ -94,17 +105,22 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
               ],
             ),
           ),
+          SizedBox(
+            height: 20.h,
+          ),
           widget.withEditCollage
               ? Padding(
-            padding: mainPagePadding,
-            child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: () {
-                      navigateTo(page: EditorScreen());
-                    },
-                    child: Text("Edit Collage",))),
-          )
+                  padding: mainPagePadding,
+                  child: SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            navigateTo(page: EditorScreen());
+                          },
+                          child: Text(
+                            "Edit Collage",
+                          ))),
+                )
               : SizedBox.shrink()
         ],
       ),

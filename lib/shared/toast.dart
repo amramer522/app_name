@@ -58,10 +58,13 @@ class ToastView {
                       const SizedBox(
                         width: 10,
                       ),
-                      Text(msg,
-                          textAlign: TextAlign.center,
-                          softWrap: true,
-                          style: TextStyle(fontSize: 15, color: textColor)),
+                      Flexible(
+                        fit: FlexFit.loose,
+                        child: Text(msg,
+                            textAlign: TextAlign.center,
+                            softWrap: true,
+                            style: TextStyle(fontSize: 13.sp, color: textColor)),
+                      ),
                     ],
                   ),
                 )),

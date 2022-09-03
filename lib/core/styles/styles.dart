@@ -8,14 +8,19 @@ final mainPagePadding = EdgeInsets.symmetric(horizontal: 18.w);
 
 TextStyle styleAppBarTitle() {
   return TextStyle(
-    fontSize: 22.sp,
-    fontFamily: FontFamily.bold,
-    color: colorPrimary
-  );
+      fontSize: 22.sp,
+      height: 2.5.h,
+      fontFamily: FontFamily.bold,
+      color: colorPrimary);
 }
 
 TextStyle styleMainText() {
   return TextStyle();
+}
+
+TextStyle styleMainTitlesText() {
+  return TextStyle(
+      fontSize: 18.sp, fontFamily: FontFamily.bold, color: colorPrimary);
 }
 
 TextStyle styleButtonsText() {
@@ -23,6 +28,15 @@ TextStyle styleButtonsText() {
       fontSize: 19.sp,
       height: 1.5,
       fontFamily: FontFamily.bold,
-      color: colorPrimary
-  );
+      color: colorPrimary);
+}
+
+List<BoxShadow> shadowOfItem() {
+  return [
+    BoxShadow(
+        color: Colors.grey.withOpacity(.2),
+        blurStyle: BlurStyle.outer,
+        blurRadius: 5,
+        spreadRadius: 1)
+  ];
 }

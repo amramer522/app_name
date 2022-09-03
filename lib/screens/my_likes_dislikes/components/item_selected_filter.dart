@@ -25,7 +25,8 @@ class ItemSelectedFilter extends StatelessWidget {
           child: Text(title,
               style: TextStyle(
                   color: isSelected ? Colors.white : Colors.black,
-                  fontSize: 15.sp,
+                  fontSize: 17.sp,
+                  height: 2.h,
                   fontFamily: FontFamily.bold)),
         ),
       ),

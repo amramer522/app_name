@@ -8,7 +8,7 @@ showCategoryImagesDialog(context) {
       builder: (context) => Dialog(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        insetPadding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 16.h),
+        insetPadding: EdgeInsets.symmetric(horizontal: 16.w),
         child: const CategoriesItemsSwiper(),
       ),
       context: context);

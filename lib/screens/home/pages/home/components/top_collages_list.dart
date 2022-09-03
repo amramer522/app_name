@@ -11,10 +11,14 @@ class HomeTopCollagesList extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 218.h,
-      child: ListView.builder(
+      child: ListView.separated(
+        padding: EdgeInsets.only(bottom: 10.h),
         scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) => ItemHomeTopCollages(index: index),
+        itemBuilder: (context, index) => ItemHomeTopCollages(
+          index: index,
+        ),
         itemCount: fakeBrandCollagesDetails.length,
+        separatorBuilder: (context, index) => SizedBox(width: 20.w,),
       ),
     );
   }

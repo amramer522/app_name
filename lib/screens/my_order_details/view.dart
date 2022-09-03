@@ -11,9 +11,8 @@ import '../home/pages/profile/components/item_setting.dart';
 import '../order_summary/view.dart';
 
 class MyOrderDetails extends StatefulWidget {
-  final String title;
 
-  const MyOrderDetails({Key? key, required this.title}) : super(key: key);
+  const MyOrderDetails({Key? key}) : super(key: key);
 
   @override
   State<MyOrderDetails> createState() => _MyOrderDetailsState();
@@ -25,13 +24,13 @@ class _MyOrderDetailsState extends State<MyOrderDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: widget.title),
+      appBar: SecondAppBar(title: "Order Details"),
       body: SingleChildScrollView(
         padding: mainPagePadding,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const ItemMyOrder(index: 0),
+            // const ItemMyOrder(index: 0),
             SizedBox(
               height: 35.h,
             ),
@@ -83,7 +82,7 @@ class _MyOrderDetailsState extends State<MyOrderDetails> {
               },
               child: Container(
                 height: 60.h,
-                margin: EdgeInsetsDirectional.only(start: 20.w, top: 20.h, end: 20.w),
+                margin: EdgeInsetsDirectional.only( top: 20.h, end: 20.w),
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(

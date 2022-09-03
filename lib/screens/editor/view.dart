@@ -156,48 +156,50 @@ class _EditorScreenState extends State<EditorScreen> {
     return Scaffold(
       appBar: SecondAppBar(
         actions: [
-          IconButton(
-            onPressed: () {
+          SizedBox(width: 5.w,),
+          GestureDetector(
+            onTap: () {
               chooseImage(context);
             },
-            icon: Icon(
-              Icons.camera_alt,
-              color: Colors.black,
-              size: 27.h,
+            child: Container(
+              height: 45.h,
+              width: 45.h,
+              decoration: BoxDecoration(
+                color: Color(0xffE6E6E6),
+              ),
+              child: Icon(
+                Icons.camera_alt,
+                color: Color(0xff2F1F2B),
+                size: 27.h,
+              ),
             ),
           ),
-          IconButton(
-            onPressed: () {
-              saveCollageDialog(context,
-                  controller: collageNameController, onSavePress: onSave);
+          SizedBox(width: 5.w,),
+          GestureDetector(
+            onTap: () {
+              if (currentImage != -1) {
+                saveCollageDialog(context,
+                    controller: collageNameController, onSavePress: onSave);
+              } else {
+                showToast(context,
+                    msg: "You need to add products to editor to save collage");
+              }
             },
-            icon: SvgPicture.asset(Assets.icons.download, height: 27.h,width: 27.h,),
+            child: Container(
+                height: 45.h,
+                width: 45.h,
+                padding: EdgeInsetsDirectional.only(bottom: 8.h,top: 4.h),
+                decoration: BoxDecoration(
+                  color: Color(0xffE6E6E6),
+                ),
+                child: SvgPicture.asset(
+              Assets.icons.download,
+              color: Color(0xff2F1F2B),
+            )),
           ),
+          SizedBox(width: 5.w,),
         ],
       ),
-      // body: GestureDetector(
-      //   onScaleStart: (details) {
-      //     initialScale = scaleFactor;
-      //   },
-      //   onScaleUpdate: (details) {
-      //     print("update"*10);
-      //     scaleFactor = initialScale * details.scale;
-      //     print(scaleFactor);
-      //     setState(() {});
-      //   },
-      //   child: Container(
-      //     color: Colors.red,
-      //     child: Center(
-      //       child: Image.asset(
-      //         "assets/images/app_logo.png",
-      //         height: scaleFactor*100,
-      //         width: scaleFactor*100,
-      //         fit: BoxFit.fill,
-      //         // scale: scaleFactor,
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: SafeArea(
         child: Container(
           width: double.infinity,
@@ -205,242 +207,195 @@ class _EditorScreenState extends State<EditorScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                // Container(
-                //   color: Colors.white,
-                //   child: Row(
-                //     children: [
-                //       // const Spacer(),
-                //       IconButton(
-                //           onPressed: () {
-                //             if (selectedImages.isEmpty) {
-                //               Toast.show("Nothing to remove", context);
-                //             } else {
-                //               selectedImages.removeAt(currentImage);
-                //               currentImage--;
-                //             }
-                //             setState(() {});
-                //           },
-                //           icon: const Icon(
-                //             Icons.delete_forever,
-                //             color: Colors.red,
-                //           )),
-                //       Expanded(
-                //         child: ElevatedButton(
-                //             style: ElevatedButton.styleFrom(
-                //                 fixedSize: Size.fromWidth(80.w)),
-                //             onPressed: () {
-                //               send();
-                //               setState(() {});
-                //             },
-                //             child: Text("Forward")),
-                //       ),
-                //       SizedBox(
-                //         width: 10.w,
-                //       ),
-                //       Expanded(
-                //         child: ElevatedButton(
-                //             style: ElevatedButton.styleFrom(
-                //                 fixedSize: Size.fromWidth(80.w)),
-                //             onPressed: () {
-                //               send(forward: false);
-                //               setState(() {});
-                //             },
-                //             child: Text("Back")),
-                //       ),
-                //       SizedBox(
-                //         width: 10.w,
-                //       ),
-                //     ],
-                //   ),
-                // ),
-                Screenshot(
-                  controller: screenShotController,
-                  child: Container(
-                    height: 380.h,
-                    decoration: const BoxDecoration(color: Colors.black),
-                    child: InteractiveViewer(
-                      scaleEnabled: selectedImages.isNotEmpty,
-                      child: Stack(
-                        children: selectedImages.isNotEmpty
-                            ? List.generate(
-                                selectedImages.length,
-                                (index) => Positioned(
-                                      top: double.parse(selectedImages[index]
-                                              ["top"]
-                                          .toString()),
-                                      left: double.parse(selectedImages[index]
-                                              ["left"]
-                                          .toString()),
-                                      child: GestureDetector(
-                                        // onScaleStart: ((details) {
-                                        //   selectedImages[currentImage].update("initialScale", (value) => selectedImages[currentImage]["currentScale"]);
-                                        // }),
-                                        // onScaleUpdate: (details){
-                                        //   double scaleFactor = selectedImages[currentImage]["initialScale"] * details.scale;
-                                        //   selectedImages[currentImage].update("height", (value) =>selectedImages[currentImage]["height"]* scaleFactor);
-                                        //   selectedImages[currentImage].update("width", (value) => selectedImages[currentImage]["width"]*scaleFactor);
-                                        //   setState(() {
-                                        //
-                                        //   });
-                                        // },
-                                        onTap: () {
-                                          currentImage = index;
-                                          setState(() {});
-                                        },
-                                        onLongPress: () {
-                                          showDialog(
-                                              context: context,
-                                              barrierDismissible: true,
-                                              builder: (context) => Dialog(
-                                                    child: InteractiveViewer(
-                                                      child: Transform(
-                                                        transform: Matrix4.rotationY(
-                                                            selectedImages[
-                                                                        index][
-                                                                    "isFlipped"]
-                                                                ? pi
-                                                                : 2 * pi),
-                                                        alignment:
-                                                            Alignment.center,
-                                                        child: Image.file(
-                                                          selectedImages[index]
-                                                              ["image"],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ));
-                                        },
-                                        onPanUpdate: (details) {
-                                          print(context.size!.width);
-                                          print(selectedImages[currentImage]
-                                                  ["left"]
-                                              .toString());
+                Container(
+                  color: Colors.black,
+                  child: Column(
+                    children: [
+                      Screenshot(
+                        controller: screenShotController,
+                        child: SizedBox(
+                          height: 380.h,
+                          child: InteractiveViewer(
+                            scaleEnabled: selectedImages.isNotEmpty,
+                            child: Stack(
+                              children: selectedImages.isNotEmpty
+                                  ? List.generate(
+                                  selectedImages.length,
+                                      (index) => Positioned(
+                                    top: double.parse(selectedImages[index]
+                                    ["top"]
+                                        .toString()),
+                                    left: double.parse(selectedImages[index]
+                                    ["left"]
+                                        .toString()),
+                                    child: GestureDetector(
+                                      // onScaleStart: ((details) {
+                                      //   selectedImages[currentImage].update("initialScale", (value) => selectedImages[currentImage]["currentScale"]);
+                                      // }),
+                                      // onScaleUpdate: (details){
+                                      //   double scaleFactor = selectedImages[currentImage]["initialScale"] * details.scale;
+                                      //   selectedImages[currentImage].update("height", (value) =>selectedImages[currentImage]["height"]* scaleFactor);
+                                      //   selectedImages[currentImage].update("width", (value) => selectedImages[currentImage]["width"]*scaleFactor);
+                                      //   setState(() {
+                                      //
+                                      //   });
+                                      // },
+                                      onTap: () {
+                                        currentImage = index;
+                                        setState(() {});
+                                      },
+                                      onLongPress: () {
+                                        showDialog(
+                                            context: context,
+                                            barrierDismissible: true,
+                                            builder: (context) => Dialog(
+                                              child: InteractiveViewer(
+                                                child: Transform(
+                                                  transform: Matrix4.rotationY(
+                                                      selectedImages[
+                                                      index][
+                                                      "isFlipped"]
+                                                          ? pi
+                                                          : 2 * pi),
+                                                  alignment:
+                                                  Alignment.center,
+                                                  child: Image.file(
+                                                    selectedImages[index]
+                                                    ["image"],
+                                                  ),
+                                                ),
+                                              ),
+                                            ));
+                                      },
+                                      onPanUpdate: (details) {
+                                        print(context.size!.width);
+                                        print(selectedImages[currentImage]
+                                        ["left"]
+                                            .toString());
 
-                                          selectedImages[currentImage].update(
-                                              "top",
-                                              (value) => max(
-                                                  0,
-                                                  double.parse(selectedImages[
-                                                                  currentImage]
-                                                              ["top"]
-                                                          .toString()) +
-                                                      details.delta.dy));
-                                          selectedImages[currentImage].update(
-                                              "left",
-                                              (value) => max(
-                                                  0,
-                                                  double.parse(selectedImages[
-                                                                  currentImage]
-                                                              ["left"]
-                                                          .toString()) +
-                                                      details.delta.dx));
-                                          setState(() {});
-                                        },
-                                        child: Transform(
-                                          transform: Matrix4.rotationY(
-                                              selectedImages[index]["isFlipped"]
-                                                  ? pi
-                                                  : 2 * pi),
-                                          alignment: Alignment.center,
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                                border: index == currentImage
-                                                    ? Border.all(
-                                                        color: Colors.red)
-                                                    : null),
-                                            child: Image.file(
-                                              selectedImages[index]["image"],
-                                              // scale: double.parse(
-                                              //     selectedImages[currentImage]
-                                              //             ["scaleFactor"]
-                                              //         .toString()),
-                                              fit: BoxFit.contain,
-                                              height: selectedImages[index]
-                                                  ["height"],
-                                              width: selectedImages[index]
-                                                  ["width"],
-                                            ),
+                                        selectedImages[currentImage].update(
+                                            "top",
+                                                (value) => max(
+                                                0,
+                                                double.parse(selectedImages[
+                                                currentImage]
+                                                ["top"]
+                                                    .toString()) +
+                                                    details.delta.dy));
+                                        selectedImages[currentImage].update(
+                                            "left",
+                                                (value) => max(
+                                                0,
+                                                double.parse(selectedImages[
+                                                currentImage]
+                                                ["left"]
+                                                    .toString()) +
+                                                    details.delta.dx));
+                                        setState(() {});
+                                      },
+                                      child: Transform(
+                                        transform: Matrix4.rotationY(
+                                            selectedImages[index]["isFlipped"]
+                                                ? pi
+                                                : 2 * pi),
+                                        alignment: Alignment.center,
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                              border: index == currentImage
+                                                  ? Border.all(
+                                                  color: Colors.red)
+                                                  : null),
+                                          child: Image.file(
+                                            selectedImages[index]["image"],
+                                            // scale: double.parse(
+                                            //     selectedImages[currentImage]
+                                            //             ["scaleFactor"]
+                                            //         .toString()),
+                                            fit: BoxFit.contain,
+                                            height: selectedImages[index]
+                                            ["height"],
+                                            width: selectedImages[index]
+                                            ["width"],
                                           ),
                                         ),
                                       ),
-                                    ))
-                            : [
+                                    ),
+                                  ))
+                                  : [
                                 Center(
                                   child: Text(
                                       "Add products to\ncreate your first collage",
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          fontSize: 16.sp,
+                                          fontSize: 22.sp,
                                           fontFamily: FontFamily.extraBold,
                                           color: Colors.white)),
                                 )
                               ],
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
+                      selectedImages.isNotEmpty
+                          ? Row(
+                        children: [
+                          ItemEditorActions(
+                              title: "Remove",
+                              imageName: "delete",
+                              onPress: () {
+                                if (selectedImages.isEmpty) {
+                                  showToast(
+                                    context,
+                                    msg: "Nothing to remove",
+                                  );
+                                } else {
+                                  selectedImages.removeAt(currentImage);
+                                  currentImage--;
+                                }
+                                setState(() {});
+                              }),
+                          ItemEditorActions(
+                              title: "Flip",
+                              imageName: "flip",
+                              onPress: () {
+                                selectedImages[currentImage].update(
+                                    "isFlipped",
+                                        (value) => !selectedImages[currentImage]
+                                    ["isFlipped"]);
+                                setState(() {});
+                              }),
+                          ItemEditorActions(
+                              title: "Backward",
+                              imageName: "backward_image",
+                              onPress: () {
+                                send(forward: false);
+                                setState(() {});
+                              }),
+                          ItemEditorActions(
+                              title: "Forward",
+                              imageName: "forward_image",
+                              onPress: () {
+                                send();
+                                setState(() {});
+                              }),
+                        ],
+                      )
+                          :  SizedBox(
+                        height: 53.h,
+                      ),
+                    ],
                   ),
                 ),
-                selectedImages.isNotEmpty
-                    ? Container(
-                        color: Colors.black,
-                        child: Row(
-                          children: [
-                            ItemEditorActions(
-                                title: "Remove",
-                                imageName: "delete",
-                                onPress: () {
-                                  if (selectedImages.isEmpty) {
-                                    showToast(
-                                      context,
-                                      msg: "Nothing to remove",
-                                    );
-                                  } else {
-                                    selectedImages.removeAt(currentImage);
-                                    currentImage--;
-                                  }
-                                  setState(() {});
-                                }),
-                            ItemEditorActions(
-                                title: "Flip",
-                                imageName: "flip",
-                                onPress: () {
-                                  selectedImages[currentImage].update(
-                                      "isFlipped",
-                                      (value) => !selectedImages[currentImage]
-                                          ["isFlipped"]);
-                                  setState(() {});
-                                }),
-                            ItemEditorActions(
-                                title: "Backward",
-                                imageName: "backward_image",
-                                onPress: () {
-                                  send(forward: false);
-                                  setState(() {});
-                                }),
-                            ItemEditorActions(
-                                title: "Forward",
-                                imageName: "forward_image",
-                                onPress: () {
-                                  send();
-                                  setState(() {});
-                                }),
-                          ],
-                        ),
-                      )
-                    : const SizedBox.shrink(),
                 Column(
                   children: [
                     Padding(
                       padding: mainPagePadding,
                       child: const ViewAll(
-                          label: "Categories",
-                          isBold: true,
-                          page: AllCategoriesScreen()),
-                    ),
-                    SizedBox(
-                      height: 10.h,
+                          label: "Categories", page: AllCategoriesScreen()),
                     ),
                     Container(
-                      height: 145.h,
+                      height: 180.h,
+                      margin: EdgeInsets.only(bottom: 20.h),
                       padding: EdgeInsetsDirectional.only(
                           bottom: 2.h, start: 20.w, end: 10.w),
                       child: ListView.separated(
@@ -453,56 +408,28 @@ class _EditorScreenState extends State<EditorScreen> {
                         itemCount: 10,
                       ),
                     ),
-
-                    // Container(
-                    //   height: 100.h,
-                    //   padding: EdgeInsetsDirectional.only(bottom: 2.h),
-                    //   child: ListView.builder(
-                    //     scrollDirection: Axis.horizontal,
-                    //     itemBuilder: (context, index) => GestureDetector(
-                    //       onTap: () {
-                    //         currentImage = index;
-                    //         setState(() {});
-                    //       },
-                    //       child: Container(
-                    //         margin: EdgeInsetsDirectional.only(
-                    //             start: index == 0 ? 3.w : 5.w),
-                    //         clipBehavior: Clip.antiAlias,
-                    //         decoration: BoxDecoration(
-                    //             borderRadius: BorderRadius.circular(10.r),
-                    //             border: currentImage == index
-                    //                 ? Border.all(color: Colors.red, width: 2.w)
-                    //                 : null),
-                    //         child: Image.file(
-                    //           selectedImages[index]["image"],
-                    //           height: 100.h,
-                    //           // width: 50.w,
-                    //           fit: BoxFit.fill,
-                    //         ),
-                    //       ),
-                    //     ),
-                    //     itemCount: selectedImages.length,
-                    //   ),
-                    // )
                   ],
                 ),
-                const Divider(),
-                SizedBox(
-                  height: 15.h,
-                ),
-                ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: SvgPicture.asset(
-                      Assets.icons.cart,
-                      color: Colors.white,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: colorSecondary, fixedSize: Size(350.w, 50.h)),
-                    label: const Text("Add to Cart"))
               ],
             ),
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: mainPagePadding.copyWith(bottom: 16.h),
+        child: ElevatedButton.icon(
+            onPressed: () {},
+            icon: SvgPicture.asset(
+              Assets.icons.cart,
+              height: 27.h,
+              color: Colors.white,
+            ),
+            style: ElevatedButton.styleFrom(
+                primary: colorSecondary, fixedSize: Size(350.w, 50.h)),
+            label: Text(
+              "Add to Cart",
+              style: TextStyle(height: 2.7.h),
+            )),
       ),
     );
   }

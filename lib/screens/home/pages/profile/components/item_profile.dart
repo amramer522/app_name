@@ -2,6 +2,7 @@ import 'package:app_name/core/helper_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../../core/styles/styles.dart';
 import '../../../../../gen/fonts.gen.dart';
 
 class ItemProfile extends StatelessWidget {
@@ -24,17 +25,11 @@ class ItemProfile extends StatelessWidget {
       },
       child: Container(
         height: 90.h,
-        margin: EdgeInsetsDirectional.only(start: 20.w, top: 20.h,end: 20.w),
+        margin: EdgeInsetsDirectional.only(start: 20.w, top: 20.h, end: 20.w),
         padding: EdgeInsets.zero,
         clipBehavior: Clip.antiAlias,
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(.2),
-                blurStyle: BlurStyle.outer,
-                blurRadius: 5,
-                spreadRadius: 1)
-          ],
+          boxShadow: shadowOfItem(),
           borderRadius: BorderRadiusDirectional.circular(6.r),
         ),
         child: Row(
@@ -42,9 +37,7 @@ class ItemProfile extends StatelessWidget {
             Container(
               width: 100.h,
               decoration: BoxDecoration(
-                color: Colors.grey,
-                border: Border.all(color: Colors.grey)
-              ),
+                  color: Colors.grey, border: Border.all(color: Colors.grey)),
             ),
             SizedBox(
               width: 24.w,

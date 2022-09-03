@@ -22,12 +22,8 @@ class OrderSummaryScreen extends StatelessWidget {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12.h),
               child: Text(
-                "Collage Items",
-                style: TextStyle(
-                  fontSize: 20.sp,
-                  fontFamily: FontFamily.bold,
-                  color: Colors.black,
-                ),
+                "Order Items",
+                style: Theme.of(context).textTheme.bodyText1,
               ),
             ),
             ...List.generate(3, (index) =>
@@ -39,7 +35,7 @@ class OrderSummaryScreen extends StatelessWidget {
                 )),
             Padding(
               padding: EdgeInsetsDirectional.only(top: 20.h),
-              child: Text("Order Address",style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+              child: Text("Order Address",style:  Theme.of(context).textTheme.bodyText1),
             ),
             Padding(
               padding:  EdgeInsets.symmetric(vertical: 10.h,horizontal: 10.w),
@@ -52,7 +48,7 @@ class OrderSummaryScreen extends StatelessWidget {
             // ItemMyAddress(),
             Padding(
               padding: EdgeInsetsDirectional.only(top: 20.h),
-              child: Text("Paid by",style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+              child: Text("Paid by",style:  Theme.of(context).textTheme.bodyText1),
             ),
 
             Container(
@@ -77,13 +73,13 @@ class OrderSummaryScreen extends StatelessWidget {
                   ),
                   Text("Credit/debit card",
                       style: TextStyle(
-                          fontSize: 20.sp, fontFamily: FontFamily.bold)),
+                          fontSize: 16.sp, fontFamily: FontFamily.bold)),
                 ],
               ),
             ),
             Padding(
               padding: EdgeInsetsDirectional.only(top: 20.h),
-              child: Text("Voucher",style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+              child: Text("Voucher",style:  Theme.of(context).textTheme.bodyText1),
             ),
 
             Container(
@@ -96,12 +92,12 @@ class OrderSummaryScreen extends StatelessWidget {
               ),
               child: Text("ABC123",
                   style: TextStyle(
-                      fontSize: 20.sp,color: const Color(0xff7B7B7B), fontFamily: FontFamily.regular)),
+                      fontSize: 18.sp,color: const Color(0xff7B7B7B), fontFamily: FontFamily.regular)),
             ),
 
             Padding(
               padding: EdgeInsetsDirectional.only(top: 20.h),
-              child: Text("Bill Breakdown",style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold)),
+              child: Text("Bill Breakdown",style:  Theme.of(context).textTheme.bodyText1),
             ),
             SizedBox(height: 10.h,),
             Row(

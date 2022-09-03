@@ -118,7 +118,7 @@ class ProfilePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Text("Settings",
                   style:
-                      TextStyle(fontSize: 17.sp, fontFamily: FontFamily.bold)),
+                      TextStyle(fontSize: 21.sp, fontFamily: FontFamily.bold)),
             ),
             const ItemSetting(
               title: "My orders",

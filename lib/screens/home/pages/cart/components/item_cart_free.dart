@@ -39,10 +39,10 @@ class ItemCartFree extends StatelessWidget {
                 children: [
                   Text("This product full name",
                       style: TextStyle(
-                          fontSize: 13.sp, fontFamily: FontFamily.bold)),
+                          fontSize: 16.sp, fontFamily: FontFamily.bold)),
                   Text(isFree ? "Free" : "\$34.00",
                       style: TextStyle(
-                          fontSize: 16.sp,
+                          fontSize: 20.sp,
                           fontFamily: FontFamily.bold,
                           color: const Color(0xff516E00))),
                 ],

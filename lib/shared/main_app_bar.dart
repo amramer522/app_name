@@ -28,14 +28,13 @@ class _MainAppBarState extends State<MainAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
-
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Image.asset(
             Assets.images.appLogo.path,
-            height: 30.h,
-            width: 30.h,
+            height: 25.h,
+            width: 25.h,
             fit: BoxFit.contain,
           ),
           SizedBox(

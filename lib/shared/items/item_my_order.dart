@@ -2,6 +2,7 @@ import 'package:app_name/core/helper_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../core/styles/styles.dart';
 import '../../fake_data/fake_data.dart';
 import '../../gen/fonts.gen.dart';
 import '../../screens/my_order_details/view.dart';
@@ -15,18 +16,12 @@ class ItemMyOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        navigateTo(page: MyOrderDetails(title: "Order${index+1}",));
+        navigateTo(page: MyOrderDetails());
       },
       child: Container(
         margin: EdgeInsets.only(top: 20.h),
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(.2),
-                blurStyle: BlurStyle.outer,
-                blurRadius: 5,
-                spreadRadius: 1)
-          ],
+          boxShadow: shadowOfItem(),
           borderRadius: BorderRadiusDirectional.circular(6.r),
         ),
         child: Padding(

@@ -7,26 +7,25 @@ import '../gen/fonts.gen.dart';
 class ViewAll extends StatelessWidget {
   final String label;
   final Widget? page;
-  final bool isBold;
 
-  const ViewAll({Key? key, required this.label, this.page, this.isBold=false}) : super(key: key);
+  const ViewAll({Key? key, required this.label, this.page}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 20.h),
+      padding: EdgeInsets.only(top: 30.h, bottom: 16.h),
       child: Row(
         children: [
           Text(label,
               style:
-                  TextStyle(fontSize:isBold?25.sp: 20.sp, fontFamily:isBold?FontFamily.bold: FontFamily.regular)),
+                  TextStyle(fontSize: 23.sp, fontFamily: FontFamily.regular)),
           const Spacer(),
           GestureDetector(
             onTap: () {
-              navigateTo( page: page);
+              navigateTo(page: page);
             },
             child: Text("View All",
-                style: TextStyle(fontSize: isBold?20.sp:15.sp, fontFamily: FontFamily.bold)),
+                style: TextStyle(fontSize: 18.sp, fontFamily: FontFamily.bold)),
           )
         ],
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../../core/styles/styles.dart';
 import '../../../../../gen/fonts.gen.dart';
 import '../../../../../shared/logout_dialog.dart';
 
@@ -34,13 +35,7 @@ class ItemSetting extends StatelessWidget {
         height: 60.h,
         margin: EdgeInsetsDirectional.only(start: 20.w, top: 20.h, end: 20.w),
         decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-                color: Colors.grey.withOpacity(.2),
-                blurStyle: BlurStyle.outer,
-                blurRadius: 5,
-                spreadRadius: 1)
-          ],
+          boxShadow: shadowOfItem(),
           borderRadius: BorderRadiusDirectional.circular(6.r),
         ),
         child: Row(

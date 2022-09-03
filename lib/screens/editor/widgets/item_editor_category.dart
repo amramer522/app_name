@@ -1,3 +1,4 @@
+import 'package:app_name/core/styles/styles.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,21 +18,11 @@ class ItemEditorCategory extends StatelessWidget {
       },
       child: Container(
         width: 103.w,
+        margin: EdgeInsets.symmetric(vertical: 10.h),
         decoration: BoxDecoration(
-            border: Border.all(
-              color: const Color(0xff707070),
-              width: 1.sp
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: const Color(0xff707070).withOpacity(.8),
-                blurRadius: 1,
-                blurStyle: BlurStyle.outer
-              ),
-            ],
-            borderRadius: BorderRadius.circular(8.r)),
+            boxShadow: shadowOfItem(),
+            borderRadius: BorderRadius.circular(12.r)),
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Align(
               alignment: AlignmentDirectional.topStart,
@@ -39,7 +30,7 @@ class ItemEditorCategory extends StatelessWidget {
                 height: 30.h,
                 width: 30.h,
                 decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(.04),
+                    color: Colors.transparent,
                     borderRadius: BorderRadiusDirectional.only(
                         bottomEnd: Radius.circular(8.r))),
                 child: GestureDetector(

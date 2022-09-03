@@ -25,6 +25,7 @@ class _ItemBrandProductState extends State<ItemBrandProduct> {
         navigateTo(page: ProductDetailsScreen());
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: AlignmentDirectional.topEnd,

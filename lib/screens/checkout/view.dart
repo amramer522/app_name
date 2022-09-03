@@ -1,14 +1,17 @@
 import 'package:app_name/core/styles/styles.dart';
 import 'package:app_name/screens/home/pages/cart/components/item_cart_free.dart';
+import 'package:app_name/screens/my_addresses/components/item_my_address.dart';
 import 'package:app_name/shared/items/item_my_order.dart';
 import 'package:app_name/shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../core/helper_methods.dart';
 import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/finish_order_dialog.dart';
+import '../finish_order/view.dart';
 
 class CheckOutScreen extends StatelessWidget {
   const CheckOutScreen({Key? key}) : super(key: key);
@@ -41,7 +44,7 @@ class CheckOutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const ItemMyOrder(index: 0),
+            const ItemMyAddress(),
             Padding(
               padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
               child: Text(
@@ -81,13 +84,23 @@ class CheckOutScreen extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(flex: 4,child: SizedBox(height: 45.h,child: TextFormField())),
-                SizedBox(width: 16.w,),
-                Expanded(child: ElevatedButton(onPressed: () {}, child: const Text("Apply")))
+                Expanded(
+                    flex: 4,
+                    child: SizedBox(height: 45.h, child: TextFormField())),
+                SizedBox(
+                  width: 16.w,
+                ),
+                Expanded(
+                    child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          "Apply",
+                          style: TextStyle(fontSize: 13.sp),
+                        )))
               ],
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20.h,bottom: 20.h),
+              padding: EdgeInsets.only(top: 20.h, bottom: 20.h),
               child: Text(
                 "Bill breakdown",
                 style: TextStyle(
@@ -99,45 +112,70 @@ class CheckOutScreen extends StatelessWidget {
             ),
             Row(
               children: [
-                Text("Subtotal",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                Text("Subtotal",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.regular)),
                 const Spacer(),
-                Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                Text("LE 0,00",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.regular)),
               ],
             ),
-            SizedBox(height: 10.h,),
+            SizedBox(
+              height: 10.h,
+            ),
             Row(
               children: [
-                Text("Shipping Fees",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                Text("Shipping Fees",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.regular)),
                 const Spacer(),
-                Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                Text("LE 0,00",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.regular)),
               ],
             ),
-            SizedBox(height: 10.h,),
+            SizedBox(
+              height: 10.h,
+            ),
             Row(
               children: [
-                Text("VAT",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                Text("VAT",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.regular)),
                 const Spacer(),
-                Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                Text("LE 0,00",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.regular)),
               ],
             ),
             Divider(thickness: 1.5.h),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
             Row(
               children: [
-                Text("Total Fees",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.bold)),
+                Text("Total Fees",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.bold)),
                 const Spacer(),
-                Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.bold)),
+                Text("LE 0,00",
+                    style: TextStyle(
+                        fontSize: 17.sp, fontFamily: FontFamily.bold)),
               ],
             ),
-            SizedBox(height: 20.h,),
+            SizedBox(
+              height: 20.h,
+            ),
           ],
         ),
       ),
       bottomNavigationBar: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 32.w,vertical: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
         child: ElevatedButton(
             onPressed: () {
-              finishOrderDialog(context);
+              navigateTo(page: FinishOrderScreen());
+              // finishOrderDialog(context);
             },
             style: ElevatedButton.styleFrom(
                 primary: colorPrimary, fixedSize: Size(350.w, 50.h)),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../core/helper_methods.dart';
 import '/../gen/assets.gen.dart';
 import '/../gen/fonts.gen.dart';
 import 'fileter_dialog.dart';
@@ -11,6 +12,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool haveAction;
   final bool haveBack;
   final bool isFilter;
+  final Widget? backPage;
   final List<Widget>? actions;
 
   const SecondAppBar({
@@ -20,6 +22,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isFilter = true,
     this.actions,
     this.haveBack = true,
+    this.backPage,
   }) : super(key: key);
 
   @override
@@ -35,18 +38,28 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
           haveBack
               ? GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+                    if (backPage != null) {
+                      navigateTo(page: backPage);
+                    } else {
+                      Navigator.pop(context);
+                    }
                   },
-                  child: SvgPicture.asset(
-                    Assets.icons.backArrow,
-                    height: 18.h,
-                    width: 27.41.w,
+                  child: Container(
+                    color: Colors.transparent,
+                    padding: EdgeInsets.all(8.r),
+                    child: SvgPicture.asset(
+                      Assets.icons.backArrow,
+                      height: 18.h,
+                      width: 27.41.w,
+                    ),
                   ),
                 )
               : const SizedBox(),
           const Spacer(),
           Text(title),
-          const Spacer(),
+          const Spacer(
+            flex: 2,
+          ),
         ],
       ),
       actions: [
@@ -55,10 +68,13 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                 onTap: () {
                   showFilterDialog(context);
                 },
-                child: SvgPicture.asset(
-                  Assets.icons.filter,
-                  height: 21.h,
-                  width: 21.h,
+                child: Padding(
+                  padding: EdgeInsetsDirectional.only(end: 16.w),
+                  child: SvgPicture.asset(
+                    Assets.icons.filter,
+                    height: 21.h,
+                    width: 21.h,
+                  ),
                 ))
             : const SizedBox.shrink(),
         actions != null

@@ -28,6 +28,7 @@ class _OffersScreenState extends State<OffersScreen> {
       ),
       body: Column(
         children: [
+
           Container(
             height: 40.h,
             padding: EdgeInsetsDirectional.only(start: 13.w, end: 13.w),

@@ -22,8 +22,14 @@ import 'screens/brand_proucts/view.dart';
 import 'screens/collage_details/view.dart';
 import 'screens/create_new_password/view.dart';
 import 'screens/edit_profile/view.dart';
+import 'screens/my_order_details/view.dart';
 import 'screens/my_orders/view.dart';
+import 'screens/notifications/view.dart';
+import 'screens/offers/view.dart';
+import 'screens/order_summary/view.dart';
+import 'screens/payment_methods/view.dart';
 import 'screens/product_details/view.dart';
+import 'screens/register/view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -74,9 +80,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: Colors.white,
-    ));
+    // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    //   statusBarColor: Colors.white,
+    // ));
 
     return MaterialApp(
       title: 'App Name',
@@ -93,7 +99,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: ThemeMode.light,
-      home:  HomeScreen(),
+      home:  SplashScreen(),
     );
   }
 }

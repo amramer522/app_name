@@ -1,4 +1,5 @@
 import 'package:app_name/core/helper_methods.dart';
+import 'package:app_name/core/styles/styles.dart';
 import 'package:app_name/fake_data/fake_data.dart';
 import 'package:app_name/gen/fonts.gen.dart';
 import 'package:app_name/screens/collage_details/view.dart';
@@ -14,13 +15,17 @@ class ItemHomeTopCollages extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: (){
+      onTap: () {
         navigateTo(page: CollageDetailsScreen());
       },
-      child: SizedBox(
-        height: 218.h,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 2),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12.r),
+            boxShadow: shadowOfItem()),
         width: 152.w,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: ClipRRect(
@@ -30,35 +35,43 @@ class ItemHomeTopCollages extends StatelessWidget {
                     children: [
                       Image.network(
                           fakeBrandCollagesDetails[index]["image"].toString()),
-                      index==1||index==3?Container(
-                        height: 28.h,
-                        width: 52.w,
-                        child: Center(
-                            child: Text("-25%",
-                                style: TextStyle(
-                                    fontSize: 15.sp,
-                                    color: Colors.white,
-                                    fontFamily: FontFamily.regular))),
-                        decoration: BoxDecoration(
-                            color: const Color(0xffE14B34),
-                            borderRadius: BorderRadiusDirectional.only(
-                              topStart: Radius.circular(10.r),
-                              bottomEnd: Radius.circular(10.r),
-                            )),
-                      ):const SizedBox.shrink()
+                      index == 1 || index == 3
+                          ? Container(
+                              height: 28.h,
+                              width: 52.w,
+                              child: Center(
+                                  child: Text("-25%",
+                                      style: TextStyle(
+                                          fontSize: 15.sp,
+                                          color: Colors.white,
+                                          fontFamily: FontFamily.regular))),
+                              decoration: BoxDecoration(
+                                  color: const Color(0xffE14B34),
+                                  borderRadius: BorderRadiusDirectional.only(
+                                    topStart: Radius.circular(10.r),
+                                    bottomEnd: Radius.circular(10.r),
+                                  )),
+                            )
+                          : const SizedBox.shrink()
                     ],
                   )),
             ),
             SizedBox(
               height: 15.h,
             ),
-            Text(
-              fakeBrandCollagesDetails[index]["collage_name"].toString(),
-              style: TextStyle(fontSize: 18.sp, fontFamily: FontFamily.bold),
+            Padding(
+              padding: mainPagePadding,
+              child: Text(
+                fakeBrandCollagesDetails[index]["collage_name"].toString(),
+                style: TextStyle(fontSize: 18.sp, fontFamily: FontFamily.bold),
+              ),
             ),
-            Text(
-              "29.00 EGP",
-              style: TextStyle(fontSize: 16.sp, fontFamily: FontFamily.bold),
+            Padding(
+              padding: mainPagePadding,
+              child: Text(
+                "29.00 EGP",
+                style: TextStyle(fontSize: 16.sp, fontFamily: FontFamily.bold),
+              ),
             ),
             SizedBox(
               height: 15.h,

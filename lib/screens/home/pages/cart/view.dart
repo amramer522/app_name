@@ -23,15 +23,17 @@ class CartPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ...List.generate(3, (index) =>
-                  Column(
-                    children: [
-                      ItemCart(index: index),
-                      Divider(indent: 100.w, thickness: 1.5.h)
-                    ],
-                  )),
-
-
+              ...List.generate(
+                  3,
+                  (index) => Column(
+                        children: [
+                          ItemCart(index: index),
+                          Divider(indent: 100.w, thickness: 1.5.h),
+                          SizedBox(
+                            height: 20.h,
+                          )
+                        ],
+                      )),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 12.h),
                 child: Text(
@@ -43,54 +45,89 @@ class CartPage extends StatelessWidget {
                   ),
                 ),
               ),
-              ...List.generate(3, (index) =>
-                  Column(
-                    children: [
-                      ItemCartFree(index: index),
-                      Divider(indent: 100.w, thickness: 1.5.h)
-                    ],
-                  )),
-              SizedBox(height: 30.h,),
+              ...List.generate(
+                  3,
+                  (index) => Column(
+                        children: [
+                          ItemCartFree(index: index),
+                          Divider(indent: 100.w, thickness: 1.5.h),
+                          SizedBox(
+                            height: 20.h,
+                          )
+                        ],
+                      )),
+              SizedBox(
+                height: 30.h,
+              ),
               Row(
                 children: [
-                  Text("Subtotal",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                  Text("Subtotal",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.regular)),
                   const Spacer(),
-                  Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                  Text("LE 0,00",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.regular)),
                 ],
               ),
-              SizedBox(height: 10.h,),
+              SizedBox(
+                height: 10.h,
+              ),
               Row(
                 children: [
-                  Text("Shipping Fees",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                  Text("Shipping Fees",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.regular)),
                   const Spacer(),
-                  Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                  Text("LE 0,00",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.regular)),
                 ],
               ),
-              SizedBox(height: 10.h,),
+              SizedBox(
+                height: 10.h,
+              ),
               Row(
                 children: [
-                  Text("VAT",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                  Text("VAT",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.regular)),
                   const Spacer(),
-                  Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.regular)),
+                  Text("LE 0,00",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.regular)),
                 ],
               ),
               Divider(thickness: 1.5.h),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
               Row(
                 children: [
-                  Text("Total Fees",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.bold)),
+                  Text("Total Fees",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.bold)),
                   const Spacer(),
-                  Text("LE 0,00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.bold)),
+                  Text("LE 0,00",
+                      style: TextStyle(
+                          fontSize: 17.sp, fontFamily: FontFamily.bold)),
                 ],
               ),
-              SizedBox(height: 20.h,),
-              ElevatedButton(onPressed: (){
-                navigateTo(page: const PaymentMethods());
-              },child: const Text("Continue")),
-              SizedBox(height: 20.h,),
+              SizedBox(
+                height: 20.h,
+              ),
             ],
           ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding:
+            EdgeInsetsDirectional.only(start: 35.w, end: 35.w, bottom: 20.h),
+        child: ElevatedButton(
+            onPressed: () {
+              navigateTo(page: const PaymentMethods());
+            },
+            child: const Text("Continue")),
       ),
     );
   }

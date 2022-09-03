@@ -53,6 +53,7 @@ dependencies:
   image_cropper: ^3.0.0
   swipe_cards: ^1.0.0
   dotted_border: ^2.0.0+2
+  share_plus: ^4.0.10+1
 
 
 dev_dependencies:

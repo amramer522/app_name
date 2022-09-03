@@ -20,6 +20,7 @@ class PaymentMethods extends StatefulWidget {
 class _PaymentMethodsState extends State<PaymentMethods> {
   bool isCash = true;
   bool isSaveSelected = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,159 +43,183 @@ class _PaymentMethodsState extends State<PaymentMethods> {
             ),
             Row(
               children: [
-                GestureDetector(
-                  onTap: () {
-                    isCash = true;
-                    setState(() {});
-                  },
-                  child: Container(
-                    height: 31.36.h,
-                    width: 133.w,
-                    child: Center(
-                      child: Text("Cash on delivery",
-                          style: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: FontFamily.bold,
-                              color: isCash ? Colors.white : Colors.black)),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      isCash = true;
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: 40.h,
+                      child: Center(
+                        child: Text("Cash on delivery",
+                            style: TextStyle(
+                                fontSize: 14.sp,
+                                fontFamily: FontFamily.bold,
+                                height: 2.5.h,
+                                color: isCash ? Colors.white : Colors.black)),
+                      ),
+                      decoration: BoxDecoration(
+                          color:
+                              !isCash ? const Color(0xffEBEBEB) : Colors.black,
+                          borderRadius: BorderRadius.circular(6.r)),
                     ),
-                    decoration: BoxDecoration(
-                        color: !isCash ? const Color(0xffEBEBEB) : Colors.black,
-                        borderRadius: BorderRadius.circular(6.r)),
                   ),
                 ),
                 SizedBox(
                   width: 16.w,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    isCash = false;
-                    setState(() {});
-                  },
-                  child: Container(
-                    height: 31.36.h,
-                    width: 133.w,
-                    child: Center(
-                      child: Text("Credit/debit card",
-                          style: TextStyle(
-                              fontSize: 14.sp,
-                              fontFamily: FontFamily.bold,
-                              color: !isCash ? Colors.white : Colors.black)),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      isCash = false;
+                      setState(() {});
+                    },
+                    child: Container(
+                      height: 40.h,
+                      child: Center(
+                        child: Text("Credit/debit card",
+                            style: TextStyle(
+                                fontSize: 14.sp,
+                                height: 2.5.h,
+                                fontFamily: FontFamily.bold,
+                                color: !isCash ? Colors.white : Colors.black)),
+                      ),
+                      decoration: BoxDecoration(
+                          color:
+                              isCash ? const Color(0xffEBEBEB) : Colors.black,
+                          borderRadius: BorderRadius.circular(6.r)),
                     ),
-                    decoration: BoxDecoration(
-                        color: isCash ? const Color(0xffEBEBEB) : Colors.black,
-                        borderRadius: BorderRadius.circular(6.r)),
                   ),
                 ),
               ],
             ),
             SizedBox(
-              height: 44.h,
+              height: 35.h,
             ),
             Row(
               children: [
                 SvgPicture.asset(
-                  "assets/icons/credit_card.svg",
+                  "assets/icons/${isCash ? "cash" : "credit_card"}.svg",
                   width: 35.w,
                   height: 20.h,
                 ),
                 SizedBox(
                   width: 21.w,
                 ),
-                Text("Credit/debit card",
+                Text(isCash ? "Cash on delivery" : "Credit/debit card",
                     style: TextStyle(
                         fontSize: 20.sp, fontFamily: FontFamily.bold)),
               ],
             ),
-            AppInput(
-              label: "Card number",
-              hint: "oooo " * 4,
-              labelStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 17.sp,
-                  fontFamily: FontFamily.regular),
+            SizedBox(
+              height: 35.h,
             ),
-            Row(
-              children: [
-                Expanded(
-                  flex: 3,
-                  child: AppInput(
-                    label: "Expiry date",
-                    hint: "MM/YY",
-                    labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17.sp,
-                        fontFamily: FontFamily.regular),
-                  ),
-                ),
-                SizedBox(width: 16.w,),
-                Expanded(
-                  child: AppInput(
-                    label: "CVV",
-                    hint: "...",
-                    labelStyle: TextStyle(
-                        color: Colors.black,
-                        fontSize: 17.sp,
-                        fontFamily: FontFamily.regular),
-                  ),
-                )
-              ],
-            ),
-            AppInput(
-              label: "Cardholder name",
-              hint: "Enter full name",
-              labelStyle: TextStyle(
-                  color: Colors.black,
-                  fontSize: 17.sp,
-                  fontFamily: FontFamily.regular),
-            ),
-            SizedBox(height: 17.h,),
-            GestureDetector(
-              onTap: (){
-                isSaveSelected = !isSaveSelected;
-                setState(() {
-
-                });
-              },
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Container(
-                    height: 25.h,
-                    width: 22.h,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: const Color(0xffC9C9C9)),
-                        borderRadius: BorderRadius.circular(4.r)),
-                    child: Center(
-                        child: isSaveSelected
-                            ? Icon(
-                          Icons.check,
-                          color: Colors.black,
-                          size: 16.h,
-                        )
-                            : const SizedBox.shrink()),
-                  ),
-                  SizedBox(
-                    width: 5.w,
-                  ),
-                  Text("Save card",
-                      style: TextStyle(
-                          fontSize: 16.sp, fontFamily: FontFamily.regular)),
-                ],
-              ),
-            )
+            isCash
+                ? Text(
+                    "With this option you will pay full amount after we deliver your order to your address")
+                : const SizedBox.shrink(),
+            isCash
+                ? const SizedBox.shrink()
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppInput(
+                        label: "Card number",
+                        hint: "oooo " * 4,
+                        labelStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17.sp,
+                            fontFamily: FontFamily.regular),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            flex: 3,
+                            child: AppInput(
+                              label: "Expiry date",
+                              hint: "MM/YY",
+                              labelStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17.sp,
+                                  fontFamily: FontFamily.regular),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 16.w,
+                          ),
+                          Expanded(
+                            child: AppInput(
+                              label: "CVV",
+                              hint: "...",
+                              labelStyle: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17.sp,
+                                  fontFamily: FontFamily.regular),
+                            ),
+                          )
+                        ],
+                      ),
+                      AppInput(
+                        label: "Cardholder name",
+                        hint: "Enter full name",
+                        labelStyle: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17.sp,
+                            fontFamily: FontFamily.regular),
+                      ),
+                      SizedBox(
+                        height: 17.h,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          isSaveSelected = !isSaveSelected;
+                          setState(() {});
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Container(
+                              height: 25.h,
+                              width: 22.h,
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: const Color(0xffC9C9C9)),
+                                  borderRadius: BorderRadius.circular(4.r)),
+                              child: Center(
+                                  child: isSaveSelected
+                                      ? Icon(
+                                          Icons.check,
+                                          color: Colors.black,
+                                          size: 16.h,
+                                        )
+                                      : const SizedBox.shrink()),
+                            ),
+                            SizedBox(
+                              width: 5.w,
+                            ),
+                            Text("Save card",
+                                style: TextStyle(
+                                    fontSize: 16.sp,
+                                    fontFamily: FontFamily.regular)),
+                          ],
+                        ),
+                      )
+                    ],
+                  )
           ],
         ),
       ),
       bottomNavigationBar: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 32.w,vertical: 16.h),
+        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
         child: ElevatedButton(
             onPressed: () {
               navigateTo(page: const CheckOutScreen());
             },
             style: ElevatedButton.styleFrom(
                 primary: colorPrimary, fixedSize: Size(350.w, 50.h)),
-            child: const Text("Add card")),
+            child: Text(isCash ? "Continue" : "Add card")),
       ),
     );
   }

@@ -15,8 +15,12 @@ class CollagesScreen extends StatelessWidget {
       appBar: SecondAppBar(title: title,isFilter: withFilter,haveAction: withFilter),
       body: SizedBox(
         width: double.infinity,
-        child: ListView.builder(
+        child: ListView.separated(
             itemBuilder: (context, index) => ItemBrandCollage(index: index),
+            separatorBuilder: (context, index) =>  const Divider(
+              thickness: 6,
+              color: Color(0xffEEEEEE),
+            ),
             itemCount: fakeBrandCollagesDetails.length),
       ),
     );

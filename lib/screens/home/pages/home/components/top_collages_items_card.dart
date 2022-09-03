@@ -1,3 +1,4 @@
+import 'package:app_name/core/styles/styles.dart';
 import 'package:app_name/gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,9 +15,15 @@ class TopCollagesItemsCard extends StatelessWidget {
     return GestureDetector(
       onTap: onPress,
       child: Container(
-        color: Colors.transparent,
+        decoration: BoxDecoration(
+        boxShadow: shadowOfItem(),
+          borderRadius: BorderRadius.circular(12.r),
+          // color: Colors.red,
+
+        ),
+        margin: EdgeInsets.only(top: 16.h,),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(15.r),
+          borderRadius: BorderRadius.circular(12.r),
           child: SizedBox(
             height: 100.h,
             child: Row(
@@ -36,9 +43,9 @@ class TopCollagesItemsCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(title,style: TextStyle(fontSize: 18.sp,fontFamily: FontFamily.bold),),
+                      Text(title,style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.bold),),
                       SizedBox(height: 5.h,),
-                      Text("$numberOfItems Items",style: TextStyle(fontSize: 13.sp,fontFamily: FontFamily.regular),),
+                      Text("$numberOfItems Items",style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.regular),),
                     ],
                   ),
                 ),
