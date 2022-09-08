@@ -32,9 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
       length: icons.length,
       initialIndex: currentIndex,
       child: Scaffold(
-        body: TabBarView(
-          physics: const NeverScrollableScrollPhysics(),
-          children: List.generate(icons.length, (index) => pages[index]),
+        body: SafeArea(
+          child: TabBarView(
+            physics: const NeverScrollableScrollPhysics(),
+            children: List.generate(icons.length, (index) => pages[index]),
+          ),
         ),
         bottomNavigationBar: TabBar(
           indicatorColor: colorSecondary,

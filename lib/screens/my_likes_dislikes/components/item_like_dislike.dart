@@ -25,6 +25,7 @@ class _ItemLikeDisLikeState extends State<ItemLikeDisLike> {
         navigateTo(page: ProductDetailsScreen());
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             alignment: AlignmentDirectional.topEnd,
@@ -45,17 +46,20 @@ class _ItemLikeDisLikeState extends State<ItemLikeDisLike> {
           ),
           SizedBox(height: 10.h,),
           Text("This product full",
-              style: TextStyle(fontSize: 13.sp, fontFamily: FontFamily.bold)),
+              style: TextStyle(fontSize: 15.sp, fontFamily: FontFamily.bold)),
           SizedBox(height: 10.h,),
           Text(" name",
-              style: TextStyle(fontSize: 13.sp, fontFamily: FontFamily.bold)),
+              style: TextStyle(fontSize: 15.sp, fontFamily: FontFamily.bold)),
           SizedBox(height: 10.h,),
-          Text.rich(
-            TextSpan(children: [
-              TextSpan(text: "EGP",style: TextStyle(fontSize: 13.sp,fontFamily: FontFamily.bold)),
-              TextSpan(text: "29.00",style: TextStyle(fontSize: 17.sp,fontFamily: FontFamily.bold)),
-            ]),
-          ),
+          Row(
+            children: [
+              Text("EGP",style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.regular)),
+              SizedBox(width: 5.w,),
+              Text("29.00",style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.bold)),
+              SizedBox(width: 10.w,),
+              Text("35.00",style: TextStyle(fontSize: 13.sp,decoration: TextDecoration.lineThrough,decorationThickness: 20.h,fontFamily: FontFamily.bold)),
+            ],
+          )
         ],
       ),
     );

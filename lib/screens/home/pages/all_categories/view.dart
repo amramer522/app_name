@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/helper_methods.dart';
 import '../../../../gen/fonts.gen.dart';
 import '../../../editor/view.dart';
+import '../home/components/top_collages_items_card.dart';
 import 'components/item_category.dart';
 
 class AllCategoriesScreen extends StatelessWidget {
@@ -19,14 +20,14 @@ class AllCategoriesScreen extends StatelessWidget {
     return Scaffold(
       appBar: SecondAppBar(title: "Categories List", haveBack: !fromHome),
       body: ListView.builder(
-        padding: EdgeInsetsDirectional.only(start: 18.w,bottom: 18.h),
+        padding: EdgeInsetsDirectional.only(start: 20.w, bottom: 18.h,end: 20.w),
         itemCount: 4,
         itemBuilder: (_, index) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.only(top: 10.h,bottom: 20.h),
+                padding: EdgeInsetsDirectional.only(top: 20.h, bottom: 9.h),
                 child: Text('Category $index',
                     style: TextStyle(
                         fontSize: 20.sp, fontFamily: FontFamily.bold)),
@@ -36,23 +37,28 @@ class AllCategoriesScreen extends StatelessWidget {
                 padding: EdgeInsets.only(bottom: 20.h),
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 3,
-                separatorBuilder: (context, index) => SizedBox(height: 15.h,),
-                itemBuilder: (_, index) =>  ItemCategory(fromHome: fromHome),
+                separatorBuilder: (context, index) => SizedBox(
+                  height: 15.h,
+                ),
+                itemBuilder: (_, index) => ItemCategory(fromHome: fromHome),
               )
             ],
           );
         },
       ),
-      bottomNavigationBar: Padding(
-        padding:
-            EdgeInsetsDirectional.only(start: 35.w, end: 35.w, bottom: 20.h),
-        child: ElevatedButton(
-          onPressed: () {
-            navigateTo(page: EditorScreen());
-          },
-          child: const Text("Add to Editor"),
-        ),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: fromHome
+          ? const SizedBox.shrink()
+          : Padding(
+              padding: EdgeInsetsDirectional.only(bottom: 20.h),
+              child: ElevatedButton(
+                onPressed: () {
+                  navigateTo(page: EditorScreen());
+                },
+                style: ElevatedButton.styleFrom(fixedSize: Size(321.w, 45.h)),
+                child: const Text("Add to Editor"),
+              ),
+            ),
     );
   }
 }

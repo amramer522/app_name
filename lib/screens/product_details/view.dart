@@ -3,7 +3,6 @@ import 'package:app_name/screens/brand_profile/view.dart';
 import 'package:app_name/screens/editor/view.dart';
 import 'package:app_name/screens/home/pages/profile/view.dart';
 import 'package:app_name/screens/my_likes_dislikes/components/item_like_dislike.dart';
-import 'package:app_name/screens/offers/comonents/item_like_dislike.dart';
 import 'package:app_name/shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -214,7 +213,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(start: 16.w),
                 child: ListView.separated(
                   itemBuilder: (context, index) =>
-                      ItemOffer(index: index, width: 167.w),
+                      ItemLikeDisLike(index: index, width: 167.w),
                   separatorBuilder: (context, index) => SizedBox(
                     width: 20.w,
                   ),

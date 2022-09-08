@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../core/helper_methods.dart';
+import '../screens/filter/view.dart';
 import '/../gen/assets.gen.dart';
 import '/../gen/fonts.gen.dart';
 import 'fileter_dialog.dart';
@@ -10,6 +11,7 @@ import 'fileter_dialog.dart';
 class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final bool haveAction;
+  final Color? color;
   final bool haveBack;
   final bool isFilter;
   final Widget? backPage;
@@ -22,7 +24,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isFilter = true,
     this.actions,
     this.haveBack = true,
-    this.backPage,
+    this.backPage,  this.color = Colors.white,
   }) : super(key: key);
 
   @override
@@ -32,6 +34,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       automaticallyImplyLeading: false,
+      backgroundColor: color!,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -49,6 +52,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
                     padding: EdgeInsets.all(8.r),
                     child: SvgPicture.asset(
                       Assets.icons.backArrow,
+                      color: color==Colors.black?Colors.white:Colors.black,
                       height: 18.h,
                       width: 27.41.w,
                     ),
@@ -66,7 +70,9 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
         haveAction
             ? GestureDetector(
                 onTap: () {
-                  showFilterDialog(context);
+                  // showFilterDialog(context);
+                  navigateTo(page: FilterScreen());
+
                 },
                 child: Padding(
                   padding: EdgeInsetsDirectional.only(end: 16.w),

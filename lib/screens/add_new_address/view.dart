@@ -8,7 +8,9 @@ import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 
 class AddNewAddress extends StatefulWidget {
-  const AddNewAddress({Key? key}) : super(key: key);
+  final bool isEdit;
+
+  const AddNewAddress({Key? key, this.isEdit = false}) : super(key: key);
 
   @override
   State<AddNewAddress> createState() => _AddNewAddressState();
@@ -18,7 +20,8 @@ class _AddNewAddressState extends State<AddNewAddress> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const SecondAppBar(title: "Add an address"),
+      appBar: SecondAppBar(
+          title: widget.isEdit ? "Edit Address" : "Add an address"),
       body: SingleChildScrollView(
         padding: mainPagePadding,
         child: Column(
@@ -32,7 +35,9 @@ class _AddNewAddressState extends State<AddNewAddress> {
               style: TextStyle(fontSize: 28.sp, fontFamily: FontFamily.bold),
             ),
             Text(
-              "Add your delivery address",
+              widget.isEdit
+                  ? "Edit your delivery address"
+                  : "Add your delivery address",
               style: TextStyle(fontSize: 20.sp, fontFamily: FontFamily.regular),
             ),
             SizedBox(
@@ -49,7 +54,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
                 decoration: InputDecoration(
                     hintText: "Phone number",
                     contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
               ),
             ),
             SizedBox(
@@ -85,7 +90,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
                 decoration: InputDecoration(
                     hintText: "Street name",
                     contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
               ),
             ),
             SizedBox(
@@ -97,7 +102,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
                 decoration: InputDecoration(
                     hintText: "Building name/number",
                     contentPadding:
-                    EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
+                        EdgeInsets.symmetric(vertical: 10.h, horizontal: 10.w)),
               ),
             ),
             SizedBox(
@@ -111,21 +116,21 @@ class _AddNewAddressState extends State<AddNewAddress> {
                     child: TextFormField(
                       decoration: InputDecoration(
                           hintText: "Floor number",
-                          contentPadding:
-                          EdgeInsets.symmetric(
+                          contentPadding: EdgeInsets.symmetric(
                               vertical: 10.h, horizontal: 10.w)),
                     ),
                   ),
                 ),
-                SizedBox(width: 15.w,),
+                SizedBox(
+                  width: 15.w,
+                ),
                 Expanded(
                   child: SizedBox(
                     height: 45.h,
                     child: TextFormField(
                       decoration: InputDecoration(
                           hintText: "Flat number",
-                          contentPadding:
-                          EdgeInsets.symmetric(
+                          contentPadding: EdgeInsets.symmetric(
                               vertical: 10.h, horizontal: 10.w)),
                     ),
                   ),
@@ -143,7 +148,7 @@ class _AddNewAddressState extends State<AddNewAddress> {
             },
             style: ElevatedButton.styleFrom(
                 primary: colorPrimary, fixedSize: Size(350.w, 50.h)),
-            child: const Text("Save address")),
+            child: Text(widget.isEdit ? "Edit Address" : "Save address")),
       ),
     );
   }

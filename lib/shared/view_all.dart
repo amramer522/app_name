@@ -18,7 +18,7 @@ class ViewAll extends StatelessWidget {
         children: [
           Text(label,
               style:
-                  TextStyle(fontSize: 23.sp, fontFamily: FontFamily.regular)),
+                  TextStyle(fontSize: 20.sp, fontFamily: FontFamily.bold)),
           const Spacer(),
           GestureDetector(
             onTap: () {

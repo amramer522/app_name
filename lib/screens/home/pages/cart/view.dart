@@ -27,6 +27,7 @@ class CartPage extends StatelessWidget {
                   3,
                   (index) => Column(
                         children: [
+
                           ItemCart(index: index),
                           Divider(indent: 100.w, thickness: 1.5.h),
                           SizedBox(

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../core/helper_methods.dart';
+import '../../../core/styles/colors.dart';
 import '../../../gen/fonts.gen.dart';
+import '../../add_new_address/view.dart';
 
 class ItemMyAddress extends StatefulWidget {
   const ItemMyAddress({Key? key}) : super(key: key);
@@ -38,7 +41,7 @@ class _ItemMyAddressState extends State<ItemMyAddress> {
               style: TextStyle(
                   fontSize: 17.sp,
                   fontFamily: FontFamily.regular,
-                  color: const Color(0xff7B7B7B))),
+                  color: Colors.black)),
           SizedBox(
             height: 20.h,
             child: Row(
@@ -85,9 +88,17 @@ class _ItemMyAddressState extends State<ItemMyAddress> {
                 SizedBox(
                   width: 20.w,
                 ),
-                SvgPicture.asset(
-                  "assets/icons/edit_pin.svg",
-                  color: Colors.black,
+                GestureDetector(
+                  onTap: (){
+                    navigateTo(page: AddNewAddress(isEdit: true,));
+                  },
+                  child: Container(
+                    color: colorPrimary,
+                    child: SvgPicture.asset(
+                      "assets/icons/edit_pin.svg",
+                      color: Colors.black,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   width: 10.w,

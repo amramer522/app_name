@@ -1,10 +1,10 @@
+import 'package:app_name/screens/my_likes_dislikes/components/item_like_dislike.dart';
 import 'package:app_name/shared/second_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../my_likes_dislikes/components/item_selected_filter.dart';
-import 'comonents/item_like_dislike.dart';
 
 class OffersScreen extends StatefulWidget {
 
@@ -56,7 +56,7 @@ class _OffersScreenState extends State<OffersScreen> {
                   crossAxisCount: 2,
                   crossAxisSpacing: 20.h,
                   childAspectRatio: .7),
-              itemBuilder: (_, index) => ItemOffer(isBig: index.isOdd,index: index),
+              itemBuilder: (_, index) => ItemLikeDisLike(isBig: index.isOdd,index: index),
               itemCount: 20,
             ),
           ),

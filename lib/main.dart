@@ -37,7 +37,11 @@ void main() async {
   await CacheHelper.init();
   // await GlobalNotification().setUpFirebase();
   await EasyLocalization.ensureInitialized();
-
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarIconBrightness: Brightness.dark,
+      statusBarBrightness: Brightness.dark
+  ));
   initKiwi();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,

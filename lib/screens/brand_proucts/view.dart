@@ -1,9 +1,8 @@
+import 'package:app_name/screens/my_likes_dislikes/components/item_like_dislike.dart';
 import 'package:app_name/shared/second_app_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'components/item_like_dislike.dart';
 import 'components/item_selected_filter.dart';
 
 class BrandProductScreen extends StatefulWidget {
@@ -33,7 +32,7 @@ class _BrandProductScreenState extends State<BrandProductScreen> {
         children: [
           Container(
             height: 40.h,
-            padding: EdgeInsetsDirectional.only(start: 13.w, end: 13.w),
+            padding: EdgeInsetsDirectional.only(start: 20.w),
             child: ListView.separated(
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => ItemSelectedFilter(
@@ -53,12 +52,12 @@ class _BrandProductScreenState extends State<BrandProductScreen> {
           ),
           Expanded(
             child: GridView.builder(
-              padding: EdgeInsets.all(8.r),
+              padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 20.w),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   crossAxisSpacing: 20.h,
-                  childAspectRatio: .7),
-              itemBuilder: (_, index) => ItemBrandProduct(isBig: index.isOdd,index: index),
+                  childAspectRatio: 167.w/266.h),
+              itemBuilder: (_, index) => ItemLikeDisLike(isBig: index.isOdd,index: index),
               itemCount: 20,
             ),
           ),
