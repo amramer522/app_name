@@ -27,6 +27,7 @@ class BrandProfileScreen extends StatelessWidget {
              child: Column(
                children: [
                  ListTile(
+                   contentPadding: EdgeInsets.zero,
                    leading: CircleAvatar(
                      radius: 26.r,
                    ),
@@ -73,9 +74,8 @@ class BrandProfileScreen extends StatelessWidget {
              child: Column(
                crossAxisAlignment: CrossAxisAlignment.start,
                children: [
-                 SizedBox(height: 20.h,),
-                 Text("Explore",style: TextStyle(fontSize: 20.sp,fontFamily: FontFamily.regular)),
-                 SizedBox(height: 10.h,),
+                 SizedBox(height: 25.h,),
+                 Text("Explore",style: TextStyle(fontSize: 22.sp,fontFamily: FontFamily.bold)),
                  TopCollagesItemsCard(title: "Collages",numberOfItems: 10,onPress: (){
                    navigateTo(page: CollagesScreen(title: "Brand Collages", withFilter: true));
                  }),
@@ -89,7 +89,8 @@ class BrandProfileScreen extends StatelessWidget {
                  }),
                ],
              ),
-           )
+           ),
+            SizedBox(height: 20.h,)
           ],
         ),
       ),

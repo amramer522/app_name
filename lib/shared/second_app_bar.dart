@@ -6,7 +6,6 @@ import '../core/helper_methods.dart';
 import '../screens/filter/view.dart';
 import '/../gen/assets.gen.dart';
 import '/../gen/fonts.gen.dart';
-import 'fileter_dialog.dart';
 
 class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -24,7 +23,8 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.isFilter = true,
     this.actions,
     this.haveBack = true,
-    this.backPage,  this.color = Colors.white,
+    this.backPage,
+    this.color = Colors.white,
   }) : super(key: key);
 
   @override
@@ -32,67 +32,70 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      automaticallyImplyLeading: false,
-      backgroundColor: color!,
-      title: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          haveBack
+    return SafeArea(
+      child: AppBar(
+        automaticallyImplyLeading: false,
+        backgroundColor: color!,
+        centerTitle: true,
+        // title: Text(title),
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            haveBack
+                ? GestureDetector(
+                    onTap: () {
+                      if (backPage != null) {
+                        navigateTo(page: backPage);
+                      } else {
+                        Navigator.pop(context);
+                      }
+                    },
+                    child: Container(
+                      color: Colors.transparent,
+                      padding: EdgeInsets.all(8.r),
+                      child: SvgPicture.asset(
+                        Assets.icons.backArrow,
+                        color:
+                            color == Colors.black ? Colors.white : Colors.black,
+                        height: 18.h,
+                        width: 27.41.w,
+                      ),
+                    ),
+                  )
+                : const SizedBox.shrink(),
+            const Spacer(),
+            Text(title),
+            const Spacer(),
+          ],
+        ),
+        actions: [
+          haveAction
               ? GestureDetector(
                   onTap: () {
-                    if (backPage != null) {
-                      navigateTo(page: backPage);
-                    } else {
-                      Navigator.pop(context);
-                    }
+                    // showFilterDialog(context);
+                    navigateTo(page: FilterScreen());
                   },
-                  child: Container(
-                    color: Colors.transparent,
-                    padding: EdgeInsets.all(8.r),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.only(end: 16.w),
                     child: SvgPicture.asset(
-                      Assets.icons.backArrow,
-                      color: color==Colors.black?Colors.white:Colors.black,
-                      height: 18.h,
-                      width: 27.41.w,
+                      Assets.icons.filter,
+                      height: 21.h,
+                      width: 21.h,
                     ),
+                  ))
+              : const SizedBox.shrink(),
+          actions != null
+              ? Container(
+                  height: 35.h,
+                  color: Colors.transparent,
+                  child: Row(
+                    children: List.generate(
+                        actions!.length, (index) => actions![index]),
                   ),
                 )
-              : const SizedBox(),
-          const Spacer(),
-          Text(title),
-          const Spacer(
-            flex: 2,
-          ),
+              : const SizedBox.shrink()
         ],
       ),
-      actions: [
-        haveAction
-            ? GestureDetector(
-                onTap: () {
-                  // showFilterDialog(context);
-                  navigateTo(page: FilterScreen());
-
-                },
-                child: Padding(
-                  padding: EdgeInsetsDirectional.only(end: 16.w),
-                  child: SvgPicture.asset(
-                    Assets.icons.filter,
-                    height: 21.h,
-                    width: 21.h,
-                  ),
-                ))
-            : const SizedBox.shrink(),
-        actions != null
-            ? SizedBox(
-                height: 35.h,
-                child: Row(
-                  children: List.generate(
-                      actions!.length, (index) => actions![index]),
-                ),
-              )
-            : const SizedBox.shrink()
-      ],
     );
   }
 }

@@ -12,6 +12,7 @@ import '../../core/helper_methods.dart';
 import '../../core/styles/colors.dart';
 import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
+import '../../shared/added_to_cart_dialog.dart';
 import 'item_specifications.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -88,7 +89,9 @@ class ProductDetailsScreen extends StatelessWidget {
                   ),
                   Spacer(),
                   GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        showAddToCartSheet(context);
+                      },
                       child: Container(
                           height: 35.h,
                           width: 35.h,
@@ -210,7 +213,7 @@ class ProductDetailsScreen extends StatelessWidget {
             SizedBox(
               height: 266.h,
               child: Padding(
-                padding: EdgeInsetsDirectional.only(start: 16.w),
+                padding: EdgeInsetsDirectional.only(start: 16.w,bottom: 30.h),
                 child: ListView.separated(
                   itemBuilder: (context, index) =>
                       ItemLikeDisLike(index: index, width: 167.w),

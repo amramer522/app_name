@@ -3,6 +3,7 @@ import 'package:app_name/core/styles/colors.dart';
 import 'package:app_name/core/styles/styles.dart';
 import 'package:app_name/gen/assets.gen.dart';
 import 'package:app_name/screens/brand_profile/view.dart';
+import 'package:app_name/screens/collage_details/view.dart';
 import 'package:app_name/screens/editor/view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ import 'package:share_plus/share_plus.dart';
 
 import '../../fake_data/fake_data.dart';
 import '../../gen/fonts.gen.dart';
+import '../added_to_cart_dialog.dart';
 
 class ItemBrandCollage extends StatefulWidget {
   final int index;
@@ -34,43 +36,49 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ListTile(
-            leading: GestureDetector(
-              onTap: () {
-                navigateTo(page: BrandProfileScreen());
-              },
-              child: CircleAvatar(
+          GestureDetector(
+            onTap: (){
+              navigateTo(page: BrandProfileScreen());
+
+            },
+            child: ListTile(
+              leading: CircleAvatar(
                 backgroundImage: CachedNetworkImageProvider(
                   (fakeBrandCollagesDetails[widget.index]["provider"]
                       as Map)["image"],
                 ),
               ),
+              title: Text(
+                (fakeBrandCollagesDetails[widget.index]["provider"]
+                    as Map)["name"],
+                style: TextStyle(fontSize: 20.sp, fontFamily: FontFamily.bold),
+              ),
+              subtitle: Text(
+                  fakeBrandCollagesDetails[widget.index]["from_time"].toString(),
+                  style: TextStyle(fontSize: 18.sp, fontFamily: FontFamily.bold)),
+              trailing: widget.withEditCollage
+                  ? GestureDetector(
+                      onTap: () {},
+                      child: SvgPicture.asset(
+                        Assets.icons.download,
+                        height: 29.h,
+                        width: 29.h,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
             ),
-            title: Text(
-              (fakeBrandCollagesDetails[widget.index]["provider"]
-                  as Map)["name"],
-              style: TextStyle(fontSize: 20.sp, fontFamily: FontFamily.bold),
-            ),
-            subtitle: Text(
-                fakeBrandCollagesDetails[widget.index]["from_time"].toString(),
-                style: TextStyle(fontSize: 18.sp, fontFamily: FontFamily.bold)),
-            trailing: widget.withEditCollage
-                ? GestureDetector(
-                    onTap: () {},
-                    child: SvgPicture.asset(
-                      Assets.icons.download,
-                      height: 29.h,
-                      width: 29.h,
-                    ),
-                  )
-                : const SizedBox.shrink(),
           ),
-          CachedNetworkImage(
-            imageUrl:
-                fakeBrandCollagesDetails[widget.index]["image"].toString(),
-            height: 390.h,
-            width: double.infinity,
-            fit: BoxFit.fill,
+          GestureDetector(
+            onTap: (){
+              navigateTo(page: CollageDetailsScreen());
+            },
+            child: CachedNetworkImage(
+              imageUrl:
+                  fakeBrandCollagesDetails[widget.index]["image"].toString(),
+              height: 390.h,
+              width: double.infinity,
+              fit: BoxFit.fill,
+            ),
           ),
           Padding(
             padding: mainPagePadding,
@@ -91,7 +99,10 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
                   width: 10.w,
                 ),
                 GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      showAddToCartSheet(context);
+
+                    },
                     child: Container(
                         height: 40.h,
                         width: 40.h,

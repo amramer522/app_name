@@ -12,7 +12,7 @@ import '../generated/locale_keys.g.dart';
 Logger log = const Logger("");
 
 class ServerGate {
-  Dio dio = Dio(BaseOptions(baseUrl: "https://thimar.amr.aait-d.com/api/", headers: {
+  Dio dio = Dio(BaseOptions(baseUrl: "", headers: {
     "Authorization": "Bearer ${CacheHelper.getUserToken()}",
     "Accept": "application/json",
     "Accept-Language": CacheHelper.getLang(),
@@ -34,7 +34,7 @@ class ServerGate {
   }) async {
     if (body != null) {
       body.removeWhere(
-        (key, value) => body[key] == null || body[key] == "",
+            (key, value) => body[key] == null || body[key] == "",
       );
     }
     if (body != null) {

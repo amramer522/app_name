@@ -103,7 +103,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     controller.currentIndex++;
                     setState(() {});
                   } else {
-                    navigateTo(page: const HomeScreen(), leaveHistory: false);
+                    navigateTo(page:  HomeScreen(), leaveHistory: false);
                   }
                 },
                 child: Text(controller.currentIndex == 2

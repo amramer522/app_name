@@ -27,7 +27,6 @@ class CartPage extends StatelessWidget {
                   3,
                   (index) => Column(
                         children: [
-
                           ItemCart(index: index),
                           Divider(indent: 100.w, thickness: 1.5.h),
                           SizedBox(
@@ -121,15 +120,13 @@ class CartPage extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding:
-            EdgeInsetsDirectional.only(start: 35.w, end: 35.w, bottom: 20.h),
-        child: ElevatedButton(
-            onPressed: () {
-              navigateTo(page: const PaymentMethods());
-            },
-            child: const Text("Continue")),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: ElevatedButton(
+          style: ElevatedButton.styleFrom(fixedSize: Size(340.w, 55.h)),
+          onPressed: () {
+            navigateTo(page: const PaymentMethods());
+          },
+          child: const Text("Continue")),
     );
   }
 }

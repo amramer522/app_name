@@ -27,8 +27,9 @@ class _ItemBrandPhotoState extends State<ItemBrandPhoto> {
             imageUrl: fakeBrandPhotosDetails[widget.index]["image"].toString(),
             height: 390.h,
             width: double.infinity,
-            fit: BoxFit.fill,
+            // fit: BoxFit.fill,
           ),
+          SizedBox(height: 10.h,),
           Row(
             children: [
               IconButton(

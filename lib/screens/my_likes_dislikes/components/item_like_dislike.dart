@@ -27,28 +27,33 @@ class _ItemLikeDisLikeState extends State<ItemLikeDisLike> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            alignment: AlignmentDirectional.topEnd,
-            height: widget.isBig ? 170.h : 150.h,
-            width: widget.width??double.infinity,
-            decoration: BoxDecoration(
-                color:  Color(0xffC1C6C8*(widget.index+1)).withOpacity(.5), borderRadius: BorderRadius.circular(8.r)),
-            child: IconButton(
-              onPressed: () {
-                isLiked = !isLiked;
-                setState(() {});
-              },
-              icon: Icon(
-                isLiked ? Icons.favorite : Icons.favorite_border,
-                color: isLiked ? const Color(0xffF44336) : Colors.white,
+          Expanded(
+            child: Container(
+              alignment: AlignmentDirectional.topEnd,
+              // height: widget.isBig ? 170.h : 150.h,
+              width: widget.width??double.infinity,
+              decoration: BoxDecoration(
+                  color:  Color(0xffC1C6C8*(widget.index+1)).withOpacity(.5), borderRadius: BorderRadius.circular(8.r)),
+              child: IconButton(
+                onPressed: () {
+                  isLiked = !isLiked;
+                  setState(() {});
+                },
+                icon: Icon(
+                  isLiked ? Icons.favorite : Icons.favorite_border,
+                  color: isLiked ? const Color(0xffF44336) : Colors.white,
+                ),
               ),
             ),
           ),
           SizedBox(height: 10.h,),
           Text("This product full",
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: 15.sp, fontFamily: FontFamily.bold)),
           SizedBox(height: 10.h,),
-          Text(" name",
+          Text(" name", maxLines: 1,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(fontSize: 15.sp, fontFamily: FontFamily.bold)),
           SizedBox(height: 10.h,),
           Row(

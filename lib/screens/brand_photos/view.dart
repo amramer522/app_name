@@ -1,6 +1,7 @@
 import 'package:app_name/fake_data/fake_data.dart';
 import 'package:app_name/shared/items/item_brand_photo.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../shared/second_app_bar.dart';
 
@@ -10,7 +11,7 @@ class BrandPhotosScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const SecondAppBar(title: "Brand Photos",haveAction: true),
+      appBar: const SecondAppBar(title: "Brand Photos",haveAction: false),
       body: SizedBox(
         width: double.infinity,
         child: ListView.builder(

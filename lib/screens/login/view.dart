@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                 Center(
                     child: ElevatedButton(
                         onPressed: () {
-                          navigateTo(page: const HomeScreen());
+                          navigateTo(page:  HomeScreen());
                         },
                         child: const Text("NEXT"))),
                 SizedBox(

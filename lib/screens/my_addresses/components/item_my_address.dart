@@ -8,7 +8,9 @@ import '../../../gen/fonts.gen.dart';
 import '../../add_new_address/view.dart';
 
 class ItemMyAddress extends StatefulWidget {
-  const ItemMyAddress({Key? key}) : super(key: key);
+  final bool withDelete;
+
+  const ItemMyAddress({Key? key, this.withDelete = true}) : super(key: key);
 
   @override
   State<ItemMyAddress> createState() => _ItemMyAddressState();
@@ -22,7 +24,10 @@ class _ItemMyAddressState extends State<ItemMyAddress> {
     return Container(
       height: 148.h,
       padding: EdgeInsets.all(16.r),
-      margin: EdgeInsetsDirectional.only(start: 20.w, top: 20.h, end: 20.w),
+      margin: EdgeInsetsDirectional.only(
+          start: widget.withDelete ? 20.w : 0,
+          top: 20.h,
+          end: widget.withDelete ? 20.w : 0),
       width: double.infinity,
       decoration: BoxDecoration(
         boxShadow: [
@@ -43,7 +48,7 @@ class _ItemMyAddressState extends State<ItemMyAddress> {
                   fontFamily: FontFamily.regular,
                   color: Colors.black)),
           SizedBox(
-            height: 20.h,
+            height: 35.h,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -81,19 +86,38 @@ class _ItemMyAddressState extends State<ItemMyAddress> {
                   ),
                 ),
                 const Spacer(),
-                SvgPicture.asset(
-                  "assets/icons/delete.svg",
-                  color: Colors.red,
-                ),
+                widget.withDelete
+                    ? GestureDetector(
+                  onTap: (){
+
+                  },
+                      child: Container(
+                        color: Colors.transparent,
+                        height: 30.h,
+                        padding: EdgeInsets.all(6.r),
+                        width: 30.h,
+                        child: SvgPicture.asset(
+                            "assets/icons/delete.svg",
+                            color: Colors.red,
+                          ),
+                      ),
+                    )
+                    : SizedBox.shrink(),
                 SizedBox(
-                  width: 20.w,
+                  width: 5.w,
                 ),
                 GestureDetector(
-                  onTap: (){
-                    navigateTo(page: AddNewAddress(isEdit: true,));
+                  onTap: () {
+                    navigateTo(
+                        page: AddNewAddress(
+                      isEdit: true,
+                    ));
                   },
                   child: Container(
-                    color: colorPrimary,
+                    color: Colors.transparent,
+                    padding: EdgeInsets.all(8.r),
+                    height: 30.h,
+                    width: 30.h,
                     child: SvgPicture.asset(
                       "assets/icons/edit_pin.svg",
                       color: Colors.black,

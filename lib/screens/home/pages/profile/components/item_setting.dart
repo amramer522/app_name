@@ -49,7 +49,7 @@ class ItemSetting extends StatelessWidget {
             ),
             Text(title,
                 style:
-                    TextStyle(fontSize: 16.sp, fontFamily: FontFamily.regular)),
+                    TextStyle(fontSize: 20.sp, fontFamily: FontFamily.bold)),
             const Spacer(),
             const Icon(
               Icons.arrow_forward_ios,

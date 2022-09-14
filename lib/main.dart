@@ -103,7 +103,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: ThemeMode.light,
-      home:  SplashScreen(),
+      home:  HomeScreen(),
     );
   }
 }

@@ -11,6 +11,7 @@ import '../../../../core/styles/styles.dart';
 import '../../../../gen/fonts.gen.dart';
 import '../../../../shared/icon_notifications.dart';
 import '../../../../shared/second_app_bar.dart';
+import '../../../brand_proucts/view.dart';
 import '../../../collages/view.dart';
 import '../../../edit_profile/view.dart';
 import '../../../my_addresses/view.dart';
@@ -25,9 +26,11 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: SecondAppBar(title: "My Profile", haveBack: false, actions: [
+      appBar: SecondAppBar(title: "My Profile", haveBack: false,
+          actions: [
         ItemNotifications(),
-      ]),
+      ]
+      ),
       body: SingleChildScrollView(
         padding: EdgeInsets.only(bottom: 30.h),
         child: Column(
@@ -95,15 +98,19 @@ class ProfilePage extends StatelessWidget {
             const ItemProfile(
                 title: "My Likes",
                 numberOfItems: 5,
-                page: MyLikesAndDisLikesScreen(
+                page: BrandProductScreen(
                   title: "My Likes",
                 )),
             const ItemProfile(
                 title: "My Dislikes",
                 numberOfItems: 100,
-                page: MyLikesAndDisLikesScreen(
+                page: BrandProductScreen(
                   title: "My Dislikes",
-                )),
+                ),
+                // page: MyLikesAndDisLikesScreen(
+                //   title: "My Dislikes",
+                // )
+            ),
             SizedBox(
               height: 10.h,
             ),
@@ -118,7 +125,7 @@ class ProfilePage extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Text("Settings",
                   style:
-                      TextStyle(fontSize: 21.sp, fontFamily: FontFamily.bold)),
+                      TextStyle(fontSize: 22.sp, fontFamily: FontFamily.bold)),
             ),
             const ItemSetting(
               title: "My orders",

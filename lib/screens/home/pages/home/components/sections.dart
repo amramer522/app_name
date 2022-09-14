@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../shared/items/item_section.dart';
+import '../../../../brand_proucts/view.dart';
 import '../../../../collages/view.dart';
 import '../../../../editor/view.dart';
 
 class SectionsList extends StatelessWidget {
-  const SectionsList({Key? key}) : super(key: key);
+   SectionsList({Key? key}) : super(key: key);
 
   final List<String> images = const ["editor", "collages", "offers"];
   final List<String> titles = const ["Editor", "Collages", "Offers"];
-  final List<Widget> pages = const [EditorScreen(),CollagesScreen(title: 'Collages',withFilter: false), OffersScreen()];
+  final List<Widget> pages = const [EditorScreen(),CollagesScreen(title: 'Collages',withFilter: false), BrandProductScreen(title: "Offers",)];
 
   @override
   Widget build(BuildContext context) {

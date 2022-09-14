@@ -9,7 +9,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../core/styles/colors.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  int? currentIndex;
+
+  HomeScreen({Key? key, this.currentIndex = 0}) : super(key: key);
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -17,20 +19,20 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final List<String> icons = const ["home", "categories", "cart", "profile"];
-  final List<Widget> pages = const [
+  final List<Widget> pages =  [
     HomePage(),
     AllCategoriesScreen(fromHome: true),
     CartPage(),
     ProfilePage()
   ];
 
-  int currentIndex = 0;
+  // int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: icons.length,
-      initialIndex: currentIndex,
+      initialIndex: widget.currentIndex!,
       child: Scaffold(
         body: SafeArea(
           child: TabBarView(
@@ -41,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
         bottomNavigationBar: TabBar(
           indicatorColor: colorSecondary,
           onTap: (int index) {
-            currentIndex = index;
+            widget.currentIndex = index;
             setState(() {});
           },
           tabs: List.generate(
@@ -50,7 +52,7 @@ class _HomeScreenState extends State<HomeScreen> {
               height: 60.h,
               icon: SvgPicture.asset(
                 "assets/icons/${icons[index]}.svg",
-                color: currentIndex == index ? colorSecondary : null,
+                color: widget.currentIndex == index ? colorSecondary : null,
               ),
             ),
           ),

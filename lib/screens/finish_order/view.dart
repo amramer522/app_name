@@ -44,7 +44,7 @@ class _FinishOrderScreenState extends State<FinishOrderScreen> {
             ),
             Text("Congrats!",
                 style: TextStyle(
-                    fontSize: 20.sp,
+                    fontSize: 40.sp,
                     height: 1.1.h,
                     decoration: TextDecoration.none,
                     fontFamily: FontFamily.extraBold,

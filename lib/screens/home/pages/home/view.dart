@@ -1,10 +1,14 @@
+import 'package:app_name/core/helper_methods.dart';
+import 'package:app_name/screens/offers/view.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/styles.dart';
 import '../../../../shared/main_app_bar.dart';
 import '../../../../shared/search_bar.dart';
 import '../../../../shared/view_all.dart';
+import '../../../brand_proucts/view.dart';
 import '../../../collages/view.dart';
+import 'components/best_selling_list.dart';
 import 'components/header.dart';
 import 'components/sections.dart';
 import 'components/top_collages_items_card.dart';
@@ -28,9 +32,11 @@ class HomePage extends StatelessWidget {
               SearchBar(),
               ViewAll(label: "Top Collages",page: CollagesScreen(title: "Top Collages",withFilter: false,)),
               HomeTopCollagesList(),
-              TopCollagesItemsCard(title: "Top Collages",numberOfItems: 10),
-              ViewAll(label: "Best selling",page: CollagesScreen(title: "Best Selling",withFilter: false,)),
-              HomeTopCollagesList(),
+              TopCollagesItemsCard(title: "Special Offers",onPress: () {
+                navigateTo(page: BrandProductScreen(title: 'Offers',));
+              },numberOfItems: 10),
+              ViewAll(label: "Best selling",page: BrandProductScreen(title: "Best Selling",)),
+              HomeBestSellingList(),
             ],
           ),
         ),

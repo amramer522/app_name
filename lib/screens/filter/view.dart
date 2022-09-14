@@ -18,13 +18,14 @@ class _FilterScreenState extends State<FilterScreen> {
   int selectedColor = 1;
   RangeValues _currentRangeValues = const RangeValues(40, 80);
 
+  int selectedFilterPrice=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       // appBar: SecondAppBar(),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(horizontal: 16.h),
+          padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 16.h),
           child: Column(
             children: [
               Row(
@@ -35,16 +36,21 @@ class _FilterScreenState extends State<FilterScreen> {
                           fontFamily: FontFamily.bold,
                           color: colorPrimary)),
                   const Spacer(),
-                  IconButton(
-                      onPressed: () {
+                  GestureDetector(
+                      onTap: () {
                         Navigator.pop(context);
                       },
-                      icon: const Icon(
-                        Icons.close,
+                      child: Container(
+                        height: 35.h,
+                        width: 35.h,
+                        color: Colors.transparent,
+                        child: const Icon(
+                          Icons.close,
+                        ),
                       )),
-                  SizedBox(
-                    width: 20.w,
-                  ),
+                  // SizedBox(
+                  //   width: 20.w,
+                  // ),
                 ],
               ),
               Column(
@@ -55,85 +61,48 @@ class _FilterScreenState extends State<FilterScreen> {
                   ),
                   Text("Style",
                       style: TextStyle(
-                          fontSize: 15.sp, fontFamily: FontFamily.bold)),
-                  Wrap(
-                    direction: Axis.horizontal,
-                    children: List.generate(
-                        5,
-                        (index) => GestureDetector(
-                              onTap: () {
-                                selectedStyle = index;
-                                setState(() {});
-                              },
-                              child: Container(
-                                height: 44.h,
-                                width: 100.w,
-                                margin: EdgeInsetsDirectional.only(
-                                    end: 10.w, top: 10.h),
-                                decoration: BoxDecoration(
-                                    color: index == selectedStyle
-                                        ? colorPrimary
-                                        : Colors.transparent,
-                                    border: index != selectedStyle
-                                        ? Border.all()
-                                        : null,
-                                    borderRadius: BorderRadius.circular(6.r)),
-                                child: Center(
-                                    child: Text(
-                                  "Hello",
-                                  style: TextStyle(
+                          fontSize: 20.sp, fontFamily: FontFamily.bold)),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                          5,
+                          (index) => GestureDetector(
+                                onTap: () {
+                                  selectedStyle = index;
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  height: 44.h,
+                                  width: 100.w,
+                                  margin: EdgeInsetsDirectional.only(
+                                      end: 10.w, top: 10.h),
+                                  decoration: BoxDecoration(
                                       color: index == selectedStyle
-                                          ? Colors.white
-                                          : null),
-                                )),
-                              ),
-                            )),
-                  ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
-                  Text("Types",
-                      style: TextStyle(
-                          fontSize: 15.sp, fontFamily: FontFamily.bold)),
-                  Wrap(
-                    direction: Axis.horizontal,
-                    children: List.generate(
-                        5,
-                        (index) => GestureDetector(
-                              onTap: () {
-                                selectedType = index;
-                                setState(() {});
-                              },
-                              child: Container(
-                                height: 44.h,
-                                width: 100.w,
-                                margin: EdgeInsetsDirectional.only(
-                                    end: 10.w, top: 10.h),
-                                decoration: BoxDecoration(
-                                    color: index == selectedType
-                                        ? colorPrimary
-                                        : Colors.transparent,
-                                    border: index != selectedType
-                                        ? Border.all()
-                                        : null,
-                                    borderRadius: BorderRadius.circular(6.r)),
-                                child: Center(
-                                    child: Text(
-                                  "Hello",
-                                  style: TextStyle(
-                                      color: index == selectedType
-                                          ? Colors.white
-                                          : null),
-                                )),
-                              ),
-                            )),
+                                          ? colorPrimary
+                                          : Colors.transparent,
+                                      border: index != selectedStyle
+                                          ? Border.all()
+                                          : null,
+                                      borderRadius: BorderRadius.circular(6.r)),
+                                  child: Center(
+                                      child: Text(
+                                    "Hello",
+                                    style: TextStyle(
+                                        color: index == selectedStyle
+                                            ? Colors.white
+                                            : null),
+                                  )),
+                                ),
+                              )),
+                    ),
                   ),
                   SizedBox(
                     height: 30.h,
                   ),
                   Text("Colors",
                       style: TextStyle(
-                          fontSize: 15.sp, fontFamily: FontFamily.bold)),
+                          fontSize: 20.sp, fontFamily: FontFamily.bold)),
                   Padding(
                     padding: EdgeInsets.only(top: 10.h),
                     child: SizedBox(
@@ -150,8 +119,8 @@ class _FilterScreenState extends State<FilterScreen> {
                                       shape: BoxShape.circle,
                                       border: selectedColor == index
                                           ? Border.all(
-                                              color:
-                                                  Color(0xffD99B61 * (index + 1)),
+                                              color: Color(
+                                                  0xffD99B61 * (index + 1)),
                                               width: 4.h)
                                           : null),
                                   child: CircleAvatar(
@@ -167,14 +136,113 @@ class _FilterScreenState extends State<FilterScreen> {
                           itemCount: 20),
                     ),
                   ),
+                  SizedBox(height: 20.h,),
+                  Theme(
+                    data: Theme.of(context)
+                        .copyWith(dividerColor: Colors.transparent),
+                    child: ExpansionTile(
+                      subtitle: Text(selectedFilterPrice==0?"Highest Price":"Lowest Price"),
+                        tilePadding: EdgeInsets.zero,
+                        children: [
+                          GestureDetector(
+                            onTap: (){
+                              selectedFilterPrice =0;
+                              setState(() {
+
+                              });
+                            },
+                            child: Container(
+                              color: Colors.transparent,
+                              child: Row(
+                                children: [
+                                  Radio(
+                                    value: 0,
+                                    groupValue: selectedFilterPrice,
+                                    onChanged: (value) {
+
+                                    },
+                                  ),
+                                  Text("Highest Price"),
+                                ],
+                              ),
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: (){
+                              selectedFilterPrice =1;
+                              setState(() {
+
+                              });
+                            },
+                            child: Container(
+                              color: Colors.transparent,
+                              child: Row(
+                                children: [
+                                  Radio(
+                                    value: 1,
+                                    groupValue: selectedFilterPrice,
+                                    onChanged: (value) {
+                                    },
+                                  ),
+                                  Text("Lowest Price"),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                        title: Text("Sort By",
+                            style: TextStyle(
+                                fontSize: 18.sp, fontFamily: FontFamily.bold))),
+                  ),
+                  SizedBox(
+                    height: 30.h,
+                  ),
+                  Text("Types",
+                      style: TextStyle(
+                          fontSize: 20.sp, fontFamily: FontFamily.bold)),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: List.generate(
+                          5,
+                          (index) => GestureDetector(
+                                onTap: () {
+                                  selectedType = index;
+                                  setState(() {});
+                                },
+                                child: Container(
+                                  height: 44.h,
+                                  width: 100.w,
+                                  margin: EdgeInsetsDirectional.only(
+                                      end: 10.w, top: 10.h),
+                                  decoration: BoxDecoration(
+                                      color: index == selectedType
+                                          ? colorPrimary
+                                          : Colors.transparent,
+                                      border: index != selectedType
+                                          ? Border.all()
+                                          : null,
+                                      borderRadius: BorderRadius.circular(6.r)),
+                                  child: Center(
+                                      child: Text(
+                                    "Hello",
+                                    style: TextStyle(
+                                        color: index == selectedType
+                                            ? Colors.white
+                                            : null),
+                                  )),
+                                ),
+                              )),
+                    ),
+                  ),
                   SizedBox(
                     height: 30.h,
                   ),
                   Text("Price",
                       style: TextStyle(
-                          fontSize: 15.sp, fontFamily: FontFamily.bold)),
+                          fontSize: 20.sp, fontFamily: FontFamily.bold)),
                   SizedBox(
-                    height: 30.h,
+                    height: 5.h,
                   ),
                   RangeSlider(
                     values: _currentRangeValues,
@@ -193,11 +261,13 @@ class _FilterScreenState extends State<FilterScreen> {
                       ),
                       Text("\$" + _currentRangeValues.start.round().toString(),
                           style: TextStyle(
-                              fontSize: 15.sp, fontFamily: FontFamily.extraBold)),
+                              fontSize: 15.sp,
+                              fontFamily: FontFamily.extraBold)),
                       const Spacer(),
                       Text("\$" + _currentRangeValues.end.round().toString(),
                           style: TextStyle(
-                              fontSize: 15.sp, fontFamily: FontFamily.extraBold)),
+                              fontSize: 15.sp,
+                              fontFamily: FontFamily.extraBold)),
                       SizedBox(
                         width: 30.w,
                       ),

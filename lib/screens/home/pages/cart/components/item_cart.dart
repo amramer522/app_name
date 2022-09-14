@@ -44,11 +44,19 @@ class _ItemCartState extends State<ItemCart> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Text("This product full name",
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
                       style: TextStyle(
-                          fontSize: 13.sp, fontFamily: FontFamily.bold)),
-                  Text("\$29.00",
-                      style: TextStyle(
-                          fontSize: 16.sp, fontFamily: FontFamily.bold)),
+                          fontSize: 15.sp, fontFamily: FontFamily.bold)),
+                  Row(
+                    children: [
+                      Text("EGP",style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.regular)),
+                      SizedBox(width: 5.w,),
+                      Text("29.00",style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.bold)),
+                      SizedBox(width: 10.w,),
+                      Text("35.00",style: TextStyle(fontSize: 13.sp,decoration: TextDecoration.lineThrough,decorationThickness: 20.h,fontFamily: FontFamily.bold)),
+                    ],
+                  )
                 ],
               ),
             ),

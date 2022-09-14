@@ -211,16 +211,14 @@ class _PaymentMethodsState extends State<PaymentMethods> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
-        child: ElevatedButton(
-            onPressed: () {
-              navigateTo(page: const CheckOutScreen());
-            },
-            style: ElevatedButton.styleFrom(
-                primary: colorPrimary, fixedSize: Size(350.w, 50.h)),
-            child: Text(isCash ? "Continue" : "Add card")),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: ElevatedButton(
+          onPressed: () {
+            navigateTo(page: const CheckOutScreen());
+          },
+          style: ElevatedButton.styleFrom(
+              primary: colorPrimary, fixedSize: Size(350.w, 50.h)),
+          child: Text(isCash ? "Continue" : "Add card")),
     );
   }
 }

@@ -44,7 +44,7 @@ class CheckOutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            const ItemMyAddress(),
+            ItemMyAddress(withDelete: false),
             Padding(
               padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
               child: Text(
@@ -170,17 +170,15 @@ class CheckOutScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
-        child: ElevatedButton(
-            onPressed: () {
-              navigateTo(page: FinishOrderScreen());
-              // finishOrderDialog(context);
-            },
-            style: ElevatedButton.styleFrom(
-                primary: colorPrimary, fixedSize: Size(350.w, 50.h)),
-            child: const Text("Confirm order")),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: ElevatedButton(
+          onPressed: () {
+            navigateTo(page: FinishOrderScreen());
+            // finishOrderDialog(context);
+          },
+          style: ElevatedButton.styleFrom(
+              primary: colorPrimary, fixedSize: Size(350.w, 50.h)),
+          child: const Text("Confirm order")),
     );
   }
 }

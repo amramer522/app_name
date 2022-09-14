@@ -1,4 +1,6 @@
 import 'package:app_name/screens/filter/view.dart';
+import 'package:app_name/screens/product_details/view.dart';
+import 'package:app_name/shared/added_to_cart_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,7 +13,6 @@ import '../../core/styles/colors.dart';
 import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
 import '../../screens/editor/view.dart';
-import '../fileter_dialog.dart';
 import '../toast.dart';
 
 class CategoriesItemsSwiper extends StatefulWidget {
@@ -78,7 +79,6 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
     _matchEngine = MatchEngine(swipeItems: _swipeItems);
   }
 
-  int currentImage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -88,6 +88,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
         matchEngine: _matchEngine!,
         itemBuilder: (BuildContext context, int index) {
           return Container(
+            margin: EdgeInsetsDirectional.only(top: 16.h),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.r),
               color: Colors.white,
@@ -95,14 +96,6 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.black,
-                    )),
                 Expanded(
                   child: Container(
                     padding: EdgeInsets.symmetric(vertical: 11.h),
@@ -114,7 +107,6 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                         Padding(
                           padding: EdgeInsets.all(3.r),
                           child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               SizedBox(
                                 width: 16.w,
@@ -124,10 +116,18 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                   navigateTo(page: FilterScreen());
                                   // showFilterDialog(context);
                                 },
-                                child: SvgPicture.asset(
-                                  Assets.icons.filter,
-                                  height: 20.h,
-                                  width: 20.h,
+                                child: Container(
+                                  height: 45.h,
+                                  width: 45.h,
+                                  padding: EdgeInsets.all(12.r),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(7.r),
+                                    color: Color(0xff090808)
+                                  ),
+                                  child: SvgPicture.asset(
+                                    Assets.icons.filter,
+                                    color: Color(0xffF5F7F9),
+                                  ),
                                 ),
                               ),
                               SizedBox(
@@ -137,7 +137,18 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                   style: TextStyle(
                                       fontSize: 20.sp,
                                       fontFamily: FontFamily.regular,
-                                      color: colorPrimary))
+                                      color: colorPrimary)),
+                              Spacer(),
+                              SvgPicture.asset("assets/icons/reload.svg"),
+                              SizedBox(width: 15.w,),
+                              IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: const Icon(
+                                    Icons.close,
+                                    color: Colors.black,
+                                  )),
                             ],
                           ),
                         ),
@@ -149,92 +160,61 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
                                 Expanded(
-                                  child: CachedNetworkImage(
-                                    imageUrl:
-                                    "https://www.cips.org/supply-management-jobs/getasset/63f90cc8-0778-4023-80b9-85246ce586b0/",
-                                    height: 350.h,
-                                    fit: BoxFit.contain,
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      navigateTo(page: ProductDetailsScreen());
+                                    },
+                                    child: CachedNetworkImage(
+                                      imageUrl:
+                                      "https://www.cips.org/supply-management-jobs/getasset/63f90cc8-0778-4023-80b9-85246ce586b0/",
+                                      height: 350.h,
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
+                                Divider(),
                                 SizedBox(height: 16.h,),
+                                Text(
+                                  "Product Name",
+                                  style: TextStyle(
+                                      fontSize: 22.sp,
+                                      fontFamily: FontFamily.bold),
+                                ),
                                 Row(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "Product Name",
-                                          style: TextStyle(
-                                              fontSize: 22.sp,
-                                              fontFamily: FontFamily.bold),
-                                        ),
-                                        Row(
-                                          crossAxisAlignment: CrossAxisAlignment.center,
-                                          children: [
-                                            Text("LE 0.00",
-                                                style: TextStyle(
-                                                  color: const Color(0xffC9C9C9),
-                                                  fontSize: 17.sp,
-                                                  fontFamily: FontFamily.regular,
-                                                  decoration: TextDecoration.lineThrough,
-                                                )),
-                                            SizedBox(
-                                              width: 10.w,
-                                            ),
-                                            Text("LE 0.00",
-                                                style: TextStyle(
-                                                    fontSize: 20.sp,
-                                                    fontFamily: FontFamily.bold)),
-                                          ],
-                                        ),
-                                      ],
+                                    Text("LE 0.00",
+                                        style: TextStyle(
+                                          color: const Color(0xffC9C9C9),
+                                          fontSize: 17.sp,
+                                          fontFamily: FontFamily.regular,
+                                          decoration: TextDecoration.lineThrough,
+                                        )),
+                                    SizedBox(
+                                      width: 10.w,
                                     ),
-                                    const Spacer(),
-                                    GestureDetector(
-                                        onTap: () {},
-                                        child: Container(
-                                            height: 40.h,
-                                            width: 40.h,
-                                            padding: EdgeInsets.all(8.r),
-                                            decoration: BoxDecoration(
-                                                borderRadius:
-                                                BorderRadius.circular(7.r),
-                                                color: colorSecondary),
-                                            child: SvgPicture.asset(
-                                              Assets.icons.addToCart,
-                                            )))
+                                    Text("LE 0.00",
+                                        style: TextStyle(
+                                            fontSize: 20.sp,
+                                            fontFamily: FontFamily.bold)),
                                   ],
                                 ),
-
+                                SizedBox(height: 16.h,),
+                                Text(
+                                  "Dimension",
+                                  style: TextStyle(
+                                      fontSize: 22.sp,
+                                      fontFamily: FontFamily.bold),
+                                ),
+                                Text(
+                                  "23 cm * 30 cm",
+                                  style: TextStyle(
+                                      fontSize: 15.sp,
+                                      fontFamily: FontFamily.regular,color: Color(0xff7B7B7B)),
+                                ),
                                 SizedBox(
                                   height: 10.h,
                                 ),
-
-                                // Text("Size",
-                                //     style: TextStyle(
-                                //         fontSize: 17.sp,
-                                //         fontFamily: FontFamily.bold)),
-                                // SizedBox(
-                                //   height: 10.h,
-                                // ),
-                                // SizedBox(
-                                //   height: 34.h,
-                                //   child: ListView.separated(
-                                //     itemBuilder: (context, index) => Container(
-                                //       width: 66.w,
-                                //       decoration: BoxDecoration(
-                                //           color: const Color(0xffE6E6E6),
-                                //           borderRadius:
-                                //           BorderRadius.circular(3.r)),
-                                //       child: const Center(child: Text("UK 10")),
-                                //     ),
-                                //     separatorBuilder: (context, index) =>
-                                //         SizedBox(
-                                //           width: 10.w,
-                                //         ),
-                                //     itemCount: 3,
-                                //     scrollDirection: Axis.horizontal,
-                                //   ),
-                                // ),
                                 SizedBox(
                                   height: 30.h,
                                 ),
@@ -247,26 +227,26 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                 SizedBox(
                                   height: 16.h,
                                 ),
-                                ElevatedButton.icon(
-                                  onPressed: () {},
-                                  style: ElevatedButton.styleFrom(
-                                      primary: Colors.grey.withOpacity(.08),
+                                OutlinedButton.icon(
+                                  onPressed: () {
+                                    showAddToCartSheet(context);
+                                  },
+                                  style: OutlinedButton.styleFrom(
                                       elevation: 0,
+                                      side: BorderSide(color: colorPrimary),
+                                      fixedSize: Size(340.w, 55.h),
                                       shadowColor: Colors.transparent),
-                                  label: Text("Previous",
+                                  label: Text("Add To Cart",
                                       style: TextStyle(
                                           color: Colors.black,
-                                          fontSize: 16.sp,
-                                          fontFamily: FontFamily.regular)),
+                                          fontSize: 20.sp,
+                                          fontFamily: FontFamily.bold)),
                                   icon: Padding(
                                     padding: EdgeInsets.all(2.r),
                                     child:
-                                        SvgPicture.asset("assets/icons/reload.svg"),
+                                        SvgPicture.asset("assets/icons/add_to_cart.svg",color: Color(0xff090808),),
                                   ),
                                 ),
-                                SizedBox(
-                                  height: 100.h,
-                                )
                               ],
                             ),
                           ),

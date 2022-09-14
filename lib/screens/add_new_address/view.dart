@@ -140,16 +140,13 @@ class _AddNewAddressState extends State<AddNewAddress> {
           ],
         ),
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 16.h),
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            style: ElevatedButton.styleFrom(
-                primary: colorPrimary, fixedSize: Size(350.w, 50.h)),
-            child: Text(widget.isEdit ? "Edit Address" : "Save address")),
-      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: ElevatedButton(
+          style: ElevatedButton.styleFrom(fixedSize: Size(340.w, 55.h)),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: Text(widget.isEdit ? "Edit Address" : "Save address")),
     );
   }
 }

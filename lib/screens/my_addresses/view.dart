@@ -32,22 +32,20 @@ class MyAddressesScreen extends StatelessWidget {
                 shrinkWrap: true,
                 padding: EdgeInsets.only(bottom: 20.h),
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: index==0?1:2,
+                itemCount: index == 0 ? 1 : 2,
                 itemBuilder: (_, index) => const ItemMyAddress(),
               )
             ],
           );
         },
       ),
-      bottomNavigationBar: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 32.w, vertical: 10.h),
-        child: ElevatedButton(
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: ElevatedButton(
+          style: ElevatedButton.styleFrom(fixedSize: Size(340.w, 55.h)),
           onPressed: () {
             navigateTo(page: const AddNewAddress());
           },
-          child: const Text("Add New Address"),
-        ),
-      ),
+          child: const Text("Add New Address")),
     );
   }
 }
