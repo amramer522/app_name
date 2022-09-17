@@ -1,5 +1,5 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/home/view.dart';
+import '/../core/helper_methods.dart';
+import '/../screens/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,7 +11,7 @@ showAddToCartSheet(context) {
     shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(16.r), topLeft: Radius.circular(16.r))),
-    builder: (context) => AddedToCartDialog(),
+    builder: (context) => const AddedToCartDialog(),
   );
 }
 
@@ -31,7 +31,7 @@ class AddedToCartDialog extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                icon: Icon(Icons.clear)),
+                icon: const Icon(Icons.clear)),
           ),
           Icon(
             Icons.done,
@@ -44,7 +44,7 @@ class AddedToCartDialog extends StatelessWidget {
               style: TextStyle(
                   fontSize: 25.sp,
                   fontFamily: FontFamily.bold,
-                  color: Color(0xff090808))),
+                  color: const Color(0xff090808))),
           SizedBox(
             height: 5.h,
           ),
@@ -53,7 +53,7 @@ class AddedToCartDialog extends StatelessWidget {
               style: TextStyle(
                   fontSize: 18.sp,
                   fontFamily: FontFamily.regular,
-                  color: Color(0xff090808))),
+                  color: const Color(0xff090808))),
           SizedBox(
             height: 56.h,
           ),
@@ -65,7 +65,7 @@ class AddedToCartDialog extends StatelessWidget {
                     ),
                     leaveHistory: false);
               },
-              child: Text("Open cart")),
+              child: const Text("Open cart")),
           SizedBox(
             height: 49.h,
           ),

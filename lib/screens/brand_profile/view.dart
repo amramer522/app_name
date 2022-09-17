@@ -1,10 +1,10 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/brand_photos/view.dart';
-import 'package:app_name/screens/brand_profile/components/item_social.dart';
-import 'package:app_name/screens/brand_proucts/view.dart';
-import 'package:app_name/screens/collages/view.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../core/helper_methods.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/brand_photos/view.dart';
+import '/../screens/brand_profile/components/item_social.dart';
+import '/../screens/brand_proucts/view.dart';
+import '/../screens/collages/view.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -48,12 +48,12 @@ class BrandProfileScreen extends StatelessWidget {
                        SizedBox(
                          width: 11.w,
                        ),
-                       Text("Cairo, Nasr city ")
+                       const Text("Cairo, Nasr city ")
                      ],
                    ),
                  ),
                  Row(
-                   children: [
+                   children: const [
                      ItemSocial(image: "whats_app"),
                      ItemSocial(image: "instgram"),
                      ItemSocial(image: "facebook")
@@ -77,15 +77,15 @@ class BrandProfileScreen extends StatelessWidget {
                  SizedBox(height: 25.h,),
                  Text("Explore",style: TextStyle(fontSize: 22.sp,fontFamily: FontFamily.bold)),
                  TopCollagesItemsCard(title: "Collages",numberOfItems: 10,onPress: (){
-                   navigateTo(page: CollagesScreen(title: "Brand Collages", withFilter: true));
+                   navigateTo(page: const CollagesScreen(title: "Brand Collages", withFilter: true));
                  }),
                  SizedBox(height: 10.h,),
                  TopCollagesItemsCard(title: "Products",numberOfItems: 40,onPress: (){
-                   navigateTo(page: BrandProductScreen(title: "Brand Products"));
+                   navigateTo(page: const BrandProductScreen(title: "Brand Products"));
                  }),
                  SizedBox(height: 10.h,),
                  TopCollagesItemsCard(title: "Photos",numberOfItems: 20,onPress: (){
-                   navigateTo(page: BrandPhotosScreen());
+                   navigateTo(page: const BrandPhotosScreen());
                  }),
                ],
              ),

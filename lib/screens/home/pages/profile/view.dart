@@ -1,6 +1,5 @@
-import 'package:app_name/screens/login/view.dart';
-import 'package:app_name/screens/my_orders/view.dart';
-import 'package:app_name/screens/notifications/view.dart';
+import '/../screens/login/view.dart';
+import '/../screens/my_orders/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -15,7 +14,6 @@ import '../../../brand_proucts/view.dart';
 import '../../../collages/view.dart';
 import '../../../edit_profile/view.dart';
 import '../../../my_addresses/view.dart';
-import '../../../my_likes_dislikes/view.dart';
 import 'components/item_profile.dart';
 import 'components/item_setting.dart';
 
@@ -26,7 +24,7 @@ class ProfilePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: SecondAppBar(title: "My Profile", haveBack: false,
+      appBar: const SecondAppBar(title: "My Profile", haveBack: false,
           actions: [
         ItemNotifications(),
       ]
@@ -144,7 +142,7 @@ class ProfilePage extends StatelessWidget {
               image: "assets/icons/logout.svg",
               isLogout: CacheHelper.getUserToken().trim().isNotEmpty,
               page: CacheHelper.getUserToken().trim().isEmpty
-                  ? LoginScreen()
+                  ? const LoginScreen()
                   : null,
             ),
           ],

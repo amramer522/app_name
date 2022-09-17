@@ -1,13 +1,10 @@
-import 'dart:async';
-
-import 'package:app_name/screens/my_orders/view.dart';
+import '/../screens/my_orders/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/helper_methods.dart';
 import '../../gen/fonts.gen.dart';
-import '../home/view.dart';
 
 class FinishOrderScreen extends StatefulWidget {
   const FinishOrderScreen({Key? key}) : super(key: key);
@@ -73,8 +70,8 @@ class _FinishOrderScreenState extends State<FinishOrderScreen> {
               height: 17.h,
             ),
             ElevatedButton(onPressed: (){
-              navigateTo(page: MyOrdersScreen(isFormOrderSuccess: true,));
-            }, child: Text("Check my order")),
+              navigateTo(page: const MyOrdersScreen(isFormOrderSuccess: true,));
+            }, child: const Text("Check my order")),
             const Spacer(),
 
           ],

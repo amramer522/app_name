@@ -1,8 +1,8 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/forget_password/view.dart';
-import 'package:app_name/screens/home/view.dart';
-import 'package:app_name/screens/register/view.dart';
+import '/../core/helper_methods.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/forget_password/view.dart';
+import '/../screens/home/view.dart';
+import '/../screens/register/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

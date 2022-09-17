@@ -1,4 +1,4 @@
-import 'package:app_name/shared/items/item_home_top_collages.dart';
+import '/../shared/items/item_home_top_collages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

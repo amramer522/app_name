@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/gen/assets.gen.dart';
-import 'package:app_name/screens/product_details/view.dart';
+import '/../core/helper_methods.dart';
+import '/../gen/assets.gen.dart';
+import '/../screens/product_details/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -17,7 +17,7 @@ class HomeHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        navigateTo(page: ProductDetailsScreen());
+        navigateTo(page: const ProductDetailsScreen());
       },
       child: Container(
         height: 135.h,

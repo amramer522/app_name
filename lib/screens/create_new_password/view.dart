@@ -1,5 +1,5 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/login/view.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/login/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,7 +64,7 @@ class CreateNewPasswordScreen extends StatelessWidget {
                         style: ElevatedButton.styleFrom(
                           fixedSize: Size(340.w,44.h)
                         ),
-                        child:  Text("Create"))),
+                        child:  const Text("Create"))),
 
               ],
             ),

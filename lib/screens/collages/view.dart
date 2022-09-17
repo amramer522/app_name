@@ -1,4 +1,4 @@
-import 'package:app_name/fake_data/fake_data.dart';
+import '/../fake_data/fake_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,7 +20,7 @@ class CollagesScreen extends StatelessWidget {
             itemBuilder: (context, index) => ItemBrandCollage(index: index),
             separatorBuilder: (context, index) =>   Divider(
               thickness: 15.h,
-              color: Color(0xffEEEEEE),
+              color: const Color(0xffEEEEEE),
             ),
             itemCount: fakeBrandCollagesDetails.length),
       ),

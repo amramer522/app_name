@@ -1,8 +1,8 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/checkout/view.dart';
-import 'package:app_name/shared/app_input.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../core/helper_methods.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/checkout/view.dart';
+import '/../shared/app_input.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -116,7 +116,7 @@ class _PaymentMethodsState extends State<PaymentMethods> {
               height: 35.h,
             ),
             isCash
-                ? Text(
+                ? const Text(
                     "With this option you will pay full amount after we deliver your order to your address")
                 : const SizedBox.shrink(),
             isCash

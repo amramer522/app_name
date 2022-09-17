@@ -1,8 +1,7 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/home/pages/cart/components/item_cart_free.dart';
-import 'package:app_name/screens/my_addresses/components/item_my_address.dart';
-import 'package:app_name/shared/items/item_my_order.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/home/pages/cart/components/item_cart_free.dart';
+import '/../screens/my_addresses/components/item_my_address.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../core/helper_methods.dart';
 import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
-import '../../shared/finish_order_dialog.dart';
 import '../finish_order/view.dart';
 
 class CheckOutScreen extends StatelessWidget {
@@ -44,7 +42,7 @@ class CheckOutScreen extends StatelessWidget {
                 ),
               ),
             ),
-            ItemMyAddress(withDelete: false),
+            const ItemMyAddress(withDelete: false),
             Padding(
               padding: EdgeInsets.only(top: 30.h, bottom: 10.h),
               child: Text(
@@ -173,7 +171,7 @@ class CheckOutScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: ElevatedButton(
           onPressed: () {
-            navigateTo(page: FinishOrderScreen());
+            navigateTo(page: const FinishOrderScreen());
             // finishOrderDialog(context);
           },
           style: ElevatedButton.styleFrom(

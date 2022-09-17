@@ -1,12 +1,10 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/helper_methods.dart';
 import '../../../../gen/fonts.gen.dart';
 import '../../../editor/view.dart';
-import '../home/components/top_collages_items_card.dart';
 import 'components/item_category.dart';
 
 class AllCategoriesScreen extends StatelessWidget {
@@ -53,7 +51,7 @@ class AllCategoriesScreen extends StatelessWidget {
               padding: EdgeInsetsDirectional.only(bottom: 20.h),
               child: ElevatedButton(
                 onPressed: () {
-                  navigateTo(page: EditorScreen());
+                  navigateTo(page: const EditorScreen());
                 },
                 style: ElevatedButton.styleFrom(fixedSize: Size(321.w, 45.h)),
                 child: const Text("Add to Editor"),

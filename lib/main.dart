@@ -1,8 +1,4 @@
-import 'package:app_name/screens/editor/view.dart';
-import 'package:app_name/screens/home/pages/profile/view.dart';
-import 'package:app_name/screens/home/view.dart';
-import 'package:app_name/screens/splash/view.dart';
-import 'package:app_name/shared/items/item_brand_photo.dart';
+import '/../screens/home/view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,20 +12,6 @@ import 'core/helper_methods.dart';
 import 'core/styles/themes.dart';
 import 'core/un_focus.dart';
 import 'generated/codegen_loader.g.dart';
-import 'screens/brand_photos/view.dart';
-import 'screens/brand_profile/view.dart';
-import 'screens/brand_proucts/view.dart';
-import 'screens/collage_details/view.dart';
-import 'screens/create_new_password/view.dart';
-import 'screens/edit_profile/view.dart';
-import 'screens/my_order_details/view.dart';
-import 'screens/my_orders/view.dart';
-import 'screens/notifications/view.dart';
-import 'screens/offers/view.dart';
-import 'screens/order_summary/view.dart';
-import 'screens/payment_methods/view.dart';
-import 'screens/product_details/view.dart';
-import 'screens/register/view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,7 +19,7 @@ void main() async {
   await CacheHelper.init();
   // await GlobalNotification().setUpFirebase();
   await EasyLocalization.ensureInitialized();
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
       statusBarIconBrightness: Brightness.dark,
       statusBarBrightness: Brightness.dark

@@ -8,11 +8,6 @@ var colorHighlightColorShimmer = colorPrimary.withOpacity(.8);
 
 
 MaterialColor buildMaterialColor(Color color) {
-  /*
-   // method convert the Hex color to make primarySwatch accept the color
-   // use it in main like this
-   primarySwatch: buildMaterialColor(colorPrimary),
-   */
   List strengths = [.05, .1, .2, .3, .4, .5, .6, .7, .8, .9];
   final int r = color.red, g = color.green, b = color.blue;
   Map<int, Color> swatch = {};
@@ -25,6 +20,5 @@ MaterialColor buildMaterialColor(Color color) {
       1,
     );
   }
-  // print("swatch: $swatch");
   return MaterialColor(color.value, swatch);
 }

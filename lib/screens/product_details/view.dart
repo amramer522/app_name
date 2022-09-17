@@ -1,9 +1,8 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/brand_profile/view.dart';
-import 'package:app_name/screens/editor/view.dart';
-import 'package:app_name/screens/home/pages/profile/view.dart';
-import 'package:app_name/screens/my_likes_dislikes/components/item_like_dislike.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/brand_profile/view.dart';
+import '/../screens/editor/view.dart';
+import '/../screens/my_likes_dislikes/components/item_like_dislike.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -21,7 +20,7 @@ class ProductDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(
+      appBar: const SecondAppBar(
         title: "Product details",
       ),
       body: SingleChildScrollView(
@@ -32,7 +31,7 @@ class ProductDetailsScreen extends StatelessWidget {
             Container(
               height: 350.h,
               margin: mainPagePadding,
-              decoration: BoxDecoration(color: Color(0xff7B7B7B)),
+              decoration: const BoxDecoration(color: Color(0xff7B7B7B)),
             ),
             SizedBox(
               height: 15.h,
@@ -76,18 +75,18 @@ class ProductDetailsScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 20.sp,
                             fontFamily: FontFamily.regular,
-                            color: Color(0xff090808)),
+                            color: const Color(0xff090808)),
                       ),
                       Text(
                         "230 cm * 50 cm",
                         style: TextStyle(
                             fontSize: 15.sp,
                             fontFamily: FontFamily.regular,
-                            color: Color(0xff7B7B7B)),
+                            color: const Color(0xff7B7B7B)),
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   GestureDetector(
                       onTap: () {
                         showAddToCartSheet(context);
@@ -106,7 +105,7 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
             ),
             Divider(
-              color: Color(0xffE4E4E4),
+              color: const Color(0xffE4E4E4),
               height: 20.h,
               thickness: 5.h,
             ),
@@ -124,13 +123,13 @@ class ProductDetailsScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 20.sp,
                             fontFamily: FontFamily.regular,
-                            color: Color(0xff090808))),
+                            color: const Color(0xff090808))),
                     Text(
                         "Free Shipping on orders over LE 0.00\nin 3-5 business days",
                         style: TextStyle(
                             fontSize: 16.sp,
                             fontFamily: FontFamily.regular,
-                            color: Color(0xff7B7B7B))),
+                            color: const Color(0xff7B7B7B))),
                     SizedBox(
                       height: 10.h,
                     ),
@@ -140,16 +139,16 @@ class ProductDetailsScreen extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 16.sp,
                                 fontFamily: FontFamily.regular,
-                                color: Color(0xff7B7B7B))),
+                                color: const Color(0xff7B7B7B))),
                         GestureDetector(
                           onTap: () {
-                            navigateTo(page: BrandProfileScreen());
+                            navigateTo(page: const BrandProfileScreen());
                           },
                           child: Text('"Brand Name"',
                               style: TextStyle(
                                   fontSize: 16.sp,
                                   fontFamily: FontFamily.regular,
-                                  color: Color(0xff034C65))),
+                                  color: const Color(0xff034C65))),
                         ),
                       ],
                     )
@@ -161,7 +160,7 @@ class ProductDetailsScreen extends StatelessWidget {
               height: 15.h,
             ),
             Divider(
-              color: Color(0xffE4E4E4),
+              color: const Color(0xffE4E4E4),
               height: 20.h,
               thickness: 5.h,
             ),
@@ -178,12 +177,12 @@ class ProductDetailsScreen extends StatelessWidget {
                           fontSize: 20.sp,
                           fontFamily: FontFamily.regular,
                           color: Colors.black)),
-                  ItemSpecifications(title: "Material", value: "Denim Jeans"),
-                  ItemSpecifications(title: "Color", value: "Blue"),
-                  ItemSpecifications(title: "Length", value: "Short Jumpsuit"),
-                  ItemSpecifications(title: "Fit", value: "Regular"),
-                  ItemSpecifications(title: "Occasion", value: "Casual"),
-                  ItemSpecifications(
+                  const ItemSpecifications(title: "Material", value: "Denim Jeans"),
+                  const ItemSpecifications(title: "Color", value: "Blue"),
+                  const ItemSpecifications(title: "Length", value: "Short Jumpsuit"),
+                  const ItemSpecifications(title: "Fit", value: "Regular"),
+                  const ItemSpecifications(title: "Occasion", value: "Casual"),
+                  const ItemSpecifications(
                       title: "Care Instructions", value: "Machine wash"),
                   SizedBox(
                     height: 10.h,
@@ -192,7 +191,7 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
             ),
             Divider(
-              color: Color(0xffE4E4E4),
+              color: const Color(0xffE4E4E4),
               height: 20.h,
               thickness: 5.h,
             ),
@@ -205,7 +204,7 @@ class ProductDetailsScreen extends StatelessWidget {
                   style: TextStyle(
                       fontSize: 20.sp,
                       fontFamily: FontFamily.regular,
-                      color: Color(0xff090808))),
+                      color: const Color(0xff090808))),
             ),
             SizedBox(
               height: 10.h,
@@ -216,7 +215,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 padding: EdgeInsetsDirectional.only(start: 16.w,bottom: 30.h),
                 child: ListView.separated(
                   itemBuilder: (context, index) =>
-                      ItemLikeDisLike(index: index, width: 167.w),
+                      ItemProduct(index: index, width: 167.w),
                   separatorBuilder: (context, index) => SizedBox(
                     width: 20.w,
                   ),
@@ -232,7 +231,7 @@ class ProductDetailsScreen extends StatelessWidget {
       floatingActionButton: ElevatedButton(
         style: ElevatedButton.styleFrom(fixedSize: Size(321.w, 45.h)),
         onPressed: () {
-          navigateTo(page: EditorScreen());
+          navigateTo(page: const EditorScreen());
         },
         child: const Text("Add to Editor"),
       ),

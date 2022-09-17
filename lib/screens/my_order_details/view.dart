@@ -1,13 +1,11 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/shared/items/item_my_order.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../core/styles/styles.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../core/helper_methods.dart';
 import '../../gen/fonts.gen.dart';
-import '../home/pages/profile/components/item_setting.dart';
 import '../order_summary/view.dart';
 
 class MyOrderDetails extends StatefulWidget {
@@ -24,7 +22,7 @@ class _MyOrderDetailsState extends State<MyOrderDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "Order Details"),
+      appBar: const SecondAppBar(title: "Order Details"),
       body: SingleChildScrollView(
         padding: mainPagePadding,
         child: Column(

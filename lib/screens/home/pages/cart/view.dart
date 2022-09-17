@@ -1,6 +1,6 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/home/pages/cart/components/item_cart_free.dart';
-import 'package:app_name/screens/payment_methods/view.dart';
+import '/../core/helper_methods.dart';
+import '/../screens/home/pages/cart/components/item_cart_free.dart';
+import '/../screens/payment_methods/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,10 +1,9 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/add_new_address/components/drop_down.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/add_new_address/components/drop_down.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../core/styles/colors.dart';
 import '../../gen/fonts.gen.dart';
 
 class AddNewAddress extends StatefulWidget {

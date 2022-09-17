@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/helper_methods.dart';
-import '../../../core/styles/colors.dart';
 import '../../../gen/fonts.gen.dart';
 import '../../add_new_address/view.dart';
 
@@ -102,14 +101,14 @@ class _ItemMyAddressState extends State<ItemMyAddress> {
                           ),
                       ),
                     )
-                    : SizedBox.shrink(),
+                    : const SizedBox.shrink(),
                 SizedBox(
                   width: 5.w,
                 ),
                 GestureDetector(
                   onTap: () {
                     navigateTo(
-                        page: AddNewAddress(
+                        page: const AddNewAddress(
                       isEdit: true,
                     ));
                   },

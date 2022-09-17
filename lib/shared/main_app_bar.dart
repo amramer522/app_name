@@ -49,7 +49,7 @@ class _MainAppBarState extends State<MainAppBar> {
           ),
         ],
       ),
-      actions: [
+      actions: const [
         ItemNotifications(),
       ],
     );

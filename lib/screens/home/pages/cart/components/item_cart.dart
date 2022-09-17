@@ -22,7 +22,7 @@ class _ItemCartState extends State<ItemCart> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        navigateTo(page: ProductDetailsScreen());
+        navigateTo(page: const ProductDetailsScreen());
       },
       child: Container(
         color: Colors.transparent,

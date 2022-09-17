@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/gen/assets.gen.dart';
-import 'package:app_name/screens/editor/widgets/item_editor_category.dart';
-import 'package:app_name/shared/second_app_bar.dart';
-import 'package:flutter/cupertino.dart';
+import '/../core/styles/styles.dart';
+import '/../gen/assets.gen.dart';
+import '/../screens/editor/widgets/item_editor_category.dart';
+import '/../shared/second_app_bar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,7 +19,6 @@ import '../../gen/fonts.gen.dart';
 import '../../shared/added_to_cart_dialog.dart';
 import '../../shared/choose_image_source_dialog.dart';
 import '../../shared/save_collage_dialog.dart';
-import '../../shared/toast.dart';
 import '../../shared/view_all.dart';
 import '../home/pages/all_categories/view.dart';
 import 'widgets/item_editor_actions.dart';
@@ -168,7 +167,7 @@ class _EditorScreenState extends State<EditorScreen> {
             child: Container(
               height: 45.h,
               width: 45.h,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   // color: Color(0xffE6E6E6),
                   ),
               child: Icon(
@@ -195,7 +194,7 @@ class _EditorScreenState extends State<EditorScreen> {
                 height: 45.h,
                 width: 45.h,
                 padding: EdgeInsetsDirectional.only(bottom: 8.h, top: 4.h),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     // color: Color(0xffE6E6E6),
                     ),
                 child: SvgPicture.asset(
@@ -225,7 +224,7 @@ class _EditorScreenState extends State<EditorScreen> {
                           child: SizedBox(
                             height: 380.h,
                             child: InteractiveViewer(
-                              scaleEnabled: selectedImages.isNotEmpty,
+                              // scaleEnabled: selectedImages.isNotEmpty,
                               child: Stack(
                                 children: selectedImages.isNotEmpty
                                     ? List.generate(

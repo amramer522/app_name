@@ -20,7 +20,7 @@ class ItemSocial extends StatelessWidget {
               "assets/icons/$image.svg",
             )),
         decoration: BoxDecoration(
-            border: Border.all(color: Color(0xffD1D9E6), width: .5.w),
+            border: Border.all(color: const Color(0xffD1D9E6), width: .5.w),
             shape: BoxShape.circle),
       ),
     );

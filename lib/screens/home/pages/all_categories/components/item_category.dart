@@ -1,5 +1,5 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/brand_proucts/view.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/brand_proucts/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,7 +26,7 @@ class _ItemCategoryState extends State<ItemCategory> {
           isSelected = !isSelected;
           setState(() {});
         } else {
-          navigateTo(page: BrandProductScreen(title: "Category Products"));
+          navigateTo(page: const BrandProductScreen(title: "Category Products"));
         }
       },
       child: Container(

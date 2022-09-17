@@ -1,7 +1,6 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/create_new_password/view.dart';
-import 'package:app_name/screens/home/view.dart';
+import '/../core/helper_methods.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/create_new_password/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -76,16 +75,10 @@ class _ConfirmCodeScreenState extends State<ConfirmCodeScreen> {
                   animationDuration: const Duration(milliseconds: 300),
                   backgroundColor: Colors.transparent,
                   enableActiveFill: true,
-                  // errorAnimationController: errorController,
-                  // controller: textEditingController,
                   onCompleted: (v) {
                     print("Completed");
                   },
                   onChanged: (value) {
-                    // print(value);
-                    // setState(() {
-                    //   // currentText = value;
-                    // });
                   },
                   beforeTextPaste: (text) {
                     print("Allowing to paste $text");

@@ -1,6 +1,6 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/add_new_address/view.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../core/helper_methods.dart';
+import '/../screens/add_new_address/view.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

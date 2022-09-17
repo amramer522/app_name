@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:animate_do/animate_do.dart';
-import 'package:app_name/generated/locale_keys.g.dart';
-import 'package:app_name/screens/home/view.dart';
-import 'package:app_name/screens/login/view.dart';
-import 'package:app_name/screens/on_boarding/view.dart';
+import '/../generated/locale_keys.g.dart';
+import '/../screens/home/view.dart';
+import '/../screens/on_boarding/view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

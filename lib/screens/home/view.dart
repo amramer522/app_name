@@ -1,7 +1,7 @@
-import 'package:app_name/screens/home/pages/all_categories/view.dart';
-import 'package:app_name/screens/home/pages/cart/view.dart';
-import 'package:app_name/screens/home/pages/home/view.dart';
-import 'package:app_name/screens/home/pages/profile/view.dart';
+import '/../screens/home/pages/all_categories/view.dart';
+import '/../screens/home/pages/cart/view.dart';
+import '/../screens/home/pages/home/view.dart';
+import '/../screens/home/pages/profile/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,10 +20,10 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final List<String> icons = const ["home", "categories", "cart", "profile"];
   final List<Widget> pages =  [
-    HomePage(),
-    AllCategoriesScreen(fromHome: true),
-    CartPage(),
-    ProfilePage()
+    const HomePage(),
+    const AllCategoriesScreen(fromHome: true),
+    const CartPage(),
+    const ProfilePage()
   ];
 
   // int currentIndex = 0;

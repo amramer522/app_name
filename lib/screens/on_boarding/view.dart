@@ -1,6 +1,6 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/home/view.dart';
-import 'package:app_name/screens/login/view.dart';
+import '/../core/helper_methods.dart';
+import '/../screens/home/view.dart';
+import '/../screens/login/view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

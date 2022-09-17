@@ -1,4 +1,4 @@
-import 'package:app_name/core/styles/styles.dart';
+import '/../core/styles/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,7 +6,6 @@ import 'package:flutter_svg/svg.dart';
 import '../../gen/fonts.gen.dart';
 import '../../shared/second_app_bar.dart';
 import '../home/pages/cart/components/item_cart_free.dart';
-import '../my_addresses/components/item_my_address.dart';
 class OrderSummaryScreen extends StatelessWidget {
   const OrderSummaryScreen({Key? key}) : super(key: key);
 

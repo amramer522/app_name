@@ -1,6 +1,6 @@
-import 'package:app_name/screens/filter/view.dart';
-import 'package:app_name/screens/product_details/view.dart';
-import 'package:app_name/shared/added_to_cart_dialog.dart';
+import '/../screens/filter/view.dart';
+import '/../screens/product_details/view.dart';
+import '/../shared/added_to_cart_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -13,7 +13,6 @@ import '../../core/styles/colors.dart';
 import '../../gen/assets.gen.dart';
 import '../../gen/fonts.gen.dart';
 import '../../screens/editor/view.dart';
-import '../toast.dart';
 
 class CategoriesItemsSwiper extends StatefulWidget {
   const CategoriesItemsSwiper({Key? key}) : super(key: key);
@@ -113,7 +112,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                               ),
                               GestureDetector(
                                 onTap: () {
-                                  navigateTo(page: FilterScreen());
+                                  navigateTo(page: const FilterScreen());
                                   // showFilterDialog(context);
                                 },
                                 child: Container(
@@ -122,11 +121,11 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                   padding: EdgeInsets.all(12.r),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(7.r),
-                                    color: Color(0xff090808)
+                                    color: const Color(0xff090808)
                                   ),
                                   child: SvgPicture.asset(
                                     Assets.icons.filter,
-                                    color: Color(0xffF5F7F9),
+                                    color: const Color(0xffF5F7F9),
                                   ),
                                 ),
                               ),
@@ -138,7 +137,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                       fontSize: 20.sp,
                                       fontFamily: FontFamily.regular,
                                       color: colorPrimary)),
-                              Spacer(),
+                              const Spacer(),
                               SvgPicture.asset("assets/icons/reload.svg"),
                               SizedBox(width: 15.w,),
                               IconButton(
@@ -162,7 +161,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                 Expanded(
                                   child: GestureDetector(
                                     onTap: (){
-                                      navigateTo(page: ProductDetailsScreen());
+                                      navigateTo(page: const ProductDetailsScreen());
                                     },
                                     child: CachedNetworkImage(
                                       imageUrl:
@@ -172,7 +171,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                     ),
                                   ),
                                 ),
-                                Divider(),
+                                const Divider(),
                                 SizedBox(height: 16.h,),
                                 Text(
                                   "Product Name",
@@ -210,7 +209,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                   "23 cm * 30 cm",
                                   style: TextStyle(
                                       fontSize: 15.sp,
-                                      fontFamily: FontFamily.regular,color: Color(0xff7B7B7B)),
+                                      fontFamily: FontFamily.regular,color: const Color(0xff7B7B7B)),
                                 ),
                                 SizedBox(
                                   height: 10.h,
@@ -220,7 +219,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () {
-                                    navigateTo(page: EditorScreen());
+                                    navigateTo(page: const EditorScreen());
                                   },
                                   child: const Text("Add to Editor"),
                                 ),
@@ -233,7 +232,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                   },
                                   style: OutlinedButton.styleFrom(
                                       elevation: 0,
-                                      side: BorderSide(color: colorPrimary),
+                                      side: const BorderSide(color: colorPrimary),
                                       fixedSize: Size(340.w, 55.h),
                                       shadowColor: Colors.transparent),
                                   label: Text("Add To Cart",
@@ -244,7 +243,7 @@ class _CategoriesItemsSwiperState extends State<CategoriesItemsSwiper> {
                                   icon: Padding(
                                     padding: EdgeInsets.all(2.r),
                                     child:
-                                        SvgPicture.asset("assets/icons/add_to_cart.svg",color: Color(0xff090808),),
+                                        SvgPicture.asset("assets/icons/add_to_cart.svg",color: const Color(0xff090808),),
                                   ),
                                 ),
                               ],

@@ -1,4 +1,4 @@
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -8,7 +8,6 @@ import '../../gen/fonts.gen.dart';
 import '../../shared/items/item_brand_collage.dart';
 import '../editor/view.dart';
 import '../home/pages/cart/components/item_cart_free.dart';
-import '../payment_methods/view.dart';
 
 class CollageDetailsScreen extends StatelessWidget {
   const CollageDetailsScreen({Key? key}) : super(key: key);
@@ -16,12 +15,12 @@ class CollageDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SecondAppBar(title: "Collage Details"),
+      appBar: const SecondAppBar(title: "Collage Details"),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ItemBrandCollage(
+            const ItemBrandCollage(
               index: 0,
               withEditCollage: false,
             ),
@@ -64,7 +63,7 @@ class CollageDetailsScreen extends StatelessWidget {
                     ),
                     Text("Collage subtotal",
                         style: TextStyle(
-                            fontSize: 18.sp, fontFamily: FontFamily.regular,color: Color(0xff7B7B7B))),
+                            fontSize: 18.sp, fontFamily: FontFamily.regular,color: const Color(0xff7B7B7B))),
                     const Spacer(),
                     Text("LE 0,00",
                         style: TextStyle(
@@ -77,7 +76,7 @@ class CollageDetailsScreen extends StatelessWidget {
                 margin: EdgeInsets.only(top: 10.h, bottom: 10.h),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(7.r),
-                    color: Color(0xffEEEEEE)),
+                    color: const Color(0xffEEEEEE)),
               ),
             ),
             Padding(
@@ -86,7 +85,7 @@ class CollageDetailsScreen extends StatelessWidget {
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {
-                        navigateTo(page: EditorScreen());
+                        navigateTo(page: const EditorScreen());
                       },
                       child: Text("Edit Collage",
                           style: TextStyle(

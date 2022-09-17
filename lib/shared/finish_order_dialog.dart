@@ -1,7 +1,7 @@
 import 'dart:async';
 
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/home/view.dart';
+import '/../core/helper_methods.dart';
+import '/../screens/home/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -57,7 +57,7 @@ finishOrderDialog(context) {
             ),
           ),
       context: context).then((value) {
-        Timer(Duration(seconds: 2), () {
+        Timer(const Duration(seconds: 2), () {
           navigateTo(page: HomeScreen(), leaveHistory: false);
         });
   });

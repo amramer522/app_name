@@ -1,9 +1,7 @@
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/gen/fonts.gen.dart';
+import '/../core/styles/styles.dart';
+import '/../gen/fonts.gen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../fake_data/fake_data.dart';
 class TopCollagesItemsCard extends StatelessWidget {
   final String title;
   final int numberOfItems;
@@ -35,8 +33,6 @@ class TopCollagesItemsCard extends StatelessWidget {
                     color: Color(0xff034C65*numberOfItems)
                   ),
                 ),
-                // Image.network(
-                //     fakeBrandPhotosDetails[0]["image"].toString()),
                 SizedBox(width: 20.w,),
                 Expanded(
                   child: Column(

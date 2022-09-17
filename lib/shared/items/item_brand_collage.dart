@@ -1,13 +1,12 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/colors.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/gen/assets.gen.dart';
-import 'package:app_name/screens/brand_profile/view.dart';
-import 'package:app_name/screens/collage_details/view.dart';
-import 'package:app_name/screens/editor/view.dart';
+import '/../core/helper_methods.dart';
+import '/../core/styles/colors.dart';
+import '/../core/styles/styles.dart';
+import '/../gen/assets.gen.dart';
+import '/../screens/brand_profile/view.dart';
+import '/../screens/collage_details/view.dart';
+import '/../screens/editor/view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:share_plus/share_plus.dart';
@@ -38,7 +37,7 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
         children: [
           GestureDetector(
             onTap: (){
-              navigateTo(page: BrandProfileScreen());
+              navigateTo(page: const BrandProfileScreen());
 
             },
             child: ListTile(
@@ -70,7 +69,7 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
           ),
           GestureDetector(
             onTap: (){
-              navigateTo(page: CollageDetailsScreen());
+              navigateTo(page: const CollageDetailsScreen());
             },
             child: CachedNetworkImage(
               imageUrl:
@@ -138,13 +137,13 @@ class _ItemBrandCollageState extends State<ItemBrandCollage> {
                       width: double.infinity,
                       child: ElevatedButton(
                           onPressed: () {
-                            navigateTo(page: EditorScreen());
+                            navigateTo(page: const EditorScreen());
                           },
-                          child: Text(
+                          child: const Text(
                             "Edit Collage",
                           ))),
                 )
-              : SizedBox.shrink()
+              : const SizedBox.shrink()
         ],
       ),
     );

@@ -1,4 +1,4 @@
-import 'package:app_name/core/helper_methods.dart';
+import '/../core/helper_methods.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +16,7 @@ class ItemMyOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        navigateTo(page: MyOrderDetails());
+        navigateTo(page: const MyOrderDetails());
       },
       child: Container(
         margin: EdgeInsets.only(top: 20.h),

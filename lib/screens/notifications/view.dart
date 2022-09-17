@@ -1,9 +1,7 @@
-import 'package:app_name/screens/notifications/components/item_notification.dart';
-import 'package:app_name/shared/second_app_bar.dart';
+import '/../screens/notifications/components/item_notification.dart';
+import '/../shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../gen/fonts.gen.dart';
 class NotificationsScreen extends StatelessWidget {
    NotificationsScreen({Key? key}) : super(key: key);
 

@@ -1,5 +1,4 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/offers/view.dart';
+import '/../core/helper_methods.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/styles/styles.dart';
@@ -27,16 +26,16 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children:  [
-              HomeHeader(),
+              const HomeHeader(),
               SectionsList(),
-              SearchBar(),
-              ViewAll(label: "Top Collages",page: CollagesScreen(title: "Top Collages",withFilter: false,)),
-              HomeTopCollagesList(),
+              const SearchBar(),
+              const ViewAll(label: "Top Collages",page: CollagesScreen(title: "Top Collages",withFilter: false,)),
+              const HomeTopCollagesList(),
               TopCollagesItemsCard(title: "Special Offers",onPress: () {
-                navigateTo(page: BrandProductScreen(title: 'Offers',));
+                navigateTo(page: const BrandProductScreen(title: 'Offers',));
               },numberOfItems: 10),
-              ViewAll(label: "Best selling",page: BrandProductScreen(title: "Best Selling",)),
-              HomeBestSellingList(),
+              const ViewAll(label: "Best selling",page: BrandProductScreen(title: "Best Selling",)),
+              const HomeBestSellingList(),
             ],
           ),
         ),

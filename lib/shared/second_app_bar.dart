@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '/../gen/assets.gen.dart';
 import '../core/helper_methods.dart';
 import '../screens/filter/view.dart';
-import '/../gen/assets.gen.dart';
-import '/../gen/fonts.gen.dart';
 
 class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -37,7 +36,6 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
         automaticallyImplyLeading: false,
         backgroundColor: color!,
         centerTitle: true,
-        // title: Text(title),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -72,8 +70,7 @@ class SecondAppBar extends StatelessWidget implements PreferredSizeWidget {
           haveAction
               ? GestureDetector(
                   onTap: () {
-                    // showFilterDialog(context);
-                    navigateTo(page: FilterScreen());
+                    navigateTo(page: const FilterScreen());
                   },
                   child: Padding(
                     padding: EdgeInsetsDirectional.only(end: 16.w),

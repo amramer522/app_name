@@ -1,7 +1,6 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/home/pages/home/view.dart';
-import 'package:app_name/screens/home/view.dart';
+import '/../core/helper_methods.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/home/view.dart';
 import 'package:flutter/material.dart';
 
 import '../../fake_data/fake_data.dart';

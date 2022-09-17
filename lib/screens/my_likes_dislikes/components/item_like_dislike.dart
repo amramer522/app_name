@@ -1,28 +1,28 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/product_details/view.dart';
+import '/../core/helper_methods.dart';
+import '/../screens/product_details/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../gen/fonts.gen.dart';
 
-class ItemLikeDisLike extends StatefulWidget {
+class ItemProduct extends StatefulWidget {
   final bool isBig;
   final int index;
   final double? width;
-  const ItemLikeDisLike({Key? key, this.isBig = false,required this.index, this.width}) : super(key: key);
+  const ItemProduct({Key? key, this.isBig = false,required this.index, this.width}) : super(key: key);
 
   @override
-  State<ItemLikeDisLike> createState() => _ItemLikeDisLikeState();
+  State<ItemProduct> createState() => _ItemProductState();
 }
 
-class _ItemLikeDisLikeState extends State<ItemLikeDisLike> {
+class _ItemProductState extends State<ItemProduct> {
   bool isLiked = false;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (){
-        navigateTo(page: ProductDetailsScreen());
+        navigateTo(page: const ProductDetailsScreen());
       },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -30,7 +30,6 @@ class _ItemLikeDisLikeState extends State<ItemLikeDisLike> {
           Expanded(
             child: Container(
               alignment: AlignmentDirectional.topEnd,
-              // height: widget.isBig ? 170.h : 150.h,
               width: widget.width??double.infinity,
               decoration: BoxDecoration(
                   color:  Color(0xffC1C6C8*(widget.index+1)).withOpacity(.5), borderRadius: BorderRadius.circular(8.r)),

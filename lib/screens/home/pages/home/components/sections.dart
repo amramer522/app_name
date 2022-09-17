@@ -1,5 +1,4 @@
-import 'package:app_name/screens/offers/view.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,7 +8,7 @@ import '../../../../collages/view.dart';
 import '../../../../editor/view.dart';
 
 class SectionsList extends StatelessWidget {
-   SectionsList({Key? key}) : super(key: key);
+   const SectionsList({Key? key}) : super(key: key);
 
   final List<String> images = const ["editor", "collages", "offers"];
   final List<String> titles = const ["Editor", "Collages", "Offers"];

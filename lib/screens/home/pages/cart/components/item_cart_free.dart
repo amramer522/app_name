@@ -1,5 +1,5 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/screens/product_details/view.dart';
+import '/../core/helper_methods.dart';
+import '/../screens/product_details/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +16,7 @@ class ItemCartFree extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigateTo(page: ProductDetailsScreen());
+        navigateTo(page: const ProductDetailsScreen());
       },
       child: Container(
         color: Colors.transparent,

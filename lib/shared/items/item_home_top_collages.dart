@@ -1,9 +1,8 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/fake_data/fake_data.dart';
-import 'package:app_name/gen/fonts.gen.dart';
-import 'package:app_name/screens/collage_details/view.dart';
-import 'package:app_name/screens/product_details/view.dart';
+import '/../core/helper_methods.dart';
+import '/../core/styles/styles.dart';
+import '/../fake_data/fake_data.dart';
+import '/../gen/fonts.gen.dart';
+import '/../screens/collage_details/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,10 +15,10 @@ class ItemHomeTopCollages extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        navigateTo(page: CollageDetailsScreen());
+        navigateTo(page: const CollageDetailsScreen());
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 2),
+        margin: const EdgeInsets.symmetric(vertical: 2),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12.r),
             boxShadow: shadowOfItem()),

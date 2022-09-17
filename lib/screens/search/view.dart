@@ -1,5 +1,5 @@
-import 'package:app_name/shared/second_app_bar.dart';
-import 'package:flutter/cupertino.dart';
+import '/../shared/second_app_bar.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -12,9 +12,9 @@ class ItemSpecifications extends StatelessWidget {
       padding:  EdgeInsets.only(top: 5.h),
       child: Row(
         children: [
-          Text(title,style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.regular,color: Color(0xff7B7B7B))),
+          Text(title,style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.regular,color: const Color(0xff7B7B7B))),
           const Spacer(),
-          Text(value,style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.regular,color: Color(0xff000000))),
+          Text(value,style: TextStyle(fontSize: 16.sp,fontFamily: FontFamily.regular,color: const Color(0xff000000))),
         ],
       ),
     );

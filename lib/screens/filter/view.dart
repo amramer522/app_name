@@ -1,4 +1,3 @@
-import 'package:app_name/shared/second_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -162,7 +161,7 @@ class _FilterScreenState extends State<FilterScreen> {
 
                                     },
                                   ),
-                                  Text("Highest Price"),
+                                  const Text("Highest Price"),
                                 ],
                               ),
                             ),
@@ -184,7 +183,7 @@ class _FilterScreenState extends State<FilterScreen> {
                                     onChanged: (value) {
                                     },
                                   ),
-                                  Text("Lowest Price"),
+                                  const Text("Lowest Price"),
                                 ],
                               ),
                             ),

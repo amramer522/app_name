@@ -1,7 +1,6 @@
-import 'package:app_name/core/helper_methods.dart';
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/gen/assets.gen.dart';
-import 'package:app_name/screens/search/view.dart';
+import '/../core/helper_methods.dart';
+import '/../gen/assets.gen.dart';
+import '/../screens/search/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';

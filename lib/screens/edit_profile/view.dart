@@ -1,11 +1,10 @@
 import 'dart:io';
 
-import 'package:app_name/core/styles/styles.dart';
-import 'package:app_name/screens/login/view.dart';
+import '/../core/styles/styles.dart';
+import '/../screens/login/view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../core/helper_methods.dart';
 import '../../gen/fonts.gen.dart';
@@ -123,7 +122,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                         },
                         style: ElevatedButton.styleFrom(
                             fixedSize: Size(340.w, 44.h)),
-                        child: Text("Confirm",))),
+                        child: const Text("Confirm",))),
               ],
             ),
           ),
