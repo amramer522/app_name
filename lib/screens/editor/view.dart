@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:auto_size_widget/auto_size_widget.dart';
+
 import '/../core/styles/styles.dart';
 import '/../gen/assets.gen.dart';
 import '/../screens/editor/widgets/item_editor_category.dart';
@@ -230,119 +232,132 @@ class _EditorScreenState extends State<EditorScreen> {
                                     ? List.generate(
                                         selectedImages.length,
                                         (index) => Positioned(
-                                              top: double.parse(
-                                                  selectedImages[index]["top"]
-                                                      .toString()),
-                                              left: double.parse(
-                                                  selectedImages[index]["left"]
-                                                      .toString()),
-                                              child: GestureDetector(
-                                                // onScaleStart: ((details) {
-                                                //   selectedImages[currentImage].update("initialScale", (value) => selectedImages[currentImage]["currentScale"]);
-                                                // }),
-                                                // onScaleUpdate: (details){
-                                                //   double scaleFactor = selectedImages[currentImage]["initialScale"] * details.scale;
-                                                //   selectedImages[currentImage].update("height", (value) =>selectedImages[currentImage]["height"]* scaleFactor);
-                                                //   selectedImages[currentImage].update("width", (value) => selectedImages[currentImage]["width"]*scaleFactor);
-                                                //   setState(() {
-                                                //
-                                                //   });
-                                                // },
-                                                onTap: () {
-                                                  currentImage = index;
-                                                  setState(() {});
-                                                },
-                                                onLongPress: () {
-                                                  showDialog(
-                                                      context: context,
-                                                      barrierDismissible: true,
-                                                      builder: (context) =>
-                                                          Dialog(
+                                          top: double.parse(
+                                              selectedImages[index]["top"]
+                                                  .toString()),
+                                          left: double.parse(
+                                              selectedImages[index]
+                                                      ["left"]
+                                                  .toString()),
+                                          child: GestureDetector(
+                                            // onScaleStart: ((details) {
+                                            //   selectedImages[currentImage].update("initialScale", (value) => selectedImages[currentImage]["currentScale"]);
+                                            // }),
+                                            // onScaleUpdate: (details){
+                                            //   double scaleFactor = selectedImages[currentImage]["initialScale"] * details.scale;
+                                            //   selectedImages[currentImage].update("height", (value) =>selectedImages[currentImage]["height"]* scaleFactor);
+                                            //   selectedImages[currentImage].update("width", (value) => selectedImages[currentImage]["width"]*scaleFactor);
+                                            //   setState(() {
+                                            //
+                                            //   });
+                                            // },
+                                            onTap: () {
+                                              currentImage = index;
+                                              setState(() {});
+                                            },
+                                            onLongPress: () {
+                                              showDialog(
+                                                  context: context,
+                                                  barrierDismissible:
+                                                      true,
+                                                  builder:
+                                                      (context) => Dialog(
                                                             child:
                                                                 InteractiveViewer(
-                                                              child: Transform(
-                                                                transform: Matrix4.rotationY(
-                                                                    selectedImages[index]
-                                                                            [
-                                                                            "isFlipped"]
-                                                                        ? pi
-                                                                        : 2 *
-                                                                            pi),
+                                                              child:
+                                                                  Transform(
+                                                                transform: Matrix4.rotationY(selectedImages[index]
+                                                                        [
+                                                                        "isFlipped"]
+                                                                    ? pi
+                                                                    : 2 *
+                                                                        pi),
                                                                 alignment:
                                                                     Alignment
                                                                         .center,
-                                                                child:
-                                                                    Image.file(
-                                                                  selectedImages[
-                                                                          index]
-                                                                      ["image"],
+                                                                child: Image
+                                                                    .file(
+                                                                  selectedImages[index]
+                                                                      [
+                                                                      "image"],
                                                                 ),
                                                               ),
                                                             ),
                                                           ));
-                                                },
-                                                onPanUpdate: (details) {
-                                                  print(context.size!.width);
-                                                  print(selectedImages[
-                                                          currentImage]["left"]
-                                                      .toString());
+                                            },
+                                            onPanUpdate: (details) {
+                                              print(context.size!.width);
+                                              print(selectedImages[
+                                                          currentImage]
+                                                      ["left"]
+                                                  .toString());
 
-                                                  selectedImages[currentImage].update(
-                                                      "top",
-                                                      (value) => max(
-                                                          0,
-                                                          double.parse(selectedImages[
-                                                                          currentImage]
-                                                                      ["top"]
-                                                                  .toString()) +
-                                                              details
-                                                                  .delta.dy));
-                                                  selectedImages[currentImage].update(
-                                                      "left",
-                                                      (value) => max(
-                                                          0,
-                                                          double.parse(selectedImages[
-                                                                          currentImage]
-                                                                      ["left"]
-                                                                  .toString()) +
-                                                              details
-                                                                  .delta.dx));
-                                                  setState(() {});
-                                                },
-                                                child: Transform(
-                                                  transform: Matrix4.rotationY(
-                                                      selectedImages[index]
-                                                              ["isFlipped"]
+                                              selectedImages[currentImage].update(
+                                                  "top",
+                                                  (value) => max(
+                                                      0,
+                                                      double.parse(selectedImages[
+                                                                      currentImage]
+                                                                  ["top"]
+                                                              .toString()) +
+                                                          details
+                                                              .delta.dy));
+                                              selectedImages[currentImage].update(
+                                                  "left",
+                                                  (value) => max(
+                                                      0,
+                                                      double.parse(selectedImages[
+                                                                      currentImage]
+                                                                  ["left"]
+                                                              .toString()) +
+                                                          details
+                                                              .delta.dx));
+                                              setState(() {});
+                                            },
+                                            child: Transform(
+                                              transform:
+                                                  Matrix4.rotationY(
+                                                      selectedImages[
+                                                                  index][
+                                                              "isFlipped"]
                                                           ? pi
                                                           : 2 * pi),
-                                                  alignment: Alignment.center,
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        border: index ==
-                                                                currentImage
-                                                            ? Border.all(
-                                                                color:
-                                                                    Colors.red)
-                                                            : null),
-                                                    child: Image.file(
-                                                      selectedImages[index]
-                                                          ["image"],
-                                                      // scale: double.parse(
-                                                      //     selectedImages[currentImage]
-                                                      //             ["scaleFactor"]
-                                                      //         .toString()),
-                                                      fit: BoxFit.contain,
-                                                      height:
-                                                          selectedImages[index]
-                                                              ["height"],
-                                                      width:
-                                                          selectedImages[index]
-                                                              ["width"],
-                                                    ),
+                                              alignment: Alignment.center,
+                                              child: AutoSizeWidget(
+                                                initialWidth: 120,
+                                                initialHeight: 120,
+                                                maxWidth: 320,
+                                                maxHeight: 120,
+                                                showIcon: true,
+                                                boxDecoration: BoxDecoration(
+                                                  color: Colors.green
+                                                ),
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                      border: index ==
+                                                              currentImage
+                                                          ? Border.all(
+                                                              color: Colors
+                                                                  .red)
+                                                          : null),
+                                                  child: Image.file(
+                                                    selectedImages[index]
+                                                        ["image"],
+                                                    // scale: double.parse(
+                                                    //     selectedImages[currentImage]
+                                                    //             ["scaleFactor"]
+                                                    //         .toString()),
+                                                    fit: BoxFit.contain,
+                                                    height: selectedImages[
+                                                        index]["height"],
+                                                    width: selectedImages[
+                                                        index]["width"],
                                                   ),
                                                 ),
                                               ),
-                                            ))
+                                            ),
+                                          ),
+                                        ))
                                     : [
                                         Center(
                                           child: Text(

@@ -1,3 +1,5 @@
+import 'package:app_name/screens/editor/view.dart';
+
 import '/../screens/home/view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +87,7 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       themeMode: ThemeMode.light,
-      home:  HomeScreen(),
+      home:  EditorScreen(),
     );
   }
 }
